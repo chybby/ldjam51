@@ -1,7 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://r4ni5b7ycshx"]
-
-[ext_resource type="PackedScene" uid="uid://da3jdac0ak3r8" path="res://scenes/Bar.tscn" id="1_prewb"]
-[ext_resource type="PackedScene" uid="uid://bm0hdxbtd8p8d" path="res://scenes/Floor.tscn" id="2_gmt4v"]
+[gd_scene load_steps=14 format=3 uid="uid://r4ni5b7ycshx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eyu"]
 size = Vector3(1, 1, 10)
@@ -154,12 +151,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4681, 0, 4.42494)
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583713, 1.7064, 0.641593)
 mesh = SubResource("BoxMesh_jne27")
-
-[node name="BarSurface" parent="." instance=ExtResource("1_prewb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-
-[node name="BarSurface2" parent="." instance=ExtResource("1_prewb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0)
-
-[node name="FloorSurface" parent="." instance=ExtResource("2_gmt4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)

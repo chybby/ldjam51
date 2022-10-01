@@ -1,13 +1,15 @@
 extends CharacterBody3D
 
 signal focus_changed(item)
-signal interacted_with(item, held_item, position)
+signal interacted_with(character, item, interact_position)
 
 @export var speed = 1
 @export var mouse_sensitivity = 0.3
 
 @onready var camera : Camera3D = $Camera
 @onready var held_item_position : Marker3D = $Camera/HeldItemPosition
+
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var PICK_DISTANCE = 2
 
@@ -24,6 +26,7 @@ func _ready():
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
     # Character movement
+
     velocity = Vector3.ZERO
 
     var direction = Vector3.ZERO
@@ -38,6 +41,10 @@ func _physics_process(delta):
 
     velocity = direction.normalized() * speed
     velocity = velocity.rotated(Vector3.UP, rotation.y)
+
+    # Add the gravity.
+    if not is_on_floor():
+        velocity.y -= gravity
 
     move_and_slide()
 
@@ -68,12 +75,19 @@ func _input(event):
     elif event.is_action_pressed('interact'):
         print('character interacting with %s while holding %s' % [focused_item, held_item])
         if focused_item != null:
-            interacted_with.emit(focused_item, held_item, focused_item_position)
+            interacted_with.emit(self, focused_item, focused_item_position)
 
 func _on_customer_timer_timeout():
     pass # Replace with function body.
 
+func is_holding_item():
+    return held_item != null
+
+func get_held_item():
+    return held_item
+
 func hold_item(item):
+    print("character picked up item %s" % item)
     held_item = item
     if held_item == focused_item:
         focused_item = null
@@ -84,7 +98,9 @@ func hold_item(item):
 
 func release_item():
     if held_item == null:
-        return
+        return null
     camera.remove_child(held_item)
     held_item.set_collision_layer(1)
+    var previously_held_item = held_item
     held_item = null
+    return previously_held_item

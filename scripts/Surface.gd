@@ -1,6 +1,6 @@
 extends "res://scripts/InteractableItem.gd"
 
-@onready var character = $/root/Game/Character
+# Something the player can place down items on.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,15 +12,13 @@ func _process(delta):
     pass
 
 
-func on_interact(item, held_item, interact_position):
+func on_interact(character, item, interact_position):
     if item != self:
         return
 
-    #TODO: make sure you can only place things on top of surfaces
-
     print('%s surface interacted with at position %s' % [self, interact_position])
 
-    if held_item != null:
-        character.release_item()
+    if character.is_holding_item():
+        var held_item = character.release_item()
         get_parent().add_child(held_item)
         held_item.position = interact_position

@@ -1,5 +1,7 @@
 extends StaticBody3D
 
+# Something the character can look at and click on.
+
 var focused = false
 
 var shader_material : ShaderMaterial = null
@@ -27,7 +29,7 @@ func on_focus_changed(item):
             shader_material.set_shader_parameter("strength", 0)
         focused = false
 
-func on_interact(item, held_item, interact_position):
+func on_interact(character, item, interact_position):
     if item != self:
         return
 

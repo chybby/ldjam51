@@ -16,6 +16,7 @@ func _ready():
     print(interactables)
 
     for interactable in interactables:
+        # TODO: do this whenever an interactable is added.
         character.connect('focus_changed', interactable.on_focus_changed)
         character.connect('interacted_with', interactable.on_interact)
 

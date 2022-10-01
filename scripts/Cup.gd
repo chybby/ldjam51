@@ -12,11 +12,11 @@ func _ready():
 func _process(delta):
     pass
 
-func on_interact(item, held_item, interact_position):
+func on_interact(character, item, interact_position):
     if item != self:
         return
 
-    super(item, held_item, position)
+    super(character, item, interact_position)
 
     print('%s cup interacted with' % self)
 

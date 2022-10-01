@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3lne0fkj683t"]
+[gd_scene load_steps=14 format=3 uid="uid://3lne0fkj683t"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://codlwl36pjbek" path="res://scenes/HotWaterDispenser.tscn" id="8_hngvs"]
 [ext_resource type="Script" path="res://scripts/HotWaterDispenser.gd" id="9_kxy1k"]
 [ext_resource type="PackedScene" uid="uid://d2jj3r6ade75h" path="res://scenes/CaramelSyrup.tscn" id="10_clpe1"]
+[ext_resource type="PackedScene" uid="uid://da3jdac0ak3r8" path="res://scenes/Bar.tscn" id="11_wsqq7"]
+[ext_resource type="PackedScene" uid="uid://bm0hdxbtd8p8d" path="res://scenes/Floor.tscn" id="12_go41c"]
+[ext_resource type="PackedScene" uid="uid://c5la150sywled" path="res://scenes/CupDispenser.tscn" id="13_bxrsi"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -18,7 +21,6 @@ customer_scene = ExtResource("3_c1p0b")
 [node name="Cafe" parent="." instance=ExtResource("1_ku7od")]
 
 [node name="Character" parent="." instance=ExtResource("2_sh1jv")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58499, 0, 0)
 
 [node name="Customer" parent="." instance=ExtResource("3_c1p0b")]
@@ -45,5 +47,18 @@ script = ExtResource("9_kxy1k")
 
 [node name="CaramelSyrup" parent="." instance=ExtResource("10_clpe1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354178, 1, 2.44384)
+
+[node name="BarSurface" parent="." instance=ExtResource("11_wsqq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.02097, 0)
+
+[node name="BarSurface2" parent="." instance=ExtResource("11_wsqq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.021955, 0)
+
+[node name="FloorSurface" parent="." instance=ExtResource("12_go41c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.019515, 0)
+
+[node name="CupDispenser" parent="." instance=ExtResource("13_bxrsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, 4.58604)
+cup = ExtResource("7_0xsu6")
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
