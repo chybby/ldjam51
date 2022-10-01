@@ -1,6 +1,9 @@
 extends "res://scripts/InteractableItem.gd"
 
+const Cup = preload("res://scripts/Cup.gd")
+
 @export var cup : PackedScene = null
+@export var cup_size : Cup.CupSize
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +26,7 @@ func on_interact(character, item, interact_position):
     print('%s cup dispenser interacted with' % self)
 
     var new_cup = cup.instantiate()
+    new_cup.set_size(cup_size)
     #TODO: add to interactables list? do we need it?
     character.connect('focus_changed', new_cup.on_focus_changed)
     character.connect('interacted_with', new_cup.on_interact)

@@ -1,6 +1,10 @@
 extends "res://scripts/HoldableItem.gd"
 
+enum CupSize {SMALL, MEDIUM, LARGE}
+
 var ingredients = Array()
+var size = CupSize.MEDIUM
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +27,16 @@ func on_interact(character, item, interact_position):
 func add_ingredient(ingredient):
     ingredients.append(ingredient)
     print('Cup has ingredients: %s' % ', '.join(ingredients))
+
+func get_size():
+    return size
+
+func set_size(size):
+    self.size = size
+    match size:
+        CupSize.SMALL:
+            scale = Vector3.ONE * 0.6
+        CupSize.MEDIUM:
+            scale = Vector3.ONE * 1
+        CupSize.LARGE:
+            scale = Vector3.ONE * 1.4
