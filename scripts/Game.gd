@@ -32,19 +32,19 @@ func _ready():
         character.connect('interacted_with', interactable.on_interact)
         if interactable is Machine :
             ingredients.append(interactable.ingredient)
-        
+
     for spot in get_node("Cafe").get_tree().get_nodes_in_group('CustomerSpots'):
         spots.append(spot)
-        
+
     print(spots)
 
 func generateDrinkOrder():
     var drinkOrder = DrinkOrder.new()
     drinkOrder.Size = drink_sizes[randi() % drink_sizes.size()]
-    
+
     for i in range(rng.randi_range(difficulty, difficulty*3)):
             drinkOrder = addIngredient(ingredients[randi() % ingredients.size()],drinkOrder)
-            
+
     return drinkOrder
 
 func addIngredient(ingredient, drinkOrder: DrinkOrder):
@@ -52,7 +52,7 @@ func addIngredient(ingredient, drinkOrder: DrinkOrder):
         drinkOrder.OrderIngredients[ingredient] += 1
     else:
         drinkOrder.OrderIngredients[ingredient] = 1
-        
+
     return drinkOrder
 
 func _on_customer_spawn_timer_timeout():
@@ -62,12 +62,12 @@ func _on_customer_spawn_timer_timeout():
     var customer = customer_scene.instantiate()
     customer.connect('left', processCustomerLeaving)
     customer.connect('orderDrink', processDrinkOrder)
-    
+
     var spot = spots.front()
     spots.remove_at(0)
 
     var order = generateDrinkOrder()
-    customer.initialize(spawnLocation.global_transform.origin, spot, order)	
+    customer.initialize(spawnLocation.global_transform.origin, spot, order)
     add_child(customer)
 
 func processCustomerLeaving(wasAngry, spotNode):

@@ -45,14 +45,12 @@ func _process(delta):
 #            ap.play("Impatient")
     pass
 
-<<<<<<< Updated upstream
-=======
+
 func order_drink():
     #generate drinkorder from drinkordermaker
     orderDrink.emit(drink_order)
     start_waiting()
-    
->>>>>>> Stashed changes
+
 func start_waiting():
     state = WAIT
     if(timer == null):

@@ -10,16 +10,18 @@ func _ready():
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
+    var child_scale
     match cup_size:
         Cup.CupSize.SMALL:
-            $Model.scale = Vector3.ONE * 0.6
-            $Collision.scale = Vector3.ONE * 0.6
+            child_scale = 0.6
         Cup.CupSize.MEDIUM:
-            $Model.scale = Vector3.ONE * 1
-            $Collision.scale = Vector3.ONE * 1
+            child_scale = 1
         Cup.CupSize.LARGE:
-            $Model.scale = Vector3.ONE * 1.4
-            $Collision.scale = Vector3.ONE * 1.4
+            child_scale = 1.4
+    $Model.scale = Vector3.ONE * child_scale
+    $Model.position *= child_scale
+    $Collision.scale = Vector3.ONE * child_scale
+    $Collision.position *= child_scale
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

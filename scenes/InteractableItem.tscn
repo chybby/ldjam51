@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/InteractableItem.gd" id="1_ejs0d"]
 
 [node name="InteractableItem" type="RigidBody3D" groups=["interactable"]]
+freeze = true
 script = ExtResource("1_ejs0d")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

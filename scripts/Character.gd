@@ -4,10 +4,12 @@ signal focus_changed(item)
 signal interacted_with(character, item, interact_position)
 
 @export var speed = 1
+@export var yeet_strength = 1
 @export var mouse_sensitivity = 0.3
 
 @onready var camera : Camera3D = $Camera
 @onready var held_item_position : Marker3D = $Camera/HeldItemPosition
+@onready var game = $/root/Game
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -76,6 +78,9 @@ func _input(event):
         print('character interacting with %s while holding %s' % [focused_item, held_item])
         if focused_item != null:
             interacted_with.emit(self, focused_item, focused_item_position)
+    elif event.is_action_pressed('yeet'):
+        print('YEET')
+        throw_item()
 
 func _on_customer_timer_timeout():
     pass # Replace with function body.
@@ -113,6 +118,12 @@ func throw_item():
     camera.remove_child(held_item)
     held_item.set_collision_layer(1)
     held_item.freeze = false
+    var direction = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
+    direction.y += 1.5
+    direction = direction.normalized()
+    held_item.set_linear_velocity(direction * yeet_strength)
+    game.add_child(held_item)
+    held_item.position = held_item_position.global_position
     var previously_held_item = held_item
     held_item = null
     return previously_held_item
