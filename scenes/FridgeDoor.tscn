@@ -29,7 +29,6 @@ material = SubResource("StandardMaterial3D_fggl4")
 size = Vector3(1, 2, 0.1)
 
 [node name="FridgeDoor" instance=ExtResource("1_5hvo8")]
-freeze = true
 script = ExtResource("2_qmbpv")
 
 [node name="Collision" parent="." index="0"]

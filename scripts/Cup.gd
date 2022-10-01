@@ -1,5 +1,7 @@
 extends "res://scripts/HoldableItem.gd"
 
+const Milk = preload("res://scripts/Milk.gd")
+
 enum CupSize {SMALL, MEDIUM, LARGE}
 
 var ingredients = Array()
@@ -18,7 +20,11 @@ func on_interact(character, item, interact_position):
     if item != self:
         return
 
-    super(character, item, interact_position)
+    var held_item = character.get_held_item()
+    if held_item is Milk:
+        self.add_ingredient(held_item.ingredient)
+    else:
+        super(character, item, interact_position)
 
     print('%s cup interacted with' % self)
 

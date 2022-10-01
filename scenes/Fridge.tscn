@@ -48,7 +48,6 @@ next_pass = SubResource("ShaderMaterial_o37rv")
 [node name="Fridge" instance=ExtResource("1_cbnls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000193417, -0.00496101, 0)
 collision_layer = 0
-freeze = true
 script = ExtResource("2_vkday")
 
 [node name="Collision" parent="." index="0"]

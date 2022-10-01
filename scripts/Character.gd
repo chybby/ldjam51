@@ -83,6 +83,7 @@ func _input(event):
         print('YEET')
         throw_item()
 
+#TODO: needed?
 func _on_customer_timer_timeout():
     pass # Replace with function body.
 
@@ -109,6 +110,7 @@ func release_item():
         return null
     camera.remove_child(held_item)
     held_item.set_collision_layer(1)
+    held_item.rotation = self.rotation
     var previously_held_item = held_item
     held_item = null
     return previously_held_item

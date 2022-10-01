@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[editor]
+
+movie_writer/movie_file="C:/Users/achyb/Desktop/Development/games/Godot/ldjam51/record.avi"
+
 [input]
 
 move_forward={

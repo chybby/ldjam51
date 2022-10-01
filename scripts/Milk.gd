@@ -1,0 +1,32 @@
+extends "res://scripts/HoldableItem.gd"
+
+# A holdable thing that adds stuff to a cup when interacted with.
+
+var Cup = load("res://scripts/Cup.gd")
+
+# TODO: make this null and set from child classes
+var ingredient = 'milk'
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    if $Model.mesh != null:
+        shader_material = $Model.mesh.material.next_pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    pass
+
+
+func on_interact(character, item, interact_position):
+    if item != self:
+        return
+
+    super(character, item, interact_position)
+
+    print('%s milk interacted with' % self)
+
+    #TODO: do we want holding a cup and interacting with milk to work?
+    # var held_item = character.get_held_item()
+    # if held_item is Cup:
+    #     held_item.add_ingredient(ingredient)

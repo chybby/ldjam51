@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3klpupg0qf67"]
+[gd_scene load_steps=17 format=3 uid="uid://b3klpupg0qf67"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c5la150sywled" path="res://scenes/CupDispenser.tscn" id="13_bxrsi"]
 [ext_resource type="PackedScene" uid="uid://buweehxhe3qbp" path="res://scenes/RubbishBin.tscn" id="14_813md"]
 [ext_resource type="PackedScene" uid="uid://cqxcc8chuifmq" path="res://scenes/Fridge.tscn" id="15_xkta3"]
+[ext_resource type="PackedScene" uid="uid://t7g03nuoliyw" path="res://scenes/Milk.tscn" id="16_xjajo"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -42,10 +43,10 @@ script = ExtResource("9_kxy1k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354178, 1, 2.44384)
 
 [node name="FrontBarSurface" parent="." instance=ExtResource("11_wsqq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.976277, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.9805, 0)
 
 [node name="BackBarSurface" parent="." instance=ExtResource("11_wsqq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.974816, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.979756, 0)
 
 [node name="FloorSurface" parent="." instance=ExtResource("12_go41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.0205465, 0)
@@ -70,5 +71,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58235, 0.0295151, 4.54833)
 
 [node name="Fridge" parent="." instance=ExtResource("15_xkta3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4.5)
+
+[node name="Milk" parent="." instance=ExtResource("16_xjajo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97186, 1.34025, -4.25024)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
