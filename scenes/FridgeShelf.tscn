@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c14h85h7gxsa5"]
+
+[ext_resource type="PackedScene" uid="uid://unmw1r2pr4qr" path="res://scenes/Surface.tscn" id="1_npmoc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_np4hd"]
+size = Vector3(1, 0.01, 1)
+
+[node name="FridgeShelf" instance=ExtResource("1_npmoc")]
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("BoxShape3D_np4hd")

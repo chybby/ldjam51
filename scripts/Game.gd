@@ -23,10 +23,10 @@ func _ready():
         # TODO: do this whenever an interactable is added.
         character.connect('focus_changed', interactable.on_focus_changed)
         character.connect('interacted_with', interactable.on_interact)
-        
+
     for spot in get_node("Cafe").get_tree().get_nodes_in_group('CustomerSpots'):
         spots.append(spot)
-        
+
     print(spots)
 
 
@@ -35,12 +35,12 @@ func _on_customer_spawn_timer_timeout():
         spawnLocation = get_node("Cafe/Door")
 
     var customer = customer_scene.instantiate()
-    
+
     var spot = spots.front()
     spots.remove_at(0)
 
-    customer.initialize(spawnLocation.global_transform.origin, spot)	
-    
+    customer.initialize(spawnLocation.global_transform.origin, spot)
+
     add_child(customer)
     customerSpot.append(spot)
 
