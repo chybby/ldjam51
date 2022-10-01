@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3lne0fkj683t"]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -22,9 +22,6 @@ customer_scene = ExtResource("3_c1p0b")
 
 [node name="Character" parent="." instance=ExtResource("2_sh1jv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58499, 0, 0)
-
-[node name="Customer" parent="." instance=ExtResource("3_c1p0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16761, 0, -4.23517)
 
 [node name="HUD" parent="." instance=ExtResource("6_q364h")]
 

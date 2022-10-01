@@ -33,4 +33,4 @@ func on_interact(character, item, interact_position):
     if item != self:
         return
 
-    print('%s interactable item interacted with' % self)
+    print('%s interacted with' % self)
