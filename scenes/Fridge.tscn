@@ -1,0 +1,88 @@
+[gd_scene load_steps=17 format=3 uid="uid://cqxcc8chuifmq"]
+
+[ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_cbnls"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="2_mmf4u"]
+[ext_resource type="Script" path="res://scripts/Fridge.gd" id="2_vkday"]
+[ext_resource type="PackedScene" uid="uid://c14h85h7gxsa5" path="res://scenes/FridgeShelf.tscn" id="3_d5a52"]
+[ext_resource type="PackedScene" uid="uid://c8e2dum84ru4n" path="res://scenes/FridgeDoor.tscn" id="5_yh6mi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vw6fb"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o37rv"]
+render_priority = 0
+shader = ExtResource("2_mmf4u")
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve57o"]
+next_pass = SubResource("ShaderMaterial_o37rv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_nkjm3"]
+material = SubResource("StandardMaterial3D_ve57o")
+size = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cag02"]
+next_pass = SubResource("ShaderMaterial_o37rv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_gk01o"]
+material = SubResource("StandardMaterial3D_cag02")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl42w"]
+next_pass = SubResource("ShaderMaterial_o37rv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_28x75"]
+material = SubResource("StandardMaterial3D_vl42w")
+size = Vector3(0.9, 1.9, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7drf"]
+next_pass = SubResource("ShaderMaterial_o37rv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_alggp"]
+material = SubResource("StandardMaterial3D_g7drf")
+size = Vector3(1, 0.01, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyk7l"]
+next_pass = SubResource("ShaderMaterial_o37rv")
+
+[node name="Fridge" instance=ExtResource("1_cbnls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000193417, -0.00496101, 0)
+collision_layer = 0
+script = ExtResource("2_vkday")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_vw6fb")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_nkjm3")
+
+[node name="Body" type="CSGMesh3D" parent="Model" index="0"]
+mesh = SubResource("BoxMesh_gk01o")
+
+[node name="Cavity" type="CSGMesh3D" parent="Model/Body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+operation = 2
+mesh = SubResource("BoxMesh_28x75")
+
+[node name="TopShelf" type="CSGMesh3D" parent="Model/Body" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 0)
+mesh = SubResource("BoxMesh_alggp")
+material = SubResource("StandardMaterial3D_jyk7l")
+
+[node name="BottomShelf" type="CSGMesh3D" parent="Model/Body" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33, 0)
+mesh = SubResource("BoxMesh_alggp")
+
+[node name="BottomFridgeShelfSurface" parent="." index="2" instance=ExtResource("3_d5a52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.673664, 0)
+
+[node name="TopFridgeShelfSurface" parent="." index="3" instance=ExtResource("3_d5a52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33525, 0)
+
+[node name="FridgeBaseSurface" parent="." index="4" instance=ExtResource("3_d5a52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0485696, 0)
+
+[node name="FridgeDoor" parent="." index="5" instance=ExtResource("5_yh6mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
