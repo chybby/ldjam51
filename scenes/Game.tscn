@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsd8651cvyq1b"]
+[gd_scene load_steps=7 format=3 uid="uid://bsd8651cvyq1b"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
+[ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
 [ext_resource type="PackedScene" uid="uid://comky0wfym7dc" path="res://scenes/Character.tscn" id="2_sh1jv"]
 [ext_resource type="PackedScene" uid="uid://cr33lnn25ik5q" path="res://scenes/Customer.tscn" id="3_c1p0b"]
 [ext_resource type="PackedScene" uid="uid://7gmwq8oshvws" path="res://scenes/Machine.tscn" id="4_e2mp6"]
 [ext_resource type="PackedScene" uid="uid://bktqcrfi4u1gn" path="res://scenes/HUD.tscn" id="6_q364h"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_mjfad")
 
 [node name="Cafe" parent="." instance=ExtResource("1_ku7od")]
 

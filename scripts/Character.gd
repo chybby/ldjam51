@@ -1,10 +1,15 @@
 extends CharacterBody3D
 
+signal focus_changed(item)
+
 @export var speed = 1
 @export var mouse_sensitivity = 0.3
 
 @onready var camera : Camera3D = $Camera
-@onready var body : Camera3D = $Camera
+
+var PICK_DISTANCE = 2
+
+var focused_object = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +19,7 @@ func _ready():
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+    # Character movement
     velocity = Vector3.ZERO
 
     var direction = Vector3.ZERO
@@ -30,6 +36,22 @@ func _physics_process(delta):
     velocity = velocity.rotated(Vector3.UP, rotation.y)
 
     move_and_slide()
+
+    # Object selection
+    var mouse_position = get_viewport().get_mouse_position()
+    var from = camera.project_ray_origin(mouse_position)
+    var to = from + camera.project_ray_normal(mouse_position) * PICK_DISTANCE
+
+    var space_state = get_world_3d().direct_space_state
+    var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to, 1))
+
+    if focused_object != result.get('collider'):
+        if focused_object != null:
+            print("%s losing focus" % focused_object)
+        focused_object = result.get('collider')
+        if focused_object != null:
+            print("%s gaining focus" % focused_object)
+        focus_changed.emit(focused_object)
 
 
 func _input(event):
