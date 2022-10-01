@@ -10,6 +10,7 @@
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
+customer_scene = ExtResource("3_c1p0b")
 
 [node name="Cafe" parent="." instance=ExtResource("1_ku7od")]
 
