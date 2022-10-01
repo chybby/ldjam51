@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgb5kxn1bm422"]
+
+[ext_resource type="Script" path="res://scripts/Character.gd" id="1_675oa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hl733"]
+
+[node name="Character" type="CharacterBody3D"]
+script = ExtResource("1_675oa")
+speed = 5
+mouse_sensitivity = 0.003
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74224, -0.300738)
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_hl733")
