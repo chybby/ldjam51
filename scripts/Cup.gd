@@ -10,8 +10,10 @@ func _ready():
 func _process(delta):
     pass
 
-func on_interact(item, holdable_item):
+func on_interact(item, held_item):
     if item != self:
         return
+
+    super(item, held_item)
 
     print('%s cup interacted with' % self)

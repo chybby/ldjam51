@@ -15,6 +15,7 @@ customer_scene = ExtResource("3_c1p0b")
 [node name="Cafe" parent="." instance=ExtResource("1_ku7od")]
 
 [node name="Character" parent="." instance=ExtResource("2_sh1jv")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58499, 0, 0)
 
 [node name="Customer" parent="." instance=ExtResource("3_c1p0b")]
