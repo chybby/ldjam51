@@ -1,31 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://7gmwq8oshvws"]
+[gd_scene load_steps=2 format=3 uid="uid://b1uslt04daxhj"]
 
-[ext_resource type="Script" path="res://scripts/Machine.gd" id="1_ptq10"]
-[ext_resource type="Shader" path="res://resources/interact.gdshader" id="2_bw0ik"]
+[ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_ty4le"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fumr6"]
-render_priority = 0
-shader = ExtResource("2_bw0ik")
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5xki"]
-next_pass = SubResource("ShaderMaterial_fumr6")
-albedo_color = Color(1, 0.313726, 0.686275, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_w42vs"]
-material = SubResource("StandardMaterial3D_h5xki")
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qorgy"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[node name="Machine" type="StaticBody3D" groups=["machines"]]
-script = ExtResource("1_ptq10")
-
-[node name="Model" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_w42vs")
-
-[node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("BoxShape3D_qorgy")
+[node name="Machine" instance=ExtResource("1_ty4le")]

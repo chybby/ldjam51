@@ -2,18 +2,19 @@ extends Node
 
 @onready var character = $Character
 
-var machines = Array()
+var interactables = Array()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    for machine in get_tree().get_nodes_in_group('machines'):
-        machines.append(machine)
+    for interactable in get_tree().get_nodes_in_group('interactable'):
+        interactables.append(interactable)
 
-    print(machines)
+    print(interactables)
 
-    for machine in machines:
-        character.connect('focus_changed', machine.on_focus_changed)
+    for interactable in interactables:
+        character.connect('focus_changed', interactable.on_focus_changed)
+        character.connect('interacted_with', interactable.on_interact)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

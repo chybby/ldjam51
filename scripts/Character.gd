@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal focus_changed(item)
+signal interacted_with(item, held_item)
 
 @export var speed = 1
 @export var mouse_sensitivity = 0.3
@@ -10,6 +11,7 @@ signal focus_changed(item)
 var PICK_DISTANCE = 2
 
 var focused_object = null
+var held_item = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,3 +62,6 @@ func _input(event):
         camera.rotation.x -= movement.y * mouse_sensitivity
         camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
         rotation.y -= movement.x * mouse_sensitivity
+    elif event.is_action_pressed('interact'):
+        if focused_object != null:
+            interacted_with.emit(focused_object, held_item)
