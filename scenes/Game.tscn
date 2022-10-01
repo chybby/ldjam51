@@ -21,9 +21,6 @@ customer_scene = ExtResource("3_c1p0b")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58499, 0, 0)
 
-[node name="Customer" parent="." instance=ExtResource("3_c1p0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16761, 0, -4.23517)
-
 [node name="HUD" parent="." instance=ExtResource("6_q364h")]
 
 [node name="CustomerSpawnTimer" type="Timer" parent="."]

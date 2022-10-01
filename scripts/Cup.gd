@@ -12,12 +12,19 @@ func _ready():
 func _process(delta):
     pass
 
+<<<<<<< Updated upstream
 func on_interact(item, held_item, interact_position):
     if item != self:
         return
 
     super(item, held_item, position)
 
+=======
+func on_interact(item, holdable_item):
+    if item != self:
+        return
+
+>>>>>>> Stashed changes
     print('%s cup interacted with' % self)
 
 func add_ingredient(ingredient):
