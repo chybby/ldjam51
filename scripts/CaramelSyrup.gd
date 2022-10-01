@@ -1,6 +1,6 @@
-extends "res://scripts/HoldableItem.gd"
+extends "res://scripts/Machine.gd"
 
-var ingredients = Array()
+const Cup = preload("res://scripts/Cup.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,10 +16,8 @@ func on_interact(item, held_item, interact_position):
     if item != self:
         return
 
-    super(item, held_item, position)
+    print('%s caramel syrup pump interacted with' % self)
 
-    print('%s cup interacted with' % self)
-
-func add_ingredient(ingredient):
-    ingredients.append(ingredient)
-    print('Cup has ingredients: %s' % ', '.join(ingredients))
+    if held_item is Cup:
+        print('%s caramel syrup pump interacted with while holding cup' % self)
+        held_item.add_ingredient('caramel syrup')

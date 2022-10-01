@@ -1,5 +1,6 @@
 extends "res://scripts/Machine.gd"
 
+const Cup = preload("res://scripts/Cup.gd")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,3 +17,7 @@ func on_interact(item, held_item, interact_position):
         return
 
     print('%s espresso machine interacted with' % self)
+
+    if held_item is Cup:
+        print('%s espresso machine interacted with while holding cup' % self)
+        held_item.add_ingredient('espresso shot')
