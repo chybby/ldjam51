@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 signal focus_changed(item)
-signal interacted_with(item, held_item)
+signal interacted_with(item, held_item, position)
 
 @export var speed = 1
 @export var mouse_sensitivity = 0.3
@@ -12,6 +12,7 @@ signal interacted_with(item, held_item)
 var PICK_DISTANCE = 2
 
 var focused_item = null
+var focused_item_position = null
 var held_item = null
 
 
@@ -47,6 +48,7 @@ func _physics_process(delta):
 
     var space_state = get_world_3d().direct_space_state
     var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to, 1))
+    focused_item_position = result.get('position')
 
     if focused_item != result.get('collider'):
         if focused_item != null:
@@ -66,20 +68,23 @@ func _input(event):
     elif event.is_action_pressed('interact'):
         print('character interacting with %s while holding %s' % [focused_item, held_item])
         if focused_item != null:
-            interacted_with.emit(focused_item, held_item)
+            interacted_with.emit(focused_item, held_item, focused_item_position)
 
 func _on_customer_timer_timeout():
     pass # Replace with function body.
 
 func hold_item(item):
     held_item = item
-    print("held item is %s" % held_item)
-    print("focused item is %s" % focused_item)
     if held_item == focused_item:
         focused_item = null
         focus_changed.emit(focused_item)
-    print("held item is %s" % held_item)
-    print("focused item is %s" % focused_item)
     camera.add_child(item)
     item.position = held_item_position.position
     item.set_collision_layer(0)
+
+func release_item():
+    if held_item == null:
+        return
+    camera.remove_child(held_item)
+    held_item.set_collision_layer(1)
+    held_item = null

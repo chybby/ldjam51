@@ -11,7 +11,7 @@ func _process(delta):
     pass
 
 
-func on_interact(item, held_item):
+func on_interact(item, held_item, interact_position):
     if item != self:
         return
 

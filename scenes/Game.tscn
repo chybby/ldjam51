@@ -31,6 +31,9 @@ autostart = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37292, 1, 0.830113)
 
 [node name="Cup" parent="." instance=ExtResource("7_0xsu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2886, 1, 0.198349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20239, 1, 0.113833)
+
+[node name="Cup2" parent="." instance=ExtResource("7_0xsu6")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.15483, 1, -0.342694)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

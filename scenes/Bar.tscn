@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://da3jdac0ak3r8"]
+
+[ext_resource type="PackedScene" uid="uid://unmw1r2pr4qr" path="res://scenes/Surface.tscn" id="1_ee5sa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hn6q3"]
+size = Vector3(1, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y1p0l"]
+size = Vector3(1, 1, 10)
+
+[node name="Bar" instance=ExtResource("1_ee5sa")]
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_hn6q3")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_y1p0l")
