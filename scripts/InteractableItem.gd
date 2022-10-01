@@ -22,8 +22,8 @@ func on_focus_changed(item):
         shader_material.set_shader_parameter("strength", 0)
         focused = false
 
-func on_interact(item):
+func on_interact(item, holdable_item):
     if item != self:
         return
 
-    print('%s interacted with' % self)
+    print('%s interactable item interacted with' % self)
