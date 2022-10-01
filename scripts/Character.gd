@@ -65,3 +65,6 @@ func _input(event):
     elif event.is_action_pressed('interact'):
         if focused_object != null:
             interacted_with.emit(focused_object, held_item)
+
+func _on_customer_timer_timeout():
+    pass # Replace with function body.

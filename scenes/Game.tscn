@@ -26,3 +26,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37519, 1, 0.236)
 
 [node name="Cup" parent="." instance=ExtResource("7_0xsu6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23941, 1, -0.277933)
+
+[node name="CustomerSpawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_character_spawn_timer_timeout"]
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://r4ni5b7ycshx"]
+[gd_scene load_steps=18 format=3 uid="uid://r4ni5b7ycshx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1fc5"]
 size = Vector3(20, 1, 10)
@@ -41,6 +41,20 @@ size = Vector3(10, 5, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7ha3h"]
 size = Vector2(10, 5)
+
+[sub_resource type="Curve3D" id="Curve3D_k1mva"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.47678, 0.467091, -4.04601, 0, 0, 0, 0, 0, 0, -2.44114, 0.425802, 4.09396, 0, 0, 0, 0, 0, 0, -3.51358, 0.620775, 4.04303, 0, 0, 0, 0, 0, 0, -3.50295, 0.652888, -3.91613, 0, 0, 0, 0, 0, 0, -4.51651, 0.836391, -3.78595, 0, 0, 0, 0, 0, 0, -4.52381, 0.804278, 4.03207),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bwpc"]
+albedo_color = Color(0.607843, 0.403922, 0.235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lu3xc"]
+material = SubResource("StandardMaterial3D_1bwpc")
+size = Vector3(2, 3, 0.5)
 
 [node name="Cafe" type="Node3D"]
 
@@ -126,3 +140,13 @@ transform = Transform3D(1, 0, 0, 0, 0.627678, 0.778473, 0, -0.778473, 0.627678, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80693, 0)
 light_color = Color(1, 0.870588, 0.776471, 1)
 omni_range = 7.87653
+
+[node name="CustomerLinePath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_k1mva")
+
+[node name="Door" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7717, 2.38419e-07, 4.65307)
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_lu3xc")
