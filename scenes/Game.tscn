@@ -31,19 +31,19 @@ wait_time = 10.0
 autostart = true
 
 [node name="EspressoMachine" parent="." instance=ExtResource("6_og6vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37292, 1, 0.830113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440694, 1, 0.830113)
 
 [node name="Cup" parent="." instance=ExtResource("7_0xsu6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20239, 1, 0.113833)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.254768, 1, 0.113833)
 
 [node name="Cup2" parent="." instance=ExtResource("7_0xsu6")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -1.15483, 1, -0.342694)
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -0.238276, 1, -0.342694)
 
 [node name="HotWaterDispenser" parent="." instance=ExtResource("8_hngvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29241, 1, 1.79583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45446, 1, 1.79583)
 script = ExtResource("9_kxy1k")
 
 [node name="CaramelSyrup" parent="." instance=ExtResource("10_clpe1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09012, 1, 2.44384)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354178, 1, 2.44384)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
