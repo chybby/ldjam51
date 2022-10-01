@@ -33,8 +33,11 @@ func set_size(size):
     self.size = size
     match size:
         CupSize.SMALL:
-            scale = Vector3.ONE * 0.6
+            $Model.scale = Vector3.ONE * 0.6
+            $Collision.scale = Vector3.ONE * 0.6
         CupSize.MEDIUM:
-            scale = Vector3.ONE * 1
+            $Model.scale = Vector3.ONE * 1
+            $Collision.scale = Vector3.ONE * 1
         CupSize.LARGE:
-            scale = Vector3.ONE * 1.4
+            $Model.scale = Vector3.ONE * 1.4
+            $Collision.scale = Vector3.ONE * 1.4

@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends RigidBody3D
 
 # Something the character can look at and click on.
 

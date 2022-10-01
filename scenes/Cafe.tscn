@@ -1,10 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://r4ni5b7ycshx"]
 
-[ext_resource type="PackedScene" uid="uid://da3jdac0ak3r8" path="res://scenes/Bar.tscn" id="1_prewb"]
-[ext_resource type="PackedScene" uid="uid://bm0hdxbtd8p8d" path="res://scenes/Floor.tscn" id="2_gmt4v"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eyu"]
-size = Vector3(1, 1, 10)
+size = Vector3(20, 1, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ohe3g"]
 size = Vector2(20, 10)
@@ -44,7 +41,13 @@ size = Vector3(2, 3, 0.5)
 vertices = PackedVector3Array(-14.5, 0.5, -4.5, -14.5, 0.5, 4.5, -8, 0.5, 4.5, -8, 0.5, -4.5, -1.5, 0.5, -4.5, -8, 0.5, -4.5, -8, 0.5, 4.5, -1.5, 0.5, 4.5, 0.75, 0.5, -4.5, 0.75, 0.5, 4.5, 3.5, 0.5, 4.5, 3.5, 0.5, -4.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9)]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wrpy6"]
+size = Vector3(1, 1, 10)
+
 [sub_resource type="BoxMesh" id="BoxMesh_hrj3m"]
+size = Vector3(1, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wia1p"]
 size = Vector3(1, 1, 10)
 
 [node name="Cafe" type="Node3D"]
@@ -128,15 +131,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4681, 0, 4.42494)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583713, 1.7064, 0.641593)
 mesh = SubResource("BoxMesh_jne27")
 
-[node name="BarSurface" parent="." instance=ExtResource("1_prewb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-
-[node name="BarSurface2" parent="." instance=ExtResource("1_prewb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0)
-
-[node name="FloorSurface" parent="." instance=ExtResource("2_gmt4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-
 [node name="Spots" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894673, 0, 0)
 
@@ -196,7 +190,7 @@ mesh = SubResource("PlaneMesh_ohe3g")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="NavigationRegion3d/FrontBar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
-shape = SubResource("BoxShape3D_j2eyu")
+shape = SubResource("BoxShape3D_wrpy6")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="NavigationRegion3d/FrontBar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
@@ -207,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="NavigationRegion3d/BackBar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
-shape = SubResource("BoxShape3D_j2eyu")
+shape = SubResource("BoxShape3D_wia1p")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="NavigationRegion3d/BackBar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)

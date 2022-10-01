@@ -37,6 +37,7 @@ bottom_radius = 0.05
 height = 0.2
 
 [node name="Cup" instance=ExtResource("1_ayx4c")]
+mass = 0.5
 script = ExtResource("2_wh2tu")
 
 [node name="Collision" parent="." index="0"]

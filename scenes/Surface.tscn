@@ -4,4 +4,5 @@
 [ext_resource type="Script" path="res://scripts/Surface.gd" id="2_m6ute"]
 
 [node name="Surface" instance=ExtResource("1_t6b1e")]
+freeze = true
 script = ExtResource("2_m6ute")

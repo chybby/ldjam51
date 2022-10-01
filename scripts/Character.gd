@@ -94,6 +94,8 @@ func hold_item(item):
         focus_changed.emit(focused_item)
     camera.add_child(item)
     item.position = held_item_position.position
+    item.rotation = Vector3.ZERO
+    item.freeze = true
     item.set_collision_layer(0)
 
 func release_item():
@@ -101,6 +103,16 @@ func release_item():
         return null
     camera.remove_child(held_item)
     held_item.set_collision_layer(1)
+    var previously_held_item = held_item
+    held_item = null
+    return previously_held_item
+
+func throw_item():
+    if held_item == null:
+        return null
+    camera.remove_child(held_item)
+    held_item.set_collision_layer(1)
+    held_item.freeze = false
     var previously_held_item = held_item
     held_item = null
     return previously_held_item
