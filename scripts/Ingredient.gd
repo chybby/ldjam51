@@ -1,0 +1,2 @@
+var Name
+var Amount

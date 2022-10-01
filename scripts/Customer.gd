@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+signal left(wasAngry, spot)
+signal orderDrink()
+
 enum {
     LINE_UP,
     WAIT,
@@ -11,6 +14,7 @@ enum {
 var state = LINE_UP
 var targetNode
 var spotNode
+var drink_order
 
 const SPEED = 5.0
 const patience = 3
@@ -19,8 +23,9 @@ const patience = 3
 @onready var nav_agent = $NavigationAgent3d
 @onready var timer = $PatienceTimer
 
-func initialize(start_position, spot):
+func initialize(start_position, spot, d_order):
     transform.origin = start_position
+    drink_order = d_order
     spotNode = spot
     if nav_agent == null:
         nav_agent = $NavigationAgent3d
@@ -40,6 +45,14 @@ func _process(delta):
 #            ap.play("Impatient")
     pass
 
+<<<<<<< Updated upstream
+=======
+func order_drink():
+    #generate drinkorder from drinkordermaker
+    orderDrink.emit(drink_order)
+    start_waiting()
+    
+>>>>>>> Stashed changes
 func start_waiting():
     state = WAIT
     if(timer == null):
@@ -65,6 +78,7 @@ func exit_cafe():
     if(state == LEAVE_ANGRY):
         isAngry = true
     print("later bitch")
+    left.emit(isAngry, spotNode)
     queue_free()
 
 func set_nav_target(node):
@@ -72,9 +86,9 @@ func set_nav_target(node):
     nav_agent.set_target_location(targetNode.position)
 
 func _physics_process(delta):
-    if(nav_agent.distance_to_target() < 1):
+    if(nav_agent.distance_to_target() < .7):
         if(state == LINE_UP):
-            start_waiting()
+            order_drink()
         elif(state == LEAVE_ANGRY || state == LEAVE):
             exit_cafe()
         return
