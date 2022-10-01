@@ -5,6 +5,7 @@ signal interacted_with(character, item, interact_position)
 
 @export var speed = 1
 @export var yeet_strength = 1
+@export var yeet_angle = 45
 @export var mouse_sensitivity = 0.3
 
 @onready var camera : Camera3D = $Camera
@@ -119,8 +120,8 @@ func throw_item():
     held_item.set_collision_layer(1)
     held_item.freeze = false
     var direction = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
-    direction.y += 1.5
-    direction = direction.normalized()
+    # Angle the yeet upwards.
+    direction = direction.rotated(direction.cross(Vector3.UP), deg_to_rad(yeet_angle))
     held_item.set_linear_velocity(direction * yeet_strength)
     game.add_child(held_item)
     held_item.position = held_item_position.global_position
