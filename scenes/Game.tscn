@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://b3klpupg0qf67"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://da3jdac0ak3r8" path="res://scenes/Bar.tscn" id="11_wsqq7"]
 [ext_resource type="PackedScene" uid="uid://bm0hdxbtd8p8d" path="res://scenes/Floor.tscn" id="12_go41c"]
 [ext_resource type="PackedScene" uid="uid://c5la150sywled" path="res://scenes/CupDispenser.tscn" id="13_bxrsi"]
+[ext_resource type="PackedScene" uid="uid://buweehxhe3qbp" path="res://scenes/RubbishBin.tscn" id="14_813md"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -57,5 +58,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.019515, 0)
 [node name="CupDispenser" parent="." instance=ExtResource("13_bxrsi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, 4.58604)
 cup = ExtResource("7_0xsu6")
+
+[node name="RubbishBin" parent="." instance=ExtResource("14_813md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58235, 0.0295151, 4.54833)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

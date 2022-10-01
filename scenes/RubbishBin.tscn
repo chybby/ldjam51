@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://buweehxhe3qbp"]
+
+[ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_5epel"]
+[ext_resource type="Script" path="res://scripts/RubbishBin.gd" id="2_382ri"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="2_ovvjx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4q0gy"]
+height = 0.8
+radius = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22jps"]
+render_priority = 0
+shader = ExtResource("2_ovvjx")
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1hy5"]
+next_pass = SubResource("ShaderMaterial_22jps")
+albedo_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_oe6qp"]
+material = SubResource("StandardMaterial3D_r1hy5")
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.8
+
+[node name="RubbishBin" instance=ExtResource("1_5epel")]
+script = ExtResource("2_382ri")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("CylinderShape3D_4q0gy")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_oe6qp")
