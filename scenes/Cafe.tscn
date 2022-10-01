@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://r4ni5b7ycshx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1fc5"]
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ria0y"]
-size = Vector2(10, 10)
+size = Vector2(20, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0mv6x"]
 size = Vector3(1, 1, 10)
@@ -13,22 +13,22 @@ size = Vector3(1, 1, 10)
 size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eyu"]
-size = Vector3(10, 1, 10)
+size = Vector3(20, 1, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ohe3g"]
-size = Vector2(10, 10)
+size = Vector2(20, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_udxxt"]
-size = Vector3(10, 5, 1)
+size = Vector3(20, 5, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xn4hf"]
-size = Vector2(10, 5)
+size = Vector2(20, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ej5e2"]
-size = Vector3(10, 5, 1)
+size = Vector3(20, 5, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f45oq"]
-size = Vector2(10, 5)
+size = Vector2(20, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a2s67"]
 size = Vector3(10, 5, 1)
@@ -47,10 +47,11 @@ size = Vector2(10, 5)
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 0)
 shape = SubResource("BoxShape3D_d1fc5")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
 mesh = SubResource("PlaneMesh_ria0y")
 
 [node name="Bar" type="StaticBody3D" parent="."]
@@ -67,43 +68,43 @@ mesh = SubResource("BoxMesh_0y8v6")
 [node name="Ceiling" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Ceiling"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5.5, 0)
 shape = SubResource("BoxShape3D_j2eyu")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Ceiling"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -5, 5, 0)
 mesh = SubResource("PlaneMesh_ohe3g")
 
 [node name="Wall1" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Wall1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, -5.5)
 shape = SubResource("BoxShape3D_udxxt")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, -5)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5, 2.5, -5)
 mesh = SubResource("PlaneMesh_xn4hf")
 skeleton = NodePath("../../Floor")
 
 [node name="Wall4" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Wall4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 5.5)
 shape = SubResource("BoxShape3D_ej5e2")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall4"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 2.5, 5)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -5, 2.5, 5)
 mesh = SubResource("PlaneMesh_f45oq")
 skeleton = NodePath("../../Floor")
 
 [node name="Wall3" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Wall3"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 2.5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5, 2.5, 0)
 shape = SubResource("BoxShape3D_a2s67")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall3"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -5, 2.5, 0)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -15, 2.5, 0)
 mesh = SubResource("PlaneMesh_c3cj7")
 skeleton = NodePath("../../Floor")
 
