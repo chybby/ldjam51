@@ -134,7 +134,17 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0.627678, 0.778473, 0, -0.778473, 0.627678, 0, 6.80045, 5.44972)
 
 [node name="CeilingLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.80693, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9992, 4.80693, 0)
+light_color = Color(1, 0.870588, 0.776471, 1)
+omni_range = 7.87653
+
+[node name="CeilingLight2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60868, 4.80693, 0)
+light_color = Color(1, 0.870588, 0.776471, 1)
+omni_range = 7.87653
+
+[node name="CeilingLight3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3071, 4.80693, 0)
 light_color = Color(1, 0.870588, 0.776471, 1)
 omni_range = 7.87653
 
