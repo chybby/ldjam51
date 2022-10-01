@@ -1,5 +1,8 @@
 extends Node
 
+const EspressoMachine = preload("EspressoMachine.gd")
+
+
 @onready var character = $Character
 
 @export var customer_scene: PackedScene
@@ -11,6 +14,7 @@ var interactables = Array()
 # Called when the node enters the scene tree for the first time.
 func _ready():
     for interactable in get_tree().get_nodes_in_group('interactable'):
+        print(interactable is EspressoMachine)
         interactables.append(interactable)
 
     print(interactables)

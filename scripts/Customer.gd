@@ -15,9 +15,9 @@ var state = LINE_UP
 
 func _ready():
 	pass
-	
+
 func _process(delta):
-	match state: 
+	match state:
 		WAIT:
 			ap.play("Wait")
 

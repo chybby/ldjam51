@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://sk0hd52ccxyu"]
+[gd_scene load_steps=3 format=3 uid="uid://sk0hd52ccxyu"]
 
 [ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_5mf5i"]
+[ext_resource type="Script" path="res://scripts/HoldableItem.gd" id="2_d8uxp"]
 
 [node name="HoldableItem" instance=ExtResource("1_5mf5i")]
+script = ExtResource("2_d8uxp")
