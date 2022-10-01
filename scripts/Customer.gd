@@ -18,9 +18,9 @@ func initialize(start_position):
 
 func _ready():
     pass
-    
+
 func _process(delta):
-    match state: 
+    match state:
         WAIT:
             ap.play("Wait")
 
