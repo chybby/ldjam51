@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bktqcrfi4u1gn"]
+
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="1_x8m5j"]
+[ext_resource type="Theme" uid="uid://dpvydela4folv" path="res://resources/theme.tres" id="2_4i0wh"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_x8m5j")
+
+[node name="FpsCounter" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 68.0
+offset_bottom = 61.0
+theme = ExtResource("2_4i0wh")
+theme_override_colors/font_color = Color(1, 0.894118, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "60"

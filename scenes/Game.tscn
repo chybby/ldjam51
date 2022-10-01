@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsd8651cvyq1b"]
+[gd_scene load_steps=6 format=3 uid="uid://bsd8651cvyq1b"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
-[ext_resource type="PackedScene" uid="uid://dcp1sr0frsk2t" path="res://scenes/Character.tscn" id="2_sh1jv"]
+[ext_resource type="PackedScene" uid="uid://comky0wfym7dc" path="res://scenes/Character.tscn" id="2_sh1jv"]
 [ext_resource type="PackedScene" uid="uid://cr33lnn25ik5q" path="res://scenes/Customer.tscn" id="3_c1p0b"]
+[ext_resource type="PackedScene" uid="uid://7gmwq8oshvws" path="res://scenes/Machine.tscn" id="4_e2mp6"]
+[ext_resource type="PackedScene" uid="uid://bktqcrfi4u1gn" path="res://scenes/HUD.tscn" id="6_q364h"]
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node"]
 
 [node name="Cafe" parent="." instance=ExtResource("1_ku7od")]
 
@@ -13,3 +15,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58499, 0, 0)
 
 [node name="Customer" parent="." instance=ExtResource("3_c1p0b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16761, 0, -4.23517)
+
+[node name="Machine" parent="." instance=ExtResource("4_e2mp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47334, 1, 0)
+
+[node name="HUD" parent="." instance=ExtResource("6_q364h")]
