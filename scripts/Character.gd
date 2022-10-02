@@ -109,6 +109,7 @@ func release_item():
     if held_item == null:
         return null
     camera.remove_child(held_item)
+    # Put down items only on layer 1.
     held_item.set_collision_layer(1)
     held_item.rotation = self.rotation
     var previously_held_item = held_item
@@ -119,7 +120,8 @@ func throw_item():
     if held_item == null:
         return null
     camera.remove_child(held_item)
-    held_item.set_collision_layer(1)
+    # Thrown cups need to be on collision layer 2 as well.
+    held_item.set_collision_layer(3)
     held_item.freeze = false
     var direction = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
     # Angle the yeet upwards.

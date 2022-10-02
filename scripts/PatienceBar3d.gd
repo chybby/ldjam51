@@ -7,7 +7,5 @@ var hasRunOut = false
 var hasStarted = false
 
 func _process(delta):
-        bar.max_value = timer.wait_time
-        bar.value = timer.time_left
-
-
+    bar.max_value = timer.wait_time
+    bar.value = timer.time_left

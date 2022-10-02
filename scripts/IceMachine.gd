@@ -1,5 +1,7 @@
 extends "res://scripts/Machine.gd"
 
+const Ingredient = preload("res://scripts/Ingredient.gd")
+
 const BlenderJug = preload("res://scripts/BlenderJug.gd")
 
 # Called when the node enters the scene tree for the first time.
@@ -7,7 +9,7 @@ func _ready():
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
-    ingredient = 'ice'
+    ingredient = Ingredient.new(Ingredient.IngredientType.ICE, true, false, false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

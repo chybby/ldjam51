@@ -1,10 +1,11 @@
 extends "res://scripts/HoldableItem.gd"
 
+const IngredientList = preload("res://scripts/IngredientList.gd")
 const Fruit = preload("res://scripts/Fruit.gd")
 const Milk = preload("res://scripts/Milk.gd")
 const Blender = preload("res://scripts/Blender.gd")
 
-var ingredients = Array()
+var ingredients = IngredientList.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,10 +23,10 @@ func on_interact(character, item, interact_position):
     var held_item = character.get_held_item()
     if held_item is Fruit:
         character.release_item()
-        add_ingredient(held_item.ingredient)
+        add_ingredient(held_item.ingredient.clone())
         held_item.queue_free()
     elif held_item is Milk:
-        add_ingredient(held_item.ingredient)
+        add_ingredient(held_item.ingredient.clone())
     elif get_parent() is Blender:
         # Only take from blender if hand is empty - do not replace.
         if held_item == null:
@@ -38,25 +39,18 @@ func on_interact(character, item, interact_position):
     print('%s blender jug interacted with' % self)
 
 func add_ingredient(ingredient):
-    ingredients.append(ingredient)
-    print('blender jug has: %s' % ', '.join(ingredients))
+    ingredients.add_ingredient(ingredient)
+    print('blender jug has: %s' % ingredients)
 
 func blend_contents():
-    # TODO: only blend blendable ingredients - leave milk alone
-    var new_ingredients = Array()
-    if ingredients.is_empty():
-        print('not blending, blender jug is empty')
-        return
-    for ingredient in ingredients:
-        new_ingredients.append('blended ' + ingredient)
+    ingredients.blend()
 
-    ingredients = new_ingredients
-    print('blender jug has: %s' % ', '.join(ingredients))
+    print('blender jug has: %s' % ingredients)
 
 func take_contents():
     var previous_ingredients = ingredients
-    ingredients = Array()
-    print('blender jug has: %s' % ', '.join(ingredients))
+    ingredients = IngredientList.new()
+    print('blender jug has: %s' % ingredients)
     return previous_ingredients
 
 func has_contents():

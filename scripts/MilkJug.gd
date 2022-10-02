@@ -1,9 +1,10 @@
 extends "res://scripts/HoldableItem.gd"
 
+const IngredientList = preload("res://scripts/IngredientList.gd")
 const Milk = preload("res://scripts/Milk.gd")
 const MilkFrother = preload("res://scripts/MilkFrother.gd")
 
-var ingredients = Array()
+var ingredients = IngredientList.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,8 +21,7 @@ func on_interact(character, item, interact_position):
 
     var held_item = character.get_held_item()
     if held_item is Milk and ingredients.is_empty():
-        ingredients.append(held_item.ingredient)
-        print('milk jug has: %s' % ', '.join(ingredients))
+        add_ingredient(held_item.ingredient.clone())
     elif get_parent() is MilkFrother:
         # Only take from milk frother if hand is empty - do not replace.
         if held_item == null:
@@ -33,21 +33,19 @@ func on_interact(character, item, interact_position):
 
     print('%s milk jug interacted with' % self)
 
-func froth_contents():
-    var new_ingredients = Array()
-    if ingredients.is_empty():
-        print('not frothing, milk jug is empty')
-        return
-    for ingredient in ingredients:
-        new_ingredients.append('frothed ' + ingredient)
+func add_ingredient(ingredient):
+    ingredients.add_ingredient(ingredient)
+    print('milk jug has: %s' % ingredients)
 
-    ingredients = new_ingredients
-    print('milk jug has: %s' % ', '.join(ingredients))
+func froth_contents():
+    ingredients.froth()
+
+    print('milk jug has: %s' % ingredients)
 
 func take_contents():
     var previous_ingredients = ingredients
-    ingredients = Array()
-    print('milk jug has: %s' % ', '.join(ingredients))
+    ingredients = IngredientList.new()
+    print('milk jug has: %s' % ingredients)
     return previous_ingredients
 
 func has_contents():

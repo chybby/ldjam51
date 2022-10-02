@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr33lnn25ik5q"]
+[gd_scene load_steps=8 format=3 uid="uid://cr33lnn25ik5q"]
 
 [ext_resource type="Script" path="res://scripts/Customer.gd" id="1_e1xt5"]
 [ext_resource type="Texture2D" uid="uid://bawxmlpjvwt8t" path="res://assets/icon.svg" id="1_gon5j"]
@@ -6,11 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://bhjjofdogsnvr" path="res://scenes/progress_bar.tscn" id="4_fpff7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0tom"]
+radius = 0.3
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xhcn0"]
 viewport_path = NodePath("PatienceBar3d/SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_466dc"]
+size = Vector3(1, 1.5, 1)
+
 [node name="Customer" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_e1xt5")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -24,6 +30,7 @@ texture = ExtResource("1_gon5j")
 
 [node name="NavigationAgent3d" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
+radius = 0.3
 
 [node name="PatienceBar3d" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22205, 0)
@@ -31,10 +38,6 @@ flip_v = true
 billboard = 1
 texture = SubResource("ViewportTexture_xhcn0")
 script = ExtResource("3_o16kk")
-
-[node name="PatienceTimer" type="Timer" parent="PatienceBar3d"]
-wait_time = 10.0
-one_shot = true
 
 [node name="SubViewport" type="SubViewport" parent="PatienceBar3d"]
 disable_3d = true
@@ -51,8 +54,26 @@ offset_right = 4.0
 offset_bottom = 0.0
 grow_vertical = 2
 
+[node name="PatienceTimer" type="Timer" parent="PatienceBar3d"]
+wait_time = 10.0
+one_shot = true
+
 [node name="Sprite3d" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69798, 0)
 
+[node name="CupDetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="CupDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_466dc")
+
+[node name="CupPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.477877, 0.907865, -0.446181)
+
 [connection signal="velocity_computed" from="NavigationAgent3d" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="PatienceBar3d/PatienceTimer" to="." method="_on_patience_timer_timeout"]
+[connection signal="body_entered" from="CupDetectionArea" to="." method="_on_area_3d_body_entered"]

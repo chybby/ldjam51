@@ -1,6 +1,8 @@
 extends "res://scripts/HoldableItem.gd"
 
-var ingredient = 'whipped cream'
+const Ingredient = preload("res://scripts/Ingredient.gd")
+
+var ingredient = Ingredient.new(Ingredient.IngredientType.WHIPPED_CREAM, false, false, true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

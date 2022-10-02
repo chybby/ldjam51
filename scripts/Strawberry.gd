@@ -1,11 +1,13 @@
 extends "res://scripts/Fruit.gd"
 
+const Ingredient = preload("res://scripts/Ingredient.gd")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
-    ingredient = 'strawberry'
+    ingredient = Ingredient.new(Ingredient.IngredientType.STRAWBERRY, true, false, false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const Cup = preload("res://scripts/Cup.gd")
+
 signal left(wasAngry, spot)
 signal orderDrink()
 
@@ -16,18 +18,26 @@ var targetNode
 var spotNode
 var drink_order
 
-const SPEED = 5.0
-const patience = 3
+@export var speed = 5.0
+# TODO: update
+@export var patience = 20
+@export var patence_lost_on_wrong_order = 5
 
 #@onready var ap = $CustomerAnimationPlayer
 @onready var nav_agent = $NavigationAgent3d
+@onready var patience_bar = $PatienceBar3d
 @onready var timer = $PatienceBar3d/PatienceTimer
+
+@onready var cup_detection_area = $CupDetectionArea
+@onready var cup_position = $CupPosition
+
+var has_drink = false
 
 func initialize(start_position, spot, d_order):
     transform.origin = start_position
     drink_order = d_order
     spotNode = spot
-    
+
     set_nav_target(spotNode)
 
 func _ready():
@@ -52,6 +62,8 @@ func order_drink():
 func start_waiting():
     state = WAIT
     timer.start(patience)
+    patience_bar.visible = true
+    cup_detection_area.monitoring = true
     print("ok im waiting for my drink now")
 
 func get_impatient():
@@ -63,7 +75,16 @@ func leave_angry():
     state = LEAVE_ANGRY
     set_nav_target(get_node("../Cafe/Door"))
 
-func receive_drink():
+func receive_drink(cup):
+    cup_detection_area.set_deferred("monitoring", false)
+    cup.set_collision_layer(0)
+    has_drink = true
+
+    patience_bar.visible = false
+
+    cup.get_parent().remove_child(cup)
+    self.add_child(cup)
+    cup.position = cup_position.position
     state = LEAVE
     set_nav_target(get_node("../Cafe/Door"))
 
@@ -90,7 +111,7 @@ func _physics_process(delta):
     var target = nav_agent.get_next_location()
     var pos = get_global_transform().origin
 
-    var new_vel : Vector3 = (target-pos).normalized() * SPEED
+    var new_vel : Vector3 = (target-pos).normalized() * speed
     nav_agent.set_velocity(new_vel)
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
@@ -99,3 +120,18 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 
 func _on_patience_timer_timeout():
     leave_angry()
+
+
+func _on_area_3d_body_entered(body : Node3D):
+    if body is Cup:
+        if has_drink:
+            return
+
+        if drink_order.is_fulfilled_by(body):
+            receive_drink(body)
+        else:
+            if (timer.time_left - patence_lost_on_wrong_order) <= 0:
+                timer.start(0.5)
+            else:
+                timer.start(timer.time_left - patence_lost_on_wrong_order)
+            timer.wait_time = patience

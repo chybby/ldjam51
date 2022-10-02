@@ -1,5 +1,6 @@
 extends "res://scripts/HoldableItem.gd"
 
+const IngredientList = preload("res://scripts/IngredientList.gd")
 const Milk = preload("res://scripts/Milk.gd")
 const WhippedCream = preload("res://scripts/WhippedCream.gd")
 const MilkJug = preload("res://scripts/MilkJug.gd")
@@ -7,7 +8,7 @@ const BlenderJug = preload("res://scripts/BlenderJug.gd")
 
 enum CupSize {SMALL, MEDIUM, LARGE}
 
-var ingredients = Array()
+var ingredients = IngredientList.new()
 var size = CupSize.MEDIUM
 
 # Called when the node enters the scene tree for the first time.
@@ -27,17 +28,17 @@ func on_interact(character, item, interact_position):
 
     var held_item = character.get_held_item()
     if held_item is Milk or held_item is WhippedCream:
-        self.add_ingredient(held_item.ingredient)
+        self.add_ingredient(held_item.ingredient.clone())
     elif (held_item is MilkJug or held_item is BlenderJug) and held_item.has_contents():
-        # TODO: don't let unblended ingredients go into the cup
-        for ingredient in held_item.take_contents():
-            self.add_ingredient(ingredient)
+        # TODO: don't let unblended ingredients go into the cup - tooltip or something
+        ingredients.combine(held_item.take_contents())
+        print('Cup has ingredients: %s' % ingredients)
     else:
         hold_or_swap(character)
 
 func add_ingredient(ingredient):
-    ingredients.append(ingredient)
-    print('Cup has ingredients: %s' % ', '.join(ingredients))
+    ingredients.add_ingredient(ingredient)
+    print('Cup has ingredients: %s' % ingredients)
 
 func get_size():
     return size

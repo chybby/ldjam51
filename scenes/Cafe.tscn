@@ -138,39 +138,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894673, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63756, 0, -4.5097)
 
 [node name="Spot2" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.66513, 0, -3.8924)
-
-[node name="Spot3" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64462, 0, -3.43178)
-
-[node name="Spot4" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6493, 0, -2.7174)
 
-[node name="Spot5" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65708, 0, -1.97422)
-
-[node name="Spot6" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65974, 0, -1.12137)
-
-[node name="Spot7" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+[node name="Spot3" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67328, 0, -0.16206)
 
-[node name="Spot8" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65645, 0, 0.808697)
-
-[node name="Spot9" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65794, 0, 1.47288)
-
-[node name="Spot10" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+[node name="Spot4" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63087, 0, 2.16506)
 
-[node name="Spot11" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6305, 0, 2.96331)
-
-[node name="Spot12" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59987, 0, 3.92554)
-
-[node name="Spot13" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+[node name="Spot5" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64001, 0.0130177, 4.49439)
 
 [node name="NavigationRegion3d" type="NavigationRegion3D" parent="."]
