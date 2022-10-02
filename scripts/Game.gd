@@ -67,8 +67,9 @@ func _on_customer_spawn_timer_timeout():
     spots.remove_at(0)
 
     var order = generateDrinkOrder()
-    customer.initialize(spawnLocation.global_transform.origin, spot, order)
     add_child(customer)
+    customer.initialize(spawnLocation.global_transform.origin, spot, order)
+    
 
 func processCustomerLeaving(wasAngry, spotNode):
     spots.append(spotNode)

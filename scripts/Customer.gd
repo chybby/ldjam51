@@ -21,15 +21,13 @@ const patience = 3
 
 #@onready var ap = $CustomerAnimationPlayer
 @onready var nav_agent = $NavigationAgent3d
-@onready var timer = $PatienceTimer
+@onready var timer = $PatienceBar3d/PatienceTimer
 
 func initialize(start_position, spot, d_order):
     transform.origin = start_position
     drink_order = d_order
     spotNode = spot
-    if nav_agent == null:
-        nav_agent = $NavigationAgent3d
-
+    
     set_nav_target(spotNode)
 
 func _ready():
@@ -53,8 +51,6 @@ func order_drink():
 
 func start_waiting():
     state = WAIT
-    if(timer == null):
-        timer = $PatienceTimer
     timer.start(patience)
     print("ok im waiting for my drink now")
 
