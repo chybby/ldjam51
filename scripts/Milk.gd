@@ -2,10 +2,11 @@ extends "res://scripts/HoldableItem.gd"
 
 # A holdable thing that adds stuff to a cup when interacted with.
 
+# TODO: milk spoils if left out of the fridge?
+
 var Cup = load("res://scripts/Cup.gd")
 
-# TODO: make this null and set from child classes
-var ingredient = 'milk'
+var ingredient = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

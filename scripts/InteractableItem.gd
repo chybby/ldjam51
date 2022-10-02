@@ -17,15 +17,15 @@ func _process(delta):
 
 func on_focus_changed(item):
     if not focused and item == self:
-        print('%s recognized it received focus' % self)
-        print('%s ' % shader_material)
+        #print('%s recognized it received focus' % self)
+        #print('%s ' % shader_material)
         if shader_material != null:
-            print('setting shader param to 0.5 ')
+            #print('setting shader param to 0.5 ')
             shader_material.set_shader_parameter("strength", 0.5)
         focused = true
     elif focused and item != self:
         if shader_material != null:
-            print('setting shader param to 0 ')
+            #print('setting shader param to 0 ')
             shader_material.set_shader_parameter("strength", 0)
         focused = false
 

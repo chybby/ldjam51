@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://btw8fw4lm4u44"]
+
+[ext_resource type="PackedScene" uid="uid://b1uslt04daxhj" path="res://scenes/Machine.tscn" id="1_o6st5"]
+[ext_resource type="Script" path="res://scripts/HazelnutSyrup.gd" id="2_43am7"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_w667g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_61qls"]
+height = 0.35
+radius = 0.07
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x12rm"]
+render_priority = 0
+shader = ExtResource("3_w667g")
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdi66"]
+next_pass = SubResource("ShaderMaterial_x12rm")
+albedo_color = Color(1, 0.411765, 0.247059, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o3hhm"]
+material = SubResource("StandardMaterial3D_kdi66")
+top_radius = 0.07
+bottom_radius = 0.07
+height = 0.35
+
+[node name="HazelnutSyrup" instance=ExtResource("1_o6st5")]
+script = ExtResource("2_43am7")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17545, 0)
+shape = SubResource("CylinderShape3D_61qls")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175054, 0)
+mesh = SubResource("CylinderMesh_o3hhm")

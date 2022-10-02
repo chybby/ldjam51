@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf2dxj7cmbhu1"]
+
+[ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_dxmx8"]
+[ext_resource type="Script" path="res://scripts/MilkFrother.gd" id="2_15s4l"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_v0ktl"]
+[ext_resource type="PackedScene" uid="uid://cpp32el77bcoc" path="res://scenes/MilkJug.tscn" id="4_btxsv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_167kf"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmhfy"]
+render_priority = 0
+shader = ExtResource("3_v0ktl")
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bkkf"]
+next_pass = SubResource("ShaderMaterial_fmhfy")
+albedo_color = Color(0.992157, 1, 0.894118, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tc8w6"]
+material = SubResource("StandardMaterial3D_8bkkf")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="MilkFrother" instance=ExtResource("1_dxmx8")]
+script = ExtResource("2_15s4l")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_167kf")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_tc8w6")
+
+[node name="MilkJugPosition" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500934, 0)
+
+[node name="MilkJug" parent="." index="3" instance=ExtResource("4_btxsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503913, 0)

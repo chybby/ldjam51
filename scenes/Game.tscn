@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3klpupg0qf67"]
+[gd_scene load_steps=24 format=3 uid="uid://b3klpupg0qf67"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -15,7 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://c5la150sywled" path="res://scenes/CupDispenser.tscn" id="13_bxrsi"]
 [ext_resource type="PackedScene" uid="uid://buweehxhe3qbp" path="res://scenes/RubbishBin.tscn" id="14_813md"]
 [ext_resource type="PackedScene" uid="uid://cqxcc8chuifmq" path="res://scenes/Fridge.tscn" id="15_xkta3"]
-[ext_resource type="PackedScene" uid="uid://t7g03nuoliyw" path="res://scenes/Milk.tscn" id="16_xjajo"]
+[ext_resource type="PackedScene" uid="uid://dt38ep16q8oln" path="res://scenes/OatMilk.tscn" id="16_emo60"]
+[ext_resource type="PackedScene" uid="uid://bxwala7pcbnpn" path="res://scenes/SkimmedMilk.tscn" id="17_5mttg"]
+[ext_resource type="PackedScene" uid="uid://bfg6fpmxhmmml" path="res://scenes/SoyMilk.tscn" id="18_y0fap"]
+[ext_resource type="PackedScene" uid="uid://c6fey5h2h0cbl" path="res://scenes/WholeMilk.tscn" id="19_f7tr7"]
+[ext_resource type="PackedScene" uid="uid://btw8fw4lm4u44" path="res://scenes/HazelnutSyrup.tscn" id="20_5fryf"]
+[ext_resource type="PackedScene" uid="uid://ccfg1mhn82jea" path="res://scenes/VanillaSyrup.tscn" id="21_pe1fk"]
+[ext_resource type="PackedScene" uid="uid://cpxby7m167y0f" path="res://scenes/IceMachine.tscn" id="22_jksf8"]
+[ext_resource type="PackedScene" uid="uid://cf2dxj7cmbhu1" path="res://scenes/MilkFrother.tscn" id="23_d5ulk"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -72,7 +79,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58235, 0.0295151, 4.54833)
 [node name="Fridge" parent="." instance=ExtResource("15_xkta3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4.5)
 
-[node name="Milk" parent="." instance=ExtResource("16_xjajo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97186, 1.34025, -4.25024)
+[node name="OatMilk" parent="." instance=ExtResource("16_emo60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7992, 1.34025, -4.51259)
+
+[node name="SkimmedMilk" parent="." instance=ExtResource("17_5mttg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96751, 1.34025, -4.51132)
+
+[node name="SoyMilk" parent="." instance=ExtResource("18_y0fap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15014, 1.34025, -4.50543)
+
+[node name="WholeMilk" parent="." instance=ExtResource("19_f7tr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8278, 0.678664, -4.34816)
+
+[node name="HazelnutSyrup" parent="." instance=ExtResource("20_5fryf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33422, 1.0055, 2.62692)
+
+[node name="VanillaSyrup" parent="." instance=ExtResource("21_pe1fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32328, 1.0055, 2.81501)
+
+[node name="IceMachine" parent="." instance=ExtResource("22_jksf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42356, 1.00476, 0.382203)
+
+[node name="MilkFrother" parent="." instance=ExtResource("23_d5ulk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430739, 1.0055, 0.0616305)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

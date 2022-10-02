@@ -1,6 +1,7 @@
 extends "res://scripts/HoldableItem.gd"
 
 const Milk = preload("res://scripts/Milk.gd")
+const MilkJug = preload("res://scripts/MilkJug.gd")
 
 enum CupSize {SMALL, MEDIUM, LARGE}
 
@@ -23,6 +24,8 @@ func on_interact(character, item, interact_position):
     var held_item = character.get_held_item()
     if held_item is Milk:
         self.add_ingredient(held_item.ingredient)
+    elif held_item is MilkJug:
+        self.add_ingredient(held_item.take_contents())
     else:
         super(character, item, interact_position)
 

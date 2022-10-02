@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6fey5h2h0cbl"]
+
+[ext_resource type="PackedScene" uid="uid://t7g03nuoliyw" path="res://scenes/Milk.tscn" id="1_q76ff"]
+[ext_resource type="Script" path="res://scripts/WholeMilk.gd" id="2_cvyjv"]
+
+[node name="WholeMilk" instance=ExtResource("1_q76ff")]
+script = ExtResource("2_cvyjv")

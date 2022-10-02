@@ -62,10 +62,10 @@ func _physics_process(delta):
 
     if focused_item != result.get('collider'):
         if focused_item != null:
-            print("%s losing focus" % focused_item)
+            pass#print("%s losing focus" % focused_item)
         focused_item = result.get('collider')
         if focused_item != null:
-            print("%s gaining focus" % focused_item)
+            pass#print("%s gaining focus" % focused_item)
         focus_changed.emit(focused_item)
 
 
