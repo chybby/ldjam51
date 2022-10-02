@@ -2,6 +2,7 @@ extends "res://scripts/HoldableItem.gd"
 
 const Milk = preload("res://scripts/Milk.gd")
 const MilkJug = preload("res://scripts/MilkJug.gd")
+const BlenderJug = preload("res://scripts/BlenderJug.gd")
 
 enum CupSize {SMALL, MEDIUM, LARGE}
 
@@ -21,15 +22,17 @@ func on_interact(character, item, interact_position):
     if item != self:
         return
 
+    print('%s cup interacted with' % self)
+
     var held_item = character.get_held_item()
     if held_item is Milk:
         self.add_ingredient(held_item.ingredient)
-    elif held_item is MilkJug:
-        self.add_ingredient(held_item.take_contents())
+    elif (held_item is MilkJug or held_item is BlenderJug) and held_item.has_contents():
+        # TODO: don't let unblended ingredients go into the cup
+        for ingredient in held_item.take_contents():
+            self.add_ingredient(ingredient)
     else:
-        super(character, item, interact_position)
-
-    print('%s cup interacted with' % self)
+        hold_or_swap(character)
 
 func add_ingredient(ingredient):
     ingredients.append(ingredient)

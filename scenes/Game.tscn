@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3klpupg0qf67"]
+[gd_scene load_steps=27 format=3 uid="uid://b3klpupg0qf67"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -23,6 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://ccfg1mhn82jea" path="res://scenes/VanillaSyrup.tscn" id="21_pe1fk"]
 [ext_resource type="PackedScene" uid="uid://cpxby7m167y0f" path="res://scenes/IceMachine.tscn" id="22_jksf8"]
 [ext_resource type="PackedScene" uid="uid://cf2dxj7cmbhu1" path="res://scenes/MilkFrother.tscn" id="23_d5ulk"]
+[ext_resource type="PackedScene" uid="uid://c4oekqkcrc1h1" path="res://scenes/FruitCrate.tscn" id="24_0muow"]
+[ext_resource type="PackedScene" uid="uid://dndsgdjcai88" path="res://scenes/Mango.tscn" id="25_ayk20"]
+[ext_resource type="PackedScene" uid="uid://brnsom308cxpf" path="res://scenes/Blender.tscn" id="26_73vp0"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -102,5 +105,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42356, 1.00476, 0.382203)
 
 [node name="MilkFrother" parent="." instance=ExtResource("23_d5ulk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430739, 1.0055, 0.0616305)
+
+[node name="FruitCrate" parent="." instance=ExtResource("24_0muow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40419, 1.00476, -2.01017)
+fruit = ExtResource("25_ayk20")
+
+[node name="Blender" parent="." instance=ExtResource("26_73vp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41481, 1.00476, -0.725552)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

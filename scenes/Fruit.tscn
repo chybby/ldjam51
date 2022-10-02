@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://7b0lbbst2ejy"]
+
+[ext_resource type="PackedScene" uid="uid://sk0hd52ccxyu" path="res://scenes/HoldableItem.tscn" id="1_x7ty0"]
+[ext_resource type="Script" path="res://scripts/Fruit.gd" id="2_0km37"]
+
+[node name="Fruit" instance=ExtResource("1_x7ty0")]
+script = ExtResource("2_0km37")

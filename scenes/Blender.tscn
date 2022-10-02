@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://brnsom308cxpf"]
+
+[ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_65o20"]
+[ext_resource type="Script" path="res://scripts/Blender.gd" id="2_0gd5f"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_byh2d"]
+[ext_resource type="PackedScene" uid="uid://d4gon6yrq6opw" path="res://scenes/BlenderJug.tscn" id="4_qhwlv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iunrx"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_av43f"]
+render_priority = 0
+shader = ExtResource("3_byh2d")
+shader_parameter/color = null
+shader_parameter/enable = null
+shader_parameter/outline_thickness = null
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6qko"]
+next_pass = SubResource("ShaderMaterial_av43f")
+albedo_color = Color(0.592157, 1, 0.533333, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_567lv"]
+material = SubResource("StandardMaterial3D_x6qko")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Blender" instance=ExtResource("1_65o20")]
+script = ExtResource("2_0gd5f")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_iunrx")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_567lv")
+
+[node name="BlenderJugPosition" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499926, 0)
+
+[node name="BlenderJug" parent="." index="3" instance=ExtResource("4_qhwlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503032, 0)

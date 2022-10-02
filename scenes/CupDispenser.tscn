@@ -11,6 +11,9 @@ size = Vector3(0.25, 0.5, 0.25)
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_nx0yd")
+shader_parameter/color = null
+shader_parameter/enable = null
+shader_parameter/outline_thickness = null
 shader_parameter/strength = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stckf"]

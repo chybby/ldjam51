@@ -25,9 +25,4 @@ func on_interact(character, item, interact_position):
 
     super(character, item, interact_position)
 
-    print('%s milk interacted with' % self)
-
-    #TODO: do we want holding a cup and interacting with milk to work?
-    # var held_item = character.get_held_item()
-    # if held_item is Cup:
-    #     held_item.add_ingredient(ingredient)
+    #print('%s milk interacted with' % self)

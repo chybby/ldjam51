@@ -20,10 +20,10 @@ func on_interact(character, item, interact_position):
 
     super(character, item, interact_position)
 
-    print('%s holdable item interacted with' % self)
+    #print('%s holdable item interacted with' % self)
+    hold_or_swap(character)
 
-    #TODO: maybe don't swap - you may want to interact with a cup while holding a bottle of milk.
-
+func hold_or_swap(character):
     if character.is_holding_item():
         var held_item = character.release_item()
         game.add_child(held_item)

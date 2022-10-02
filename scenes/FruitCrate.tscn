@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4oekqkcrc1h1"]
+
+[ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_o2pux"]
+[ext_resource type="Script" path="res://scripts/FruitCrate.gd" id="2_fkcx6"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_6ejvx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpecr"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fug7"]
+render_priority = 0
+shader = ExtResource("3_6ejvx")
+shader_parameter/color = null
+shader_parameter/enable = null
+shader_parameter/outline_thickness = null
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcnfu"]
+next_pass = SubResource("ShaderMaterial_0fug7")
+albedo_color = Color(0.517647, 0.313726, 0.0901961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_27vcu"]
+material = SubResource("StandardMaterial3D_gcnfu")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="FruitCrate" instance=ExtResource("1_o2pux")]
+script = ExtResource("2_fkcx6")
+fruit = null
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_hpecr")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_27vcu")

@@ -19,8 +19,6 @@ func on_interact(character, item, interact_position):
     if item != self:
         return
 
-    #TODO: check if milk jug was removed?
-
     print('%s milk frother interacted with, milk_jug is %s' % [self, milk_jug])
 
     var held_item = character.get_held_item()

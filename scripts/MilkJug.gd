@@ -3,7 +3,7 @@ extends "res://scripts/HoldableItem.gd"
 const Milk = preload("res://scripts/Milk.gd")
 const MilkFrother = preload("res://scripts/MilkFrother.gd")
 
-var milk = null
+var ingredients = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,25 +19,36 @@ func on_interact(character, item, interact_position):
         return
 
     var held_item = character.get_held_item()
-    if held_item is Milk and milk == null:
-        milk = held_item.ingredient
-        print('milk jug has: %s' % milk)
-    else:
-        if get_parent() is MilkFrother:
+    if held_item is Milk and ingredients.is_empty():
+        ingredients.append(held_item.ingredient)
+        print('milk jug has: %s' % ', '.join(ingredients))
+    elif get_parent() is MilkFrother:
+        # Only take from milk frother if hand is empty - do not replace.
+        if held_item == null:
             get_parent().milk_jug = null
-        super(character, item, interact_position)
+            hold_or_swap(character)
+    else:
+        # If not in a milk frother, replace with held item as normal.
+        hold_or_swap(character)
 
     print('%s milk jug interacted with' % self)
 
 func froth_contents():
-    if milk == null:
-        print('not frothing milk jug, it is empty')
+    var new_ingredients = Array()
+    if ingredients.is_empty():
+        print('not frothing, milk jug is empty')
         return
-    milk = 'frothed ' + milk
-    print('milk jug has: %s' % milk)
+    for ingredient in ingredients:
+        new_ingredients.append('frothed ' + ingredient)
+
+    ingredients = new_ingredients
+    print('milk jug has: %s' % ', '.join(ingredients))
 
 func take_contents():
-    var previous_milk = milk
-    milk = null
-    print('milk jug has: %s' % milk)
-    return previous_milk
+    var previous_ingredients = ingredients
+    ingredients = Array()
+    print('milk jug has: %s' % ', '.join(ingredients))
+    return previous_ingredients
+
+func has_contents():
+    return not ingredients.is_empty()

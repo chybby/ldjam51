@@ -20,7 +20,7 @@ func on_interact(character, item, interact_position):
     if item != self:
         return
 
-    print('%s machine interacted with' % self)
+    #print('%s machine interacted with' % self)
     var held_item = character.get_held_item()
     if held_item is Cup:
         held_item.add_ingredient(ingredient)

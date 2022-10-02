@@ -21,16 +21,16 @@ func on_focus_changed(item):
         #print('%s ' % shader_material)
         if shader_material != null:
             #print('setting shader param to 0.5 ')
-            shader_material.set_shader_parameter("strength", 0.5)
+            shader_material.set_shader_parameter("enable", true)
         focused = true
     elif focused and item != self:
         if shader_material != null:
             #print('setting shader param to 0 ')
-            shader_material.set_shader_parameter("strength", 0)
+            shader_material.set_shader_parameter("enable", false)
         focused = false
 
 func on_interact(character, item, interact_position):
     if item != self:
         return
 
-    print('%s interacted with' % self)
+    #print('%s interacted with' % self)
