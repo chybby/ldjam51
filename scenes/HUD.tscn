@@ -1,27 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bktqcrfi4u1gn"]
+[gd_scene load_steps=5 format=3 uid="uid://bktqcrfi4u1gn"]
 
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="1_x8m5j"]
 [ext_resource type="Theme" uid="uid://dpvydela4folv" path="res://resources/theme.tres" id="2_4i0wh"]
-[ext_resource type="Texture2D" uid="uid://bawxmlpjvwt8t" path="res://assets/icon.svg" id="3_1ax3t"]
+
+[sub_resource type="Gradient" id="Gradient_wlw1x"]
+offsets = PackedFloat32Array(0.758893, 0.887352, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r24hv"]
+gradient = SubResource("Gradient_wlw1x")
+fill = 1
+fill_from = Vector2(0.5, 0.504274)
+fill_to = Vector2(0.662393, 0.444444)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_x8m5j")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Crosshair" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -6.99994
-offset_right = 122.0
-offset_bottom = 121.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 54.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("3_1ax3t")
+texture = SubResource("GradientTexture2D_r24hv")
 
 [node name="FpsCounter" type="Label" parent="."]
 offset_left = 7.0
@@ -32,3 +43,15 @@ theme = ExtResource("2_4i0wh")
 theme_override_colors/font_color = Color(1, 0.894118, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "60"
+
+[node name="MorningProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -483.0
+offset_top = 16.0
+offset_right = 482.0
+offset_bottom = 43.0
+grow_horizontal = 2
+value = 60.0
+show_percentage = false

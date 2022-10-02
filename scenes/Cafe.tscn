@@ -38,8 +38,10 @@ material = SubResource("StandardMaterial3D_p80on")
 size = Vector3(2, 3, 0.5)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wenm8"]
-vertices = PackedVector3Array(-14.5, 0.5, -4.5, -14.5, 0.5, 4.5, -8, 0.5, 4.5, -8, 0.5, -4.5, -1.5, 0.5, -4.5, -8, 0.5, -4.5, -8, 0.5, 4.5, -1.5, 0.5, 4.5, 0.75, 0.5, -4.5, 0.75, 0.5, 4.5, 3.5, 0.5, 4.5, 3.5, 0.5, -4.5)
+vertices = PackedVector3Array(-14.5, 0.02, -4.5, -14.5, 0.02, 4.5, -8, 0.02, 4.5, -8, 0.02, -4.5, -1.5, 0.02, -4.5, -8, 0.02, -4.5, -8, 0.02, 4.5, -1.5, 0.02, 4.5, 0.75, 0.02, -4.5, 0.75, 0.02, 4.5, 3.5, 0.02, 4.5, 3.5, 0.02, -4.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9)]
+cell_height = 0.01
+agent_max_climb = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrpy6"]
 size = Vector3(1, 1, 10)
@@ -107,7 +109,7 @@ mesh = SubResource("PlaneMesh_7ha3h")
 skeleton = NodePath("")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.627678, 0.778473, 0, -0.778473, 0.627678, 0, 6.80045, 5.44972)
+transform = Transform3D(0.984322, 0.0536373, 0.168027, -0.17638, 0.299332, 0.937705, 0, -0.95264, 0.3041, 0.0860133, 6.80045, 5.44972)
 
 [node name="CeilingLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9992, 4.80693, 0)
@@ -128,7 +130,7 @@ omni_range = 7.87653
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4681, 0, 4.42494)
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583713, 1.7064, 0.641593)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583713, 1.50726, 0.641593)
 mesh = SubResource("BoxMesh_jne27")
 
 [node name="Spots" type="Node3D" parent="."]
@@ -138,16 +140,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894673, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63756, 0, -4.5097)
 
 [node name="Spot2" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6493, 0, -2.7174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6493, 0, -2.18859)
 
 [node name="Spot3" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67328, 0, -0.16206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67328, 0, 0.0339326)
 
 [node name="Spot4" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63087, 0, 2.16506)
 
 [node name="Spot5" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64001, 0.0130177, 4.49439)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64001, 0.0130177, 4.19633)
 
 [node name="NavigationRegion3d" type="NavigationRegion3D" parent="."]
 navmesh = SubResource("NavigationMesh_wenm8")

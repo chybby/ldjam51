@@ -1,8 +1,14 @@
 extends CharacterBody3D
 
 const DrinkOrder = preload("res://scripts/DrinkOrder.gd")
-
 const Cup = preload("res://scripts/Cup.gd")
+
+const BabyFrames = preload("res://resources/BabyFrames.tres")
+const HipsterFrames = preload("res://resources/HipsterFrames.tres")
+const KarenFrames = preload("res://resources/KarenFrames.tres")
+const TradieFrames = preload("res://resources/TradieFrames.tres")
+
+const FRAMES = [BabyFrames, HipsterFrames, KarenFrames, TradieFrames]
 
 signal left(wasAngry, spot)
 
@@ -11,7 +17,8 @@ enum {
     WAIT,
     IMPATIENT,
     LEAVE_ANGRY,
-    LEAVE
+    HIT,
+    LEAVE,
 }
 
 var state = LINE_UP
@@ -24,7 +31,7 @@ var drink_order
 @export var patience = 20
 @export var patence_lost_on_wrong_order = 5
 
-#@onready var ap = $CustomerAnimationPlayer
+@onready var sprite : AnimatedSprite3D = $Sprite
 @onready var nav_agent = $NavigationAgent3d
 @onready var order_display_3d : Sprite3D = $OrderDisplay3d
 @onready var viewport : SubViewport = $OrderDisplay3d/SubViewport
@@ -38,6 +45,8 @@ var drink_order
 var has_drink = false
 
 func initialize(start_position, spot, order):
+    sprite.set_sprite_frames(FRAMES[randi() % FRAMES.size()])
+
     transform.origin = start_position
 
     drink_order = order
@@ -47,9 +56,18 @@ func initialize(start_position, spot, order):
 
     order_display.visible = false
 
+    sprite.animation_finished.connect(_on_animation_finished)
+
     spotNode = spot
 
     set_nav_target(spotNode)
+
+func _on_animation_finished():
+    if sprite.animation == 'hit':
+        sprite.animation = 'idle'
+        if state == HIT:
+            state = LEAVE
+            set_nav_target(get_node("../Cafe/Door"))
 
 func _on_order_display_draw():
     var order_display_height = order_display.get_node("Panel").size.y
@@ -60,13 +78,24 @@ func _on_order_display_draw():
 
 func _process(_delta):
     order_display.set_patience(patience_timer.time_left, patience_timer.wait_time)
-#    match state:
-#        WAIT:
-#            ap.play("Wait")
-#if(timer.time_left < 5)
-#    get_impatient()
-#        IMPATIENT:
-#            ap.play("Impatient")
+    if not patience_timer.is_stopped() and patience_timer.time_left < 5 and state != IMPATIENT:
+        get_impatient()
+
+    if sprite.animation != 'hit':
+        match state:
+            LINE_UP:
+                sprite.animation = 'run'
+            WAIT:
+                sprite.animation = 'idle'
+            IMPATIENT:
+                sprite.animation = 'impatient'
+            LEAVE:
+                sprite.animation = 'run'
+            HIT:
+                sprite.animation = 'hit'
+            LEAVE_ANGRY:
+                sprite.animation = 'angry_run'
+
 
 func start_waiting():
     state = WAIT
@@ -91,15 +120,17 @@ func receive_drink(cup):
 
     order_display.visible = false
 
+    patience_timer.stop()
+
     cup.get_parent().remove_child(cup)
     self.add_child(cup)
     cup.position = cup_position.position
-    state = LEAVE
-    set_nav_target(get_node("../Cafe/Door"))
+    cup.freeze = true
+    state = HIT
 
 func exit_cafe():
     var isAngry = false
-    if(state == LEAVE_ANGRY):
+    if (state == LEAVE_ANGRY):
         isAngry = true
     print("later bitch")
     left.emit(isAngry, spotNode)
@@ -130,11 +161,12 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 func _on_patience_timer_timeout():
     leave_angry()
 
-
 func _on_area_3d_body_entered(body : Node3D):
     if body is Cup:
         if has_drink:
             return
+
+        sprite.animation = 'hit'
 
         if drink_order.is_fulfilled_by(body):
             receive_drink(body)
