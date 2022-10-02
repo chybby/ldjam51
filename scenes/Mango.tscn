@@ -8,6 +8,7 @@
 radius = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wilcg"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_tps4s")
 shader_parameter/color = null
@@ -16,10 +17,12 @@ shader_parameter/outline_thickness = null
 shader_parameter/strength = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t20yc"]
+resource_local_to_scene = true
 next_pass = SubResource("ShaderMaterial_wilcg")
 albedo_color = Color(1, 0.541176, 0.0666667, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_3ro2r"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_t20yc")
 radius = 0.1
 height = 0.2

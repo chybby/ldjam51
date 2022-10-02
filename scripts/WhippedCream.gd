@@ -1,10 +1,6 @@
 extends "res://scripts/HoldableItem.gd"
 
-# A holdable thing that adds stuff to a cup when interacted with.
-
-# TODO: milk spoils if left out of the fridge?
-
-var ingredient = null
+var ingredient = 'whipped cream'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

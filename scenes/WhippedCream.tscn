@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1aruknlcnsfn"]
+
+[ext_resource type="PackedScene" uid="uid://sk0hd52ccxyu" path="res://scenes/HoldableItem.tscn" id="1_4lqh5"]
+[ext_resource type="Script" path="res://scripts/WhippedCream.gd" id="2_3kf6i"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_nqbao"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p2en8"]
+height = 0.3
+radius = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwshu"]
+render_priority = 0
+shader = ExtResource("3_nqbao")
+shader_parameter/color = null
+shader_parameter/enable = null
+shader_parameter/outline_thickness = null
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmx3p"]
+next_pass = SubResource("ShaderMaterial_iwshu")
+albedo_color = Color(1, 0.133333, 0.14902, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i5iai"]
+material = SubResource("StandardMaterial3D_bmx3p")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.3
+
+[node name="WhippedCream" instance=ExtResource("1_4lqh5")]
+script = ExtResource("2_3kf6i")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+shape = SubResource("CylinderShape3D_p2en8")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("CylinderMesh_i5iai")

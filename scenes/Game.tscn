@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3klpupg0qf67"]
+[gd_scene load_steps=30 format=3 uid="uid://b3klpupg0qf67"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -26,6 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://c4oekqkcrc1h1" path="res://scenes/FruitCrate.tscn" id="24_0muow"]
 [ext_resource type="PackedScene" uid="uid://dndsgdjcai88" path="res://scenes/Mango.tscn" id="25_ayk20"]
 [ext_resource type="PackedScene" uid="uid://brnsom308cxpf" path="res://scenes/Blender.tscn" id="26_73vp0"]
+[ext_resource type="PackedScene" uid="uid://bwq13ftiub2xv" path="res://scenes/Strawberry.tscn" id="27_mhydv"]
+[ext_resource type="PackedScene" uid="uid://bm3yqpstj5ab1" path="res://scenes/Banana.tscn" id="28_kmixj"]
+[ext_resource type="PackedScene" uid="uid://c1aruknlcnsfn" path="res://scenes/WhippedCream.tscn" id="29_ahvpv"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -106,11 +109,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42356, 1.00476, 0.382203)
 [node name="MilkFrother" parent="." instance=ExtResource("23_d5ulk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430739, 1.0055, 0.0616305)
 
-[node name="FruitCrate" parent="." instance=ExtResource("24_0muow")]
+[node name="MangoCrate" parent="." instance=ExtResource("24_0muow")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40419, 1.00476, -2.01017)
 fruit = ExtResource("25_ayk20")
 
 [node name="Blender" parent="." instance=ExtResource("26_73vp0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41481, 1.00476, -0.725552)
+
+[node name="StrawberryCrate" parent="." instance=ExtResource("24_0muow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42041, 1.00476, -2.71127)
+fruit = ExtResource("27_mhydv")
+
+[node name="BananaCrate" parent="." instance=ExtResource("24_0muow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38644, 1.00476, -3.37138)
+fruit = ExtResource("28_kmixj")
+
+[node name="WhippedCream" parent="." instance=ExtResource("29_ahvpv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17167, 0.678664, -4.43582)
 
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

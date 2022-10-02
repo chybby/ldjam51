@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://bm3yqpstj5ab1"]
+
+[ext_resource type="PackedScene" uid="uid://7b0lbbst2ejy" path="res://scenes/Fruit.tscn" id="1_o530i"]
+[ext_resource type="Script" path="res://scripts/Banana.gd" id="2_ldedc"]
+[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_owt7f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x4pr"]
+radius = 0.03
+height = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6id6r"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_owt7f")
+shader_parameter/color = null
+shader_parameter/enable = null
+shader_parameter/outline_thickness = null
+shader_parameter/strength = null
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqyuc"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_6id6r")
+albedo_color = Color(1, 0.858824, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_snasq"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_mqyuc")
+radius = 0.03
+height = 0.2
+
+[node name="Banana" instance=ExtResource("1_o530i")]
+script = ExtResource("2_ldedc")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.03, 0)
+shape = SubResource("CapsuleShape3D_3x4pr")
+
+[node name="Model" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.03, 0)
+mesh = SubResource("CapsuleMesh_snasq")
