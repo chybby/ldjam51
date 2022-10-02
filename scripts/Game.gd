@@ -26,6 +26,16 @@ var spots = Array()
 
 var drink_order_maker = DrinkOrderMaker.new()
 
+# TODO: Stop spawning customers when the morning is over. Stop the morning when the last customer leaves.
+# TODO: Each morning:
+#   - Add some new machine (some kind of screen showing what was added?)
+#   - In addition to new ingredients, make orders a little more complicated (more ingredients per order, higher counts per ingredient).
+#   - Clean up any yeeted things on the floor
+
+# TODO: should the morning bar be a digital clock that goes from 8am to 10am? 10am = survived the morning.
+
+# TODO: title screen + options (volume, mouse sensitivity, fullscreen?)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     for interactable in get_tree().get_nodes_in_group('interactable'):

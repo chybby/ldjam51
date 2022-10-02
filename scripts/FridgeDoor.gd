@@ -1,6 +1,6 @@
 extends "res://scripts/InteractableItem.gd"
 
-#TODO: make fridge door interactable
+#TODO: animate fridge door
 
 var is_open = false
 

@@ -27,7 +27,6 @@ var spotNode
 var drink_order
 
 @export var speed = 5.0
-# TODO: update
 @export var patience = 20
 @export var patence_lost_on_wrong_order = 5
 

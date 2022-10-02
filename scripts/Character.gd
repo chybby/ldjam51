@@ -83,10 +83,6 @@ func _input(event):
         print('YEET')
         throw_item()
 
-#TODO: needed?
-func _on_customer_timer_timeout():
-    pass # Replace with function body.
-
 func is_holding_item():
     return held_item != null
 
