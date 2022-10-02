@@ -4,16 +4,6 @@ extends "res://scripts/InteractableItem.gd"
 
 @onready var game = $/root/Game
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-    pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
-
-
 func on_interact(character, item, interact_position):
     if item != self:
         return

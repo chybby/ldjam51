@@ -7,14 +7,6 @@ var focused = false
 var shader_material : ShaderMaterial = null
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-    pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
-
 func on_focus_changed(item):
     if not focused and item == self:
         #print('%s recognized it received focus' % self)
@@ -29,7 +21,7 @@ func on_focus_changed(item):
             shader_material.set_shader_parameter("enable", false)
         focused = false
 
-func on_interact(character, item, interact_position):
+func on_interact(_character, item, _interact_position):
     if item != self:
         return
 

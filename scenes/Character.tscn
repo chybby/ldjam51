@@ -6,8 +6,7 @@
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_675oa")
-speed = 5
-yeet_strength = 5
+yeet_angle = 15
 mouse_sensitivity = 0.003
 
 [node name="Camera" type="Camera3D" parent="."]

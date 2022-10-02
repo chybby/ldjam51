@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b3klpupg0qf67"]
+[gd_scene load_steps=29 format=3 uid="uid://b3klpupg0qf67"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bktqcrfi4u1gn" path="res://scenes/HUD.tscn" id="6_q364h"]
 [ext_resource type="PackedScene" uid="uid://d3kabbpwp1hhq" path="res://scenes/Cup.tscn" id="7_0xsu6"]
 [ext_resource type="PackedScene" uid="uid://codlwl36pjbek" path="res://scenes/HotWaterDispenser.tscn" id="8_hngvs"]
-[ext_resource type="Script" path="res://scripts/HotWaterDispenser.gd" id="9_kxy1k"]
 [ext_resource type="PackedScene" uid="uid://d2jj3r6ade75h" path="res://scenes/CaramelSyrup.tscn" id="10_clpe1"]
 [ext_resource type="PackedScene" uid="uid://da3jdac0ak3r8" path="res://scenes/Bar.tscn" id="11_wsqq7"]
 [ext_resource type="PackedScene" uid="uid://bm0hdxbtd8p8d" path="res://scenes/Floor.tscn" id="12_go41c"]
@@ -50,7 +49,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440694, 1, 0.830113)
 
 [node name="HotWaterDispenser" parent="." instance=ExtResource("8_hngvs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45446, 1, 1.79583)
-script = ExtResource("9_kxy1k")
 
 [node name="CaramelSyrup" parent="." instance=ExtResource("10_clpe1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354178, 1, 2.44384)

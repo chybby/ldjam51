@@ -1,15 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr33lnn25ik5q"]
+[gd_scene load_steps=7 format=3 uid="uid://cr33lnn25ik5q"]
 
 [ext_resource type="Script" path="res://scripts/Customer.gd" id="1_e1xt5"]
 [ext_resource type="Texture2D" uid="uid://bawxmlpjvwt8t" path="res://assets/icon.svg" id="1_gon5j"]
-[ext_resource type="Script" path="res://scripts/PatienceBar3d.gd" id="3_o16kk"]
-[ext_resource type="PackedScene" uid="uid://bhjjofdogsnvr" path="res://scenes/progress_bar.tscn" id="4_fpff7"]
+[ext_resource type="PackedScene" uid="uid://d1qw1scln4uv6" path="res://scenes/OrderDisplay.tscn" id="5_b0d0k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0tom"]
 radius = 0.3
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xhcn0"]
-viewport_path = NodePath("PatienceBar3d/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_gbc1w"]
+viewport_path = NodePath("OrderDisplay3d/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_466dc"]
 size = Vector3(1, 1.5, 1)
@@ -32,29 +31,35 @@ texture = ExtResource("1_gon5j")
 avoidance_enabled = true
 radius = 0.3
 
-[node name="PatienceBar3d" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22205, 0)
-flip_v = true
-billboard = 1
-texture = SubResource("ViewportTexture_xhcn0")
-script = ExtResource("3_o16kk")
+[node name="OrderDisplayPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00266, 0)
 
-[node name="SubViewport" type="SubViewport" parent="PatienceBar3d"]
+[node name="OrderDisplay3d" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56354, 0)
+billboard = 2
+no_depth_test = true
+texture = SubResource("ViewportTexture_gbc1w")
+region_rect = Rect2(0, 0, 96.6757, 237.002)
+
+[node name="SubViewport" type="SubViewport" parent="OrderDisplay3d"]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(125, 15)
+gui_disable_input = true
+gui_snap_controls_to_pixels = false
+size = Vector2i(120, 300)
 render_target_update_mode = 4
 
-[node name="ProgressBar" parent="PatienceBar3d/SubViewport" instance=ExtResource("4_fpff7")]
-custom_minimum_size = Vector2i(150, 50)
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 4.0
+[node name="OrderDisplay" parent="OrderDisplay3d/SubViewport" instance=ExtResource("5_b0d0k")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
 offset_bottom = 0.0
-grow_vertical = 2
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="PatienceTimer" type="Timer" parent="PatienceBar3d"]
+[node name="PatienceTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 
@@ -75,5 +80,5 @@ shape = SubResource("BoxShape3D_466dc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.477877, 0.907865, -0.446181)
 
 [connection signal="velocity_computed" from="NavigationAgent3d" to="." method="_on_navigation_agent_3d_velocity_computed"]
-[connection signal="timeout" from="PatienceBar3d/PatienceTimer" to="." method="_on_patience_timer_timeout"]
+[connection signal="timeout" from="PatienceTimer" to="." method="_on_patience_timer_timeout"]
 [connection signal="body_entered" from="CupDetectionArea" to="." method="_on_area_3d_body_entered"]

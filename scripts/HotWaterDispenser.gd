@@ -9,11 +9,6 @@ func _ready():
 
     ingredient = Ingredient.new(Ingredient.IngredientType.HOT_WATER, false, false, false)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
-
 func on_interact(character, item, interact_position):
     if item != self:
         return

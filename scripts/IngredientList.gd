@@ -21,6 +21,9 @@ func add_ingredient(ingredient: Ingredient, count = 1):
     ingredient_count.append(count)
     ingredient_counts.append(ingredient_count)
 
+func get_ingredients():
+    return ingredient_counts
+
 func blend():
     var old_ingredient_counts = ingredient_counts
     ingredient_counts = Array()
@@ -59,6 +62,13 @@ func equals(other):
             return false
 
     return true
+
+func has_ingredient(ingredient):
+    for ingredient_count in ingredient_counts:
+        if ingredient_count[0].equals(ingredient):
+            return true
+
+    return false
 
 func has_ingredient_with_count(ingredient, count):
     for ingredient_count in ingredient_counts:

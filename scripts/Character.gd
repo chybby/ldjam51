@@ -3,9 +3,9 @@ extends CharacterBody3D
 signal focus_changed(item)
 signal interacted_with(character, item, interact_position)
 
-@export var speed = 1
-@export var yeet_strength = 1
-@export var yeet_angle = 45
+@export var speed = 5
+@export var yeet_strength = 10
+@export var yeet_angle = 30
 @export var mouse_sensitivity = 0.3
 
 @onready var camera : Camera3D = $Camera
@@ -27,7 +27,7 @@ func _ready():
 
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
     # Character movement
 
     velocity = Vector3.ZERO

@@ -16,11 +16,7 @@ func _ready():
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
-
-func on_interact(character, item, interact_position):
+func on_interact(character, item, _interact_position):
     if item != self:
         return
 
@@ -43,11 +39,11 @@ func add_ingredient(ingredient):
 func get_size():
     return size
 
-func set_size(size):
-    self.size = size
+func set_size(new_size):
+    self.size = new_size
 
     var child_scale
-    match size:
+    match new_size:
         CupSize.SMALL:
             child_scale = 0.6
         CupSize.MEDIUM:

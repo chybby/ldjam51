@@ -10,12 +10,7 @@ func _ready():
         shader_material = $Model.mesh.material.next_pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
-
-
-func on_interact(character, item, interact_position):
+func on_interact(_character, item, _interact_position):
     if item != self:
         return
 

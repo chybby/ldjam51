@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://codlwl36pjbek"]
 
 [ext_resource type="PackedScene" uid="uid://b1uslt04daxhj" path="res://scenes/Machine.tscn" id="1_py768"]
-[ext_resource type="Script" path="res://scenes/HotWaterDispenser.gd" id="2_dopij"]
+[ext_resource type="Script" path="res://scripts/HotWaterDispenser.gd" id="2_dopij"]
 [ext_resource type="Shader" path="res://resources/interact.gdshader" id="2_ve68q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_amr8r"]

@@ -1,9 +1,10 @@
 extends CharacterBody3D
 
+const DrinkOrder = preload("res://scripts/DrinkOrder.gd")
+
 const Cup = preload("res://scripts/Cup.gd")
 
 signal left(wasAngry, spot)
-signal orderDrink()
 
 enum {
     LINE_UP,
@@ -25,25 +26,40 @@ var drink_order
 
 #@onready var ap = $CustomerAnimationPlayer
 @onready var nav_agent = $NavigationAgent3d
-@onready var patience_bar = $PatienceBar3d
-@onready var timer = $PatienceBar3d/PatienceTimer
+@onready var order_display_3d : Sprite3D = $OrderDisplay3d
+@onready var viewport : SubViewport = $OrderDisplay3d/SubViewport
+@onready var order_display : Control = $OrderDisplay3d/SubViewport/OrderDisplay
+@onready var order_display_position : Marker3D = $OrderDisplayPosition
+@onready var patience_timer : Timer = $PatienceTimer
 
 @onready var cup_detection_area = $CupDetectionArea
 @onready var cup_position = $CupPosition
 
 var has_drink = false
 
-func initialize(start_position, spot, d_order):
+func initialize(start_position, spot, order):
     transform.origin = start_position
-    drink_order = d_order
+
+    drink_order = order
+    order_display.display_order(drink_order)
+
+    order_display.draw.connect(_on_order_display_draw)
+
+    order_display.visible = false
+
     spotNode = spot
 
     set_nav_target(spotNode)
 
-func _ready():
-    pass
+func _on_order_display_draw():
+    var order_display_height = order_display.get_node("Panel").size.y
+    viewport.size.y = order_display_height
+    order_display_3d.position = order_display_position.position
+    # TODO: Don't know why this is 100.
+    order_display_3d.position.y += order_display_height/100/2
 
-func _process(delta):
+func _process(_delta):
+    order_display.set_patience(patience_timer.time_left, patience_timer.wait_time)
 #    match state:
 #        WAIT:
 #            ap.play("Wait")
@@ -51,18 +67,11 @@ func _process(delta):
 #    get_impatient()
 #        IMPATIENT:
 #            ap.play("Impatient")
-    pass
-
-
-func order_drink():
-    #generate drinkorder from drinkordermaker
-    orderDrink.emit(drink_order)
-    start_waiting()
 
 func start_waiting():
     state = WAIT
-    timer.start(patience)
-    patience_bar.visible = true
+    patience_timer.start(patience)
+    order_display.visible = true
     cup_detection_area.monitoring = true
     print("ok im waiting for my drink now")
 
@@ -80,7 +89,7 @@ func receive_drink(cup):
     cup.set_collision_layer(0)
     has_drink = true
 
-    patience_bar.visible = false
+    order_display.visible = false
 
     cup.get_parent().remove_child(cup)
     self.add_child(cup)
@@ -100,10 +109,10 @@ func set_nav_target(node):
     targetNode = node
     nav_agent.set_target_location(targetNode.position)
 
-func _physics_process(delta):
+func _physics_process(_delta):
     if(nav_agent.distance_to_target() < .7):
         if(state == LINE_UP):
-            order_drink()
+            start_waiting()
         elif(state == LEAVE_ANGRY || state == LEAVE):
             exit_cafe()
         return
@@ -130,8 +139,8 @@ func _on_area_3d_body_entered(body : Node3D):
         if drink_order.is_fulfilled_by(body):
             receive_drink(body)
         else:
-            if (timer.time_left - patence_lost_on_wrong_order) <= 0:
-                timer.start(0.5)
+            if (patience_timer.time_left - patence_lost_on_wrong_order) <= 0:
+                patience_timer.start(0.5)
             else:
-                timer.start(timer.time_left - patence_lost_on_wrong_order)
-            timer.wait_time = patience
+                patience_timer.start(patience_timer.time_left - patence_lost_on_wrong_order)
+            patience_timer.wait_time = patience

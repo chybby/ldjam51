@@ -1,6 +1,14 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dpvydela4folv"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dpvydela4folv"]
 
 [ext_resource type="FontFile" uid="uid://k68wfrjmrock" path="res://assets/Roboto-Regular.ttf" id="1_n1k5i"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u6tg"]
+bg_color = Color(0.6, 0.329412, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [resource]
 default_font = ExtResource("1_n1k5i")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_6u6tg")
