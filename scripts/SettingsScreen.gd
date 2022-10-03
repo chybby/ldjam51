@@ -37,3 +37,6 @@ func _on_return_button_pressed():
         ReturnToMainMenu()
     else:
         settings_closed.emit()
+
+func _on_main_menu_button_pressed():
+    ReturnToMainMenu()

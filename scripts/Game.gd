@@ -307,7 +307,11 @@ func processCustomerLeaving(drink_score, was_angry, spot_node):
 
 func reset_game():
     morning_timer.start()
-    customer_spawn_timer.start()
+    var spawn_diff = 10
+    if(difficulty > 3):
+        spawn_diff = 5
+    
+    customer_spawn_timer.start(spawn_diff)
     num_customers = 0
     hud.visible = true
 
@@ -347,10 +351,7 @@ func reset_game():
     
 func start_game(difficulty):
     game_started = true
-    var spawn_diff = 10
-    if(difficulty > 3):
-        spawn_diff = 5
-    customer_spawn_timer.start(spawn_diff)
+    reset_game()
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
     
 

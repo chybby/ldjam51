@@ -209,6 +209,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63087, 0, 2.16506)
 [node name="Spot5" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64001, 0.0130177, 4.19633)
 
+[node name="Spot6" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63756, 0, -4.5097)
+
+[node name="Spot7" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6493, 0, -2.18859)
+
+[node name="Spot8" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67328, 0, 0.0339326)
+
+[node name="Spot9" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.63087, 0, 2.16506)
+
+[node name="Spot10" type="Node3D" parent="Spots" groups=["CustomerSpots"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64001, 0.0130177, 4.19633)
+
 [node name="NavigationRegion3d" type="NavigationRegion3D" parent="."]
 navmesh = SubResource("NavigationMesh_wenm8")
 

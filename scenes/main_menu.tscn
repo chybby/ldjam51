@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8pyg6you27s8"]
+[gd_scene load_steps=3 format=3 uid="uid://fjbtci3pisqs"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_2peyh"]
+[ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_2peyh"]
 [ext_resource type="Texture2D" uid="uid://cjqak4scr7fao" path="res://assets/blackboard.jpg" id="2_6hmpf"]
 
 [node name="MainMenu" type="Control"]
@@ -13,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_2peyh")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,6 +22,7 @@ grow_vertical = 2
 texture = ExtResource("2_6hmpf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,12 +36,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 offset_right = 551.0
 offset_bottom = 86.0
 theme_override_font_sizes/font_size = 60
 text = "Morning Coffee Hit"
 
 [node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 90.0
 offset_right = 551.0
 offset_bottom = 181.0
@@ -47,6 +51,7 @@ theme_override_font_sizes/font_size = 60
 text = "Start"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 185.0
 offset_right = 551.0
 offset_bottom = 238.0
@@ -54,6 +59,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Easy" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
 offset_right = 181.0
 offset_bottom = 53.0
 size_flags_horizontal = 3
@@ -62,6 +68,7 @@ text = "Easy
 "
 
 [node name="Normal" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
 offset_left = 185.0
 offset_right = 366.0
 offset_bottom = 53.0
@@ -70,6 +77,7 @@ theme_override_font_sizes/font_size = 32
 text = "Normal"
 
 [node name="Barista" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
 offset_left = 370.0
 offset_right = 551.0
 offset_bottom = 53.0
@@ -78,6 +86,7 @@ theme_override_font_sizes/font_size = 32
 text = "Barista"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 242.0
 offset_right = 551.0
 offset_bottom = 295.0
@@ -86,6 +95,7 @@ text = "Settings
 "
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 offset_top = 299.0
 offset_right = 551.0
 offset_bottom = 352.0
