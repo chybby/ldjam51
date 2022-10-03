@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6fey5h2h0cbl"]
+[gd_scene load_steps=5 format=3 uid="uid://c6fey5h2h0cbl"]
 
 [ext_resource type="PackedScene" uid="uid://t7g03nuoliyw" path="res://scenes/Milk.tscn" id="1_q76ff"]
 [ext_resource type="Script" path="res://scripts/WholeMilk.gd" id="2_cvyjv"]
+[ext_resource type="Texture2D" uid="uid://dduwb2rxkjtu1" path="res://assets/whole_milk.png" id="4_frfqh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_iwbqc"]
+height = 0.35
+radius = 0.1
 
 [node name="WholeMilk" instance=ExtResource("1_q76ff")]
 script = ExtResource("2_cvyjv")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
+shape = SubResource("CylinderShape3D_iwbqc")
+
+[node name="Model" parent="." index="1"]
+mesh = null
+
+[node name="Sprite3d" parent="." index="2"]
+offset = Vector2(-20, 0)
+pixel_size = 0.006
+texture = ExtResource("4_frfqh")

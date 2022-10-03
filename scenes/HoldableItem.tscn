@@ -4,4 +4,10 @@
 [ext_resource type="Script" path="res://scripts/HoldableItem.gd" id="2_d8uxp"]
 
 [node name="HoldableItem" instance=ExtResource("1_5mf5i")]
+lock_rotation = true
 script = ExtResource("2_d8uxp")
+
+[node name="Sprite3d" type="Sprite3D" parent="." index="2"]
+centered = false
+billboard = 2
+texture_filter = 0

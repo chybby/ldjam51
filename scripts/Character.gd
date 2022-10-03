@@ -119,6 +119,7 @@ func throw_item():
     # Thrown cups need to be on collision layer 2 as well.
     held_item.set_collision_layer(3)
     held_item.freeze = false
+    held_item.put_down()
     var direction = Vector3.FORWARD.rotated(Vector3.UP, rotation.y)
     # Angle the yeet upwards.
     direction = direction.rotated(direction.cross(Vector3.UP), deg_to_rad(yeet_angle))

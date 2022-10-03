@@ -36,14 +36,17 @@ var drink_order_maker = DrinkOrderMaker.new()
 
 # TODO: title screen + options (volume, mouse sensitivity, fullscreen?)
 
+#TODO: customers can get stuck on thrown drinks
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     for interactable in get_tree().get_nodes_in_group('interactable'):
-        if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is RubbishBin or interactable is Surface):
-            remove_child(interactable)
+        #TODO: uncomment
+        # if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is RubbishBin or interactable is Surface):
+        #     remove_child(interactable)
 
-        if interactable is CupDispenser and interactable.cup_size != Cup.CupSize.MEDIUM:
-            remove_child(interactable)
+        # if interactable is CupDispenser and interactable.cup_size != Cup.CupSize.MEDIUM:
+        #     remove_child(interactable)
 
         interactables.append(interactable)
 

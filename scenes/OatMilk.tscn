@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt38ep16q8oln"]
+[gd_scene load_steps=5 format=3 uid="uid://dt38ep16q8oln"]
 
 [ext_resource type="PackedScene" uid="uid://t7g03nuoliyw" path="res://scenes/Milk.tscn" id="1_mor4g"]
 [ext_resource type="Script" path="res://scripts/OatMilk.gd" id="2_2plop"]
+[ext_resource type="Texture2D" uid="uid://c6ywyl3qjerkx" path="res://assets/oat_milk.png" id="3_m78yd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ensox"]
+height = 0.35
+radius = 0.1
 
 [node name="OatMilk" instance=ExtResource("1_mor4g")]
 script = ExtResource("2_2plop")
+
+[node name="Collision" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
+shape = SubResource("CylinderShape3D_ensox")
+
+[node name="Model" parent="." index="1"]
+mesh = null
+
+[node name="Sprite3d" parent="." index="2"]
+offset = Vector2(-20, 0)
+pixel_size = 0.006
+texture = ExtResource("3_m78yd")

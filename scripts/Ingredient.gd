@@ -54,6 +54,23 @@ func froth():
     if is_frothable:
         frothed = true
 
+func icon_file_name():
+    match ingredient_type:
+        IngredientType.ESPRESSO_SHOT: return 'res://assets/coffee.png'
+        IngredientType.HOT_WATER: return 'res://assets/water.png'
+        IngredientType.ICE: return 'res://assets/icecube.png'
+        IngredientType.CARAMEL_SYRUP: return 'res://assets/caramel.png'
+        IngredientType.HAZELNUT_SYRUP: return 'res://assets/hazelnut.png'
+        IngredientType.VANILLA_SYRUP: return 'res://assets/vanilla.png'
+        IngredientType.WHOLE_MILK: return 'res://assets/whole_milk.png'
+        IngredientType.SKIMMED_MILK: return 'res://assets/skimmed_milk.png'
+        IngredientType.OAT_MILK: return 'res://assets/oat_milk.png'
+        IngredientType.SOY_MILK: return 'res://assets/soy_milk.png'
+        IngredientType.MANGO: return 'res://assets/mango.png'
+        IngredientType.STRAWBERRY: return 'res://assets/strawberry.png'
+        IngredientType.BANANA: return 'res://assets/banana.png'
+        IngredientType.WHIPPED_CREAM: return 'res://assets/whipped_cream.png'
+
 func debug_string():
     var ingredient_desc
     match ingredient_type:

@@ -14,3 +14,4 @@ func on_interact(character, item, interact_position):
         var held_item = character.release_item()
         game.add_child(held_item)
         held_item.position = interact_position
+        held_item.put_down()
