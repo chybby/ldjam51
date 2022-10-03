@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1vbgarh1j3h"]
+[gd_scene load_steps=6 format=3 uid="uid://c1vbgarh1j3h"]
 
 [ext_resource type="PackedScene" uid="uid://b1uslt04daxhj" path="res://scenes/Machine.tscn" id="1_gdwb4"]
 [ext_resource type="Script" path="res://scripts/EspressoMachine.gd" id="2_qgo6i"]
@@ -18,8 +18,8 @@ shape = SubResource("BoxShape3D_ytvgf")
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
-[node name="espresso_machine" parent="." index="2" instance=ExtResource("4_pw7cx")]
-transform = Transform3D(-1.5299e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5299e-08, 0, 0, -0.0136486)
-
 [node name="SoundEspressoMachine" type="AudioStreamPlayer3D" parent="." index="2"]
 stream = ExtResource("4_j1dnh")
+
+[node name="espresso_machine" parent="." index="3" instance=ExtResource("4_pw7cx")]
+transform = Transform3D(-1.5299e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5299e-08, 0, 0, -0.0136486)

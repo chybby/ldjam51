@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://r4ni5b7ycshx"]
+[gd_scene load_steps=24 format=3 uid="uid://r4ni5b7ycshx"]
 
 [ext_resource type="AudioStream" uid="uid://bn2vduxu0o1ut" path="res://assets/audio/SFX/doorbell.wav" id="1_an86o"]
 [ext_resource type="Texture2D" uid="uid://ydcyt5kyriyq" path="res://assets/floorboards.png" id="2_i4ahb"]
