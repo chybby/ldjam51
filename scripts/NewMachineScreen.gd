@@ -39,10 +39,8 @@ func set_machine(machine):
     description.text = machine.get_description()
 
     if machine.get_description_image_path() != null:
-        var image = Image.load_from_file(machine.get_description_image_path())
-        var texture = ImageTexture.create_from_image(image)
         description_image.visible = true
-        description_image.texture = texture
+        description_image.texture = load(machine.get_description_image_path())
     else:
         description_image.visible = false
 

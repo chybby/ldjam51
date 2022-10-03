@@ -25,8 +25,7 @@ func _ready():
     item_name = "%s Cup" % size_name()
 
     var sprite_path = get_sprite_path()
-    var image = Image.load_from_file(sprite_path)
-    var texture = ImageTexture.create_from_image(image)
+    var texture = load(sprite_path)
     cup_sprite.texture = texture
     contents.texture = texture
     whipped_cream.texture = texture
@@ -108,9 +107,7 @@ func set_size(new_size):
     item_name = "%s Cup" % size_name()
 
     if cup_sprite:
-        var sprite_path = get_sprite_path()
-        var image = Image.load_from_file(sprite_path)
-        var texture = ImageTexture.create_from_image(image)
+        var texture = load(get_sprite_path())
         cup_sprite.texture = texture
 
 

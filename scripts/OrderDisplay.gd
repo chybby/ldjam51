@@ -14,9 +14,7 @@ func display_order(order: DrinkOrder):
     var order_cup_size = order.get_cup_size()
     var ingredient_counts = order.get_ingredients()
 
-    var image = Image.load_from_file(get_cup_icon_path(order_cup_size))
-    var texture = ImageTexture.create_from_image(image)
-    cup_size.texture = texture
+    cup_size.texture = load(get_cup_icon_path(order_cup_size))
 
     for ingredient_count in ingredient_counts:
         var ingredient = ingredient_count[0]

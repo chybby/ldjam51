@@ -12,8 +12,7 @@ func _ready():
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
-    var sprite_image = Image.load_from_file(fruit.instantiate().ingredient.icon_file_name())
-    var sprite_texture = ImageTexture.create_from_image(sprite_image)
+    var sprite_texture = load(fruit.instantiate().ingredient.icon_file_name())
     fruit_sprite.texture = sprite_texture
     fruit_sprite2.texture = sprite_texture
     fruit_sprite3.texture = sprite_texture
