@@ -13,6 +13,8 @@ const HipsterVoice = preload("res://assets/audio/SFX/girl_ouch.wav")
 const KarenVoice = preload( "res://assets/audio/SFX/yelp_girl.wav")
 const TradieVoice = preload("res://assets/audio/SFX/manchild_oof.wav")
 
+var splashEffect = preload("res://scenes/splash_node.tscn")
+
 const FRAMES = [BabyFrames, HipsterFrames, KarenFrames, TradieFrames]
 
 signal left(wasAngry, spot)
@@ -38,6 +40,10 @@ var game_paused = false
 @export var patence_lost_on_wrong_order = 5
 
 @onready var sprite : AnimatedSprite3D = $Sprite
+@onready var angry_particles = $AngryParticles
+@onready var love_particles = $LoveParticles
+@onready var incorrect_particles = $IncorrectParticles
+@onready var correct_particles = $CorrectParticles
 @onready var nav_agent = $NavigationAgent3d
 @onready var order_display_3d : Sprite3D = $OrderDisplay3d
 @onready var viewport : SubViewport = $OrderDisplay3d/SubViewport
@@ -132,11 +138,13 @@ func start_waiting():
 
 func get_impatient():
     state = IMPATIENT
+    angry_particles.visible = true
     print("WHERES ME DRINK")
 
 func leave_angry():
     print("times up im out this bitch")
     state = LEAVE_ANGRY
+    angry_particles.visible = true
     set_nav_target(get_node("../Cafe/Door"))
     order_display.visible = false
 
@@ -145,6 +153,10 @@ func receive_drink(cup):
     cup.set_collision_layer(0)
     has_drink = true
 
+    angry_particles.visible = false
+    love_particles.visible = true
+    correct_particles.enable()
+    $SoundCash.play()
     order_display.visible = false
 
     patience_timer.stop()
@@ -199,16 +211,24 @@ func _on_area_3d_body_entered(body : Node3D):
             return
 
         sprite.animation = 'hit'
+        play_splash_animation(body)
         $SoundYelp.play()
 
         if drink_order.is_fulfilled_by(body):
             receive_drink(body)
         else:
+            incorrect_particles.enable()
             if (patience_timer.time_left - patence_lost_on_wrong_order) <= 0:
                 patience_timer.start(0.5)
             else:
                 patience_timer.start(patience_timer.time_left - patence_lost_on_wrong_order)
             patience_timer.wait_time = patience
+
+func play_splash_animation(body):
+    var pos = body.global_position
+    var splash_effect = splashEffect.instantiate()
+    splash_effect.position = pos
+    get_parent().add_child(splash_effect)
 
 func on_game_paused(paused):
     game_paused = paused

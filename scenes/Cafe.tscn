@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://r4ni5b7ycshx"]
+[gd_scene load_steps=29 format=3 uid="uid://r4ni5b7ycshx"]
 
 [ext_resource type="AudioStream" uid="uid://bn2vduxu0o1ut" path="res://assets/audio/SFX/doorbell.wav" id="1_an86o"]
 [ext_resource type="Texture2D" uid="uid://ydcyt5kyriyq" path="res://assets/floorboards.png" id="2_i4ahb"]
+[ext_resource type="Texture2D" uid="uid://bu67be4y2o6o2" path="res://assets/cabinet.png" id="3_5xmib"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eyu"]
 size = Vector3(12.5763, 1, 10)
@@ -68,11 +69,27 @@ texture_filter = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrpy6"]
 size = Vector3(1, 1, 10)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2c06"]
+albedo_texture = ExtResource("3_5xmib")
+uv1_scale = Vector3(16, 1.6, 1.067)
+uv1_offset = Vector3(0.16, 0.2, 0)
+
 [sub_resource type="BoxMesh" id="BoxMesh_hrj3m"]
+material = SubResource("StandardMaterial3D_s2c06")
 size = Vector3(1, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68d7l"]
+albedo_color = Color(0.878431, 0.854902, 0.788235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gufo1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wia1p"]
 size = Vector3(1, 1, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6eee"]
+albedo_texture = ExtResource("3_5xmib")
+uv1_scale = Vector3(15, 1.6, 15)
+uv1_offset = Vector3(0, 0.3, 0)
 
 [node name="Cafe" type="Node3D"]
 
@@ -216,8 +233,20 @@ shape = SubResource("BoxShape3D_wrpy6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
 mesh = SubResource("BoxMesh_hrj3m")
 
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="NavigationRegion3d/FrontBar"]
+transform = Transform3D(1.2, 0, 0, 0, 0.1, 0, 0, 0, 10, -0.5, 1.05, 0)
+material_overlay = SubResource("StandardMaterial3D_68d7l")
+mesh = SubResource("BoxMesh_gufo1")
+skeleton = NodePath("")
+
 [node name="BackBar" type="StaticBody3D" parent="NavigationRegion3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="MeshInstance3d3" type="MeshInstance3D" parent="NavigationRegion3d/BackBar"]
+transform = Transform3D(1.2, 0, 0, 0, 0.1, 0, 0, 0, 10, -0.5, 1.05, 0)
+material_overlay = SubResource("StandardMaterial3D_68d7l")
+mesh = SubResource("BoxMesh_gufo1")
+skeleton = NodePath("")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="NavigationRegion3d/BackBar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
@@ -225,4 +254,5 @@ shape = SubResource("BoxShape3D_wia1p")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="NavigationRegion3d/BackBar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+material_overlay = SubResource("StandardMaterial3D_f6eee")
 mesh = SubResource("BoxMesh_hrj3m")
