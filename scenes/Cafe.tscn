@@ -1,4 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://r4ni5b7ycshx"]
+[gd_scene load_steps=23 format=3 uid="uid://r4ni5b7ycshx"]
+
+[ext_resource type="Material" path="res://assets/Cafe.tres" id="1_x2d2y"]
+[ext_resource type="Texture2D" uid="uid://ydcyt5kyriyq" path="res://assets/floorboards.png" id="2_i4ahb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eyu"]
 size = Vector3(20, 1, 10)
@@ -9,17 +12,26 @@ size = Vector2(20, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_udxxt"]
 size = Vector3(20, 5, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xw3s"]
+albedo_color = Color(0, 0.384314, 0.254902, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_xn4hf"]
 size = Vector2(20, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ej5e2"]
 size = Vector3(20, 5, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dd2d"]
+albedo_color = Color(0, 0.384314, 0.254902, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_f45oq"]
 size = Vector2(20, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a2s67"]
 size = Vector3(10, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xaim7"]
+albedo_color = Color(0, 0.384314, 0.254902, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c3cj7"]
 size = Vector2(10, 5)
@@ -42,6 +54,10 @@ vertices = PackedVector3Array(-14.5, 0.02, -4.5, -14.5, 0.02, 4.5, -8, 0.02, 4.5
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9)]
 cell_height = 0.01
 agent_max_climb = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pjkd"]
+albedo_texture = ExtResource("2_i4ahb")
+uv1_scale = Vector3(6, 3, 0.75)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrpy6"]
 size = Vector3(1, 1, 10)
@@ -72,6 +88,7 @@ shape = SubResource("BoxShape3D_udxxt")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5, 2.5, -5)
+material_overlay = SubResource("StandardMaterial3D_5xw3s")
 mesh = SubResource("PlaneMesh_xn4hf")
 skeleton = NodePath("")
 
@@ -83,6 +100,7 @@ shape = SubResource("BoxShape3D_ej5e2")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall4"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -5, 2.5, 5)
+material_overlay = SubResource("StandardMaterial3D_5dd2d")
 mesh = SubResource("PlaneMesh_f45oq")
 skeleton = NodePath("")
 
@@ -94,6 +112,7 @@ shape = SubResource("BoxShape3D_a2s67")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall3"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -15, 2.5, 0)
+material_overlay = SubResource("StandardMaterial3D_xaim7")
 mesh = SubResource("PlaneMesh_c3cj7")
 skeleton = NodePath("")
 
@@ -105,6 +124,7 @@ shape = SubResource("BoxShape3D_nsbc8")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall2"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 5, 2.5, 0)
+material_overlay = ExtResource("1_x2d2y")
 mesh = SubResource("PlaneMesh_7ha3h")
 skeleton = NodePath("")
 
@@ -162,6 +182,7 @@ shape = SubResource("BoxShape3D_j2eyu")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="NavigationRegion3d/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+material_overlay = SubResource("StandardMaterial3D_8pjkd")
 mesh = SubResource("PlaneMesh_ohe3g")
 
 [node name="FrontBar" type="StaticBody3D" parent="NavigationRegion3d"]
