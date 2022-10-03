@@ -34,8 +34,7 @@ func _ready():
     description = "A stack of %s cups" % size_name().to_lower()
     description_image_path = get_cup_icon_path(cup_size)
 
-    var sprite_image = Image.load_from_file(get_cup_sprite_path(cup_size))
-    var sprite_texture = ImageTexture.create_from_image(sprite_image)
+    var sprite_texture = load(get_cup_sprite_path(cup_size))
     cup_sprite.texture = sprite_texture
     cup_sprite2.texture = sprite_texture
     cup_sprite3.texture = sprite_texture

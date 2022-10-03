@@ -17,8 +17,6 @@ func _input(event):
 func set_ingredient(ingredient):
     ingredient_name.text = ingredient.get_name()
 
-    var image = Image.load_from_file(ingredient.icon_file_name())
-    var texture = ImageTexture.create_from_image(image)
-    ingredient_icon.texture = texture
+    ingredient_icon.texture = load(ingredient.icon_file_name())
 
     flavour.text = ingredient.get_flavour()

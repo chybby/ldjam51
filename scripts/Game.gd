@@ -77,6 +77,7 @@ var total_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    pause_game()
     Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
     for interactable in get_tree().get_nodes_in_group('interactable'):
@@ -344,7 +345,7 @@ func reset_game():
                 interactable.close()
 
     call_deferred('unpause_game')
-    
+
 func start_game(difficulty):
     game_started = true
     var spawn_diff = 10
@@ -352,7 +353,7 @@ func start_game(difficulty):
         spawn_diff = 5
     customer_spawn_timer.start(spawn_diff)
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-    
+    unpause_game()
 
 func _on_morning_timer_timeout():
     customer_spawn_timer.stop()

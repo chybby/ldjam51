@@ -15,7 +15,6 @@ theme = ExtResource("1_4ckg1")
 script = ExtResource("2_aordy")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +23,6 @@ grow_vertical = 2
 texture = ExtResource("3_86v2q")
 
 [node name="Title" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -38,7 +36,6 @@ text = "Settings"
 horizontal_alignment = 1
 
 [node name="VolumeLabel" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -52,7 +49,6 @@ text = "Volume: "
 horizontal_alignment = 2
 
 [node name="MouseSensitivityLabel" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -66,7 +62,6 @@ text = "Mouse Sensitivity: "
 horizontal_alignment = 2
 
 [node name="VolumeSlider" type="HSlider" parent="."]
-layout_mode = 0
 offset_left = 752.0
 offset_top = 312.0
 offset_right = 1297.0
@@ -74,7 +69,6 @@ offset_bottom = 347.0
 min_value = -50.0
 
 [node name="MouseSensitivitySlider" type="HSlider" parent="."]
-layout_mode = 0
 offset_left = 749.0
 offset_top = 430.0
 offset_right = 1294.0
@@ -84,7 +78,6 @@ step = 0.0
 value = 0.003
 
 [node name="ReturnButton" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
