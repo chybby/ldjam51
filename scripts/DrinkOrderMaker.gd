@@ -8,7 +8,7 @@ var available_ingredients = Array()
 var available_cup_sizes = Array()
 
 func add_available_ingredient(ingredient: Ingredient):
-    available_ingredients.append(ingredient)
+    available_ingredients.append(ingredient.clone())
 
 func add_available_cup_size(cup_size):
     available_cup_sizes.append(cup_size)

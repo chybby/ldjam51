@@ -58,10 +58,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.418, 1.11, 2.539)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354, 1.11, 1.28)
 
 [node name="FrontBarSurface" parent="." instance=ExtResource("11_wsqq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.478074, 1.11, 0)
 
 [node name="BackBarSurface" parent="." instance=ExtResource("11_wsqq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.465, 1.11, 0)
 
 [node name="FloorSurface" parent="." instance=ExtResource("12_go41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.0205465, 0)

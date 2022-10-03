@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://unmw1r2pr4qr" path="res://scenes/Surface.tscn" id="1_ee5sa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mapox"]
-size = Vector3(1, 0.05, 10)
+size = Vector3(1.14561, 0.05, 10)
 
 [node name="Bar" instance=ExtResource("1_ee5sa")]
 
