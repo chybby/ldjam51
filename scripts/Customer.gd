@@ -40,6 +40,7 @@ var drink_order
 @onready var sprite : AnimatedSprite3D = $Sprite
 @onready var angry_particles = $AngryParticles
 @onready var love_particles = $LoveParticles
+@onready var incorrect_particles = $IncorrectParticles
 @onready var nav_agent = $NavigationAgent3d
 @onready var order_display_3d : Sprite3D = $OrderDisplay3d
 @onready var viewport : SubViewport = $OrderDisplay3d/SubViewport
@@ -205,6 +206,7 @@ func _on_area_3d_body_entered(body : Node3D):
         if drink_order.is_fulfilled_by(body):
             receive_drink(body)
         else:
+            incorrect_particles.enable()
             if (patience_timer.time_left - patence_lost_on_wrong_order) <= 0:
                 patience_timer.start(0.5)
             else:
