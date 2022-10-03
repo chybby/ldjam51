@@ -36,7 +36,7 @@ var drink_order
 var game_paused = false
 
 @export var speed = 5.0
-@export var patience = 20
+@export var patience = 30
 @export var patence_lost_on_wrong_order = 5
 
 @onready var sprite : AnimatedSprite3D = $Sprite

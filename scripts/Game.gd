@@ -73,9 +73,6 @@ var day = 0
 
 var customers_served = 0
 
-# TODO: make orders a little more complicated each day (more ingredients per order, higher counts per ingredient).
-# TODO: title screen + options (volume, mouse sensitivity, fullscreen?)
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -83,10 +80,10 @@ func _ready():
     for interactable in get_tree().get_nodes_in_group('interactable'):
         interactable.set_initial_position()
         if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is FridgeDoor or interactable is RubbishBin or interactable is Surface or interactable is BlenderJug or interactable is MilkJug):
-            pass#disable_interactable(interactable)
+            disable_interactable(interactable)
 
         if interactable is CupDispenser and interactable.cup_size != Cup.CupSize.MEDIUM:
-            pass#disable_interactable(interactable)
+            disable_interactable(interactable)
 
         character.connect('focus_changed', interactable.on_focus_changed)
         character.connect('interacted_with', interactable.on_interact)

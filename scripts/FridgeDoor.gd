@@ -1,7 +1,5 @@
 extends "res://scripts/InteractableItem.gd"
 
-#TODO: animate fridge door
-
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 var is_open = false
