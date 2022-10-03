@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cr33lnn25ik5q"]
+[gd_scene load_steps=24 format=3 uid="uid://cr33lnn25ik5q"]
 
 [ext_resource type="Script" path="res://scripts/Customer.gd" id="1_e1xt5"]
 [ext_resource type="SpriteFrames" uid="uid://cya1gx81tsn2r" path="res://resources/KarenFrames.tres" id="2_snt0s"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://d1qw1scln4uv6" path="res://scenes/OrderDisplay.tscn" id="5_b0d0k"]
 [ext_resource type="Texture2D" uid="uid://dhghl4ea0sal1" path="res://assets/incorrect_emoji.png" id="6_bcfph"]
 [ext_resource type="Script" path="res://scripts/IncorrectParticles.gd" id="7_cbsio"]
+[ext_resource type="Texture2D" uid="uid://dtr6d4fvrykp4" path="res://assets/COIN.png" id="8_b2ukj"]
+[ext_resource type="AudioStream" uid="uid://bltbi74ldavq6" path="res://assets/audio/SFX/cash_register.wav" id="9_idnse"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0tom"]
 radius = 0.3
@@ -40,6 +42,8 @@ angle_max = 10.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0s7ky"]
 transparency = 1
 shading_mode = 2
+diffuse_mode = 3
+specular_mode = 1
 disable_ambient_light = true
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.772549, 0.678431, 1)
@@ -54,6 +58,8 @@ size = Vector2(0.3, 0.3)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkqme"]
 transparency = 1
 shading_mode = 2
+diffuse_mode = 3
+specular_mode = 1
 disable_ambient_light = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("4_2gnik")
@@ -64,16 +70,34 @@ billboard_mode = 1
 material = SubResource("StandardMaterial3D_tkqme")
 size = Vector2(0.3, 0.3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yau8t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp7pr"]
 transparency = 1
 shading_mode = 2
+diffuse_mode = 3
+specular_mode = 1
 disable_ambient_light = true
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("6_bcfph")
 detail_blend_mode = 1
 billboard_mode = 1
 
-[sub_resource type="QuadMesh" id="QuadMesh_pm3ua"]
+[sub_resource type="QuadMesh" id="QuadMesh_nuhra"]
+material = SubResource("StandardMaterial3D_cp7pr")
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yau8t"]
+transparency = 1
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.858824, 0.180392, 1)
+albedo_texture = ExtResource("8_b2ukj")
+detail_blend_mode = 1
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_xd4ba"]
 material = SubResource("StandardMaterial3D_yau8t")
 size = Vector2(0.3, 0.3)
 
@@ -179,14 +203,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2616, 0)
 visible = false
 amount = 4
 process_material = SubResource("ParticleProcessMaterial_ry6jk")
-draw_pass_1 = SubResource("QuadMesh_pm3ua")
+draw_pass_1 = SubResource("QuadMesh_nuhra")
 script = ExtResource("7_cbsio")
 
 [node name="Timer" type="Timer" parent="IncorrectParticles"]
 one_shot = true
-autostart = true
+
+[node name="CorrectParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2616, 0)
+visible = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ry6jk")
+draw_pass_1 = SubResource("QuadMesh_xd4ba")
+script = ExtResource("7_cbsio")
+
+[node name="Timer" type="Timer" parent="CorrectParticles"]
+one_shot = true
+
+[node name="SoundCash" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_idnse")
 
 [connection signal="velocity_computed" from="NavigationAgent3d" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="timeout" from="PatienceTimer" to="." method="_on_patience_timer_timeout"]
 [connection signal="body_entered" from="CupDetectionArea" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="IncorrectParticles/Timer" to="IncorrectParticles" method="_on_timer_timeout"]
+[connection signal="timeout" from="CorrectParticles/Timer" to="CorrectParticles" method="_on_timer_timeout"]

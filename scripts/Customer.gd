@@ -41,6 +41,7 @@ var drink_order
 @onready var angry_particles = $AngryParticles
 @onready var love_particles = $LoveParticles
 @onready var incorrect_particles = $IncorrectParticles
+@onready var correct_particles = $CorrectParticles
 @onready var nav_agent = $NavigationAgent3d
 @onready var order_display_3d : Sprite3D = $OrderDisplay3d
 @onready var viewport : SubViewport = $OrderDisplay3d/SubViewport
@@ -149,6 +150,8 @@ func receive_drink(cup):
 
     angry_particles.visible = false
     love_particles.visible = true
+    correct_particles.enable()
+    $SoundCash.play()
     order_display.visible = false
 
     patience_timer.stop()

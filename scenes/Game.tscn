@@ -48,34 +48,34 @@ wait_time = 10.0
 autostart = true
 
 [node name="EspressoMachine" parent="." instance=ExtResource("6_og6vs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440694, 1, -0.1384)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.441, 1.11, -0.138)
 
 [node name="HotWaterDispenser" parent="." instance=ExtResource("8_hngvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41808, 1, 2.53921)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.418, 1.11, 2.539)
 
 [node name="CaramelSyrup" parent="." instance=ExtResource("10_clpe1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354178, 1, 1.27964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354, 1.11, 1.28)
 
 [node name="FrontBarSurface" parent="." instance=ExtResource("11_wsqq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.9805, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.11, 0)
 
 [node name="BackBarSurface" parent="." instance=ExtResource("11_wsqq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.979756, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.11, 0)
 
 [node name="FloorSurface" parent="." instance=ExtResource("12_go41c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.0205465, 0)
 
 [node name="CupDispenserSmall" parent="." instance=ExtResource("13_bxrsi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, -0.952973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354, 1.11, -0.953)
 cup = ExtResource("7_0xsu6")
 cup_size = 0
 
 [node name="CupDispenserMedium" parent="." instance=ExtResource("13_bxrsi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, -1.27966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354, 1.11, -1.28)
 cup = ExtResource("7_0xsu6")
 
 [node name="CupDispenserLarge" parent="." instance=ExtResource("13_bxrsi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, -1.59685)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354, 1.11, -1.597)
 cup = ExtResource("7_0xsu6")
 cup_size = 2
 
@@ -101,30 +101,30 @@ lock_rotation = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31713, 0.678664, -4.09488)
 
 [node name="HazelnutSyrup" parent="." instance=ExtResource("20_5fryf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33422, 1.0055, 1.46272)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.334, 1.11, 1.463)
 
 [node name="VanillaSyrup" parent="." instance=ExtResource("21_pe1fk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32328, 1.0055, 1.65081)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.323, 1.11, 1.651)
 
 [node name="IceMachine" parent="." instance=ExtResource("22_jksf8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42356, 1.00476, 1.75197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.424, 1.11, 1.752)
 
 [node name="MilkFrother" parent="." instance=ExtResource("23_d5ulk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430739, 1.0055, 0.556475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.431, 1.11, 0.556)
 
 [node name="MangoCrate" parent="." instance=ExtResource("24_0muow")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39609, 1.00476, -0.838336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.396, 1.11, -0.838)
 fruit = ExtResource("25_ayk20")
 
 [node name="Blender" parent="." instance=ExtResource("26_73vp0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41481, 1.00476, 0.265374)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.415, 1.11, 0.265)
 
 [node name="StrawberryCrate" parent="." instance=ExtResource("24_0muow")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39215, 1.00476, -1.60759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.392, 1.11, -1.608)
 fruit = ExtResource("27_mhydv")
 
 [node name="BananaCrate" parent="." instance=ExtResource("24_0muow")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38644, 1.00476, -2.37517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.386, 1.11, -2.375)
 fruit = ExtResource("28_kmixj")
 
 [node name="WhippedCream" parent="." instance=ExtResource("29_ahvpv")]
