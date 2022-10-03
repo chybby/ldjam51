@@ -7,29 +7,46 @@ var packed_scene = load("res://scenes/CupDispenser.tscn")
 @export var cup : PackedScene = null
 @export var cup_size : Cup.CupSize = Cup.CupSize.MEDIUM
 
+@onready var cup_sprite = $CupSprite
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
-    var child_scale
-    match cup_size:
-        Cup.CupSize.SMALL:
-            child_scale = 0.6
-        Cup.CupSize.MEDIUM:
-            child_scale = 1
-        Cup.CupSize.LARGE:
-            child_scale = 1.4
-    $Model.scale = Vector3.ONE * child_scale
-    $Model.position *= child_scale
-    $Collision.scale = Vector3.ONE * child_scale
-    $Collision.position *= child_scale
+    # var child_scale
+    # match cup_size:
+    #     Cup.CupSize.SMALL:
+    #         child_scale = 0.6
+    #     Cup.CupSize.MEDIUM:
+    #         child_scale = 1
+    #     Cup.CupSize.LARGE:
+    #         child_scale = 1.4
+    # $Model.scale = Vector3.ONE * child_scale
+    # $Model.position *= child_scale
+    # $Collision.scale = Vector3.ONE * child_scale
+    # $Collision.position *= child_scale
 
     item_name = "%s Cup Dispenser" % size_name()
     description = "A stack of %s cups" % size_name().to_lower()
-    #TODO: add cup icon
-    description_image_path = null
+    description_image_path = get_cup_icon_path(cup_size)
+
+    var sprite_image = Image.load_from_file(get_cup_sprite_path(cup_size))
+    var sprite_texture = ImageTexture.create_from_image(sprite_image)
+    cup_sprite.texture = sprite_texture
+
+func get_cup_icon_path(order_cup_size):
+    match order_cup_size:
+        Cup.CupSize.SMALL: return 'res://assets/smallcup.png'
+        Cup.CupSize.MEDIUM: return 'res://assets/mediumcup.png'
+        Cup.CupSize.LARGE: return 'res://assets/largecup.png'
+
+func get_cup_sprite_path(order_cup_size):
+    match order_cup_size:
+        Cup.CupSize.SMALL: return 'res://assets/empty_small_cup.png'
+        Cup.CupSize.MEDIUM: return 'res://assets/emptymediumcup.png'
+        Cup.CupSize.LARGE: return 'res://assets/empty_large_cup.png'
 
 func size_name():
     match cup_size:
@@ -39,7 +56,6 @@ func size_name():
             return "Medium"
         Cup.CupSize.LARGE:
             return "Large"
-
 
 func on_interact(character, item, _interact_position):
     if item != self:
@@ -52,7 +68,6 @@ func on_interact(character, item, _interact_position):
 
     var new_cup = cup.instantiate()
     new_cup.set_size(cup_size)
-    #TODO: add to interactables list? do we need it?
     character.connect('focus_changed', new_cup.on_focus_changed)
     character.connect('interacted_with', new_cup.on_interact)
     character.hold_item(new_cup)

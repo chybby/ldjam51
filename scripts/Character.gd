@@ -109,6 +109,7 @@ func hold_item(item):
     item.rotation = Vector3.ZERO
     item.freeze = true
     item.set_collision_layer(0)
+    item.sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 
 func release_item():
     if held_item == null:

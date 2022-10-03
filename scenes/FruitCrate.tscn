@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4oekqkcrc1h1"]
+[gd_scene load_steps=9 format=3 uid="uid://c4oekqkcrc1h1"]
 
 [ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_o2pux"]
 [ext_resource type="Script" path="res://scripts/FruitCrate.gd" id="2_fkcx6"]
+[ext_resource type="Texture2D" uid="uid://dqj20u2b0mj61" path="res://assets/banana.png" id="3_61gc7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hpecr"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -64,3 +65,11 @@ shape = SubResource("BoxShape3D_hpecr")
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("BoxMesh_qyikv")
+
+[node name="FruitSprite" type="Sprite3D" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.250946, 0.144835, 0)
+centered = false
+offset = Vector2(-8, 0)
+pixel_size = 0.014
+texture_filter = 0
+texture = ExtResource("3_61gc7")

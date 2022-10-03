@@ -8,6 +8,7 @@ var shader_material : ShaderMaterial = null
 
 var item_name = null
 var description = null
+var flavour = ""
 var description_image_path = null
 
 var initial_position

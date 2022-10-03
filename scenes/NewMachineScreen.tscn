@@ -60,7 +60,6 @@ theme = ExtResource("1_4ckg1")
 script = ExtResource("2_eihi0")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -69,7 +68,6 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_jmwke")
 
 [node name="Title" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -84,7 +82,6 @@ text = "New Machine:"
 horizontal_alignment = 1
 
 [node name="MachineImage" type="SubViewportContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -120,7 +117,6 @@ libraries = {
 }
 
 [node name="MachineName" type="Label" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -137,8 +133,24 @@ theme_override_font_sizes/font_size = 60
 text = "Espresso Machine"
 horizontal_alignment = 1
 
+[node name="Flavour" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -137.0
+offset_right = 246.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "\"It's so bad\""
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -153,13 +165,11 @@ grow_vertical = 2
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-layout_mode = 2
 offset_right = 273.0
 offset_bottom = 100.0
 theme_override_constants/margin_right = 20
 
 [node name="Description" type="Label" parent="HBoxContainer/MarginContainer"]
-layout_mode = 2
 offset_top = 13.0
 offset_right = 253.0
 offset_bottom = 87.0
@@ -170,7 +180,6 @@ text = "Produces"
 [node name="DescriptionImage" type="TextureRect" parent="HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2i(100, 100)
-layout_mode = 2
 offset_left = 277.0
 offset_right = 377.0
 offset_bottom = 100.0

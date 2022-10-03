@@ -72,10 +72,9 @@ cup_size = 0
 [node name="CupDispenserMedium" parent="." instance=ExtResource("13_bxrsi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, -1.27966)
 cup = ExtResource("7_0xsu6")
-cup_size = 1
 
 [node name="CupDispenserLarge" parent="." instance=ExtResource("13_bxrsi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, -1.71575)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354463, 1.02097, -1.59685)
 cup = ExtResource("7_0xsu6")
 cup_size = 2
 

@@ -1,32 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpp32el77bcoc"]
+[gd_scene load_steps=6 format=3 uid="uid://cpp32el77bcoc"]
 
 [ext_resource type="PackedScene" uid="uid://sk0hd52ccxyu" path="res://scenes/HoldableItem.tscn" id="1_nlfqa"]
 [ext_resource type="Script" path="res://scripts/MilkJug.gd" id="2_qvqwn"]
-[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_2use3"]
+[ext_resource type="Texture2D" uid="uid://n5yrc43vd1b6" path="res://assets/milk_frother.png" id="4_uq1dx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_euptx"]
 height = 0.15
 radius = 0.07
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwuph"]
-render_priority = 0
-shader = ExtResource("3_2use3")
-shader_parameter/color = null
-shader_parameter/enable = null
-shader_parameter/outline_thickness = null
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1iq7a"]
-next_pass = SubResource("ShaderMaterial_kwuph")
-albedo_color = Color(0.560784, 0.560784, 0.560784, 1)
-metallic = 0.69
-metallic_specular = 0.81
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_0xw0x"]
-material = SubResource("StandardMaterial3D_1iq7a")
-top_radius = 0.07
-bottom_radius = 0.05
-height = 0.15
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmkoy"]
+atlas = ExtResource("4_uq1dx")
+region = Rect2(0, 0, 40, 64)
 
 [node name="MilkJug" instance=ExtResource("1_nlfqa")]
 script = ExtResource("2_qvqwn")
@@ -37,4 +21,8 @@ shape = SubResource("CylinderShape3D_euptx")
 
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
-mesh = SubResource("CylinderMesh_0xw0x")
+
+[node name="Sprite3d" parent="." index="2"]
+offset = Vector2(-20, 0)
+pixel_size = 0.006
+texture = SubResource("AtlasTexture_nmkoy")

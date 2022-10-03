@@ -39,7 +39,7 @@ var drink_order
 @onready var patience_timer : Timer = $PatienceTimer
 
 @onready var cup_detection_area = $CupDetectionArea
-@onready var cup_position = $CupPosition
+@onready var cup_position = $CupDetectionArea/CupPosition
 
 var has_drink = false
 
@@ -150,6 +150,8 @@ func _physics_process(_delta):
 
     var target = nav_agent.get_next_location()
     var pos = get_global_transform().origin
+
+    #print(speed)
 
     var new_vel : Vector3 = (target-pos).normalized() * speed
     nav_agent.set_velocity(new_vel)

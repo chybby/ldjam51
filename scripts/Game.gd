@@ -65,14 +65,8 @@ var game_paused = false
 
 var day = 0
 
-# TODO: Stop spawning customers when the morning is over. Stop the morning when the last customer leaves.
-# TODO: Each morning:
-#   - Add some new machine (some kind of screen showing what was added?)
-#   - In addition to new ingredients, make orders a little more complicated (more ingredients per order, higher counts per ingredient).
-#   - Clean up any yeeted things on the floor
-
+# TODO: make orders a little more complicated each day (more ingredients per order, higher counts per ingredient).
 # TODO: title screen + options (volume, mouse sensitivity, fullscreen?)
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -109,7 +103,7 @@ func _ready():
     print(spots)
 
     # TODO: remove, only for debugging
-    #spawn_customer()
+    spawn_customer()
 
 func trash_item(item):
     add_child(item)

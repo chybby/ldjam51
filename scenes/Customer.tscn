@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cr33lnn25ik5q"]
 
 [ext_resource type="Script" path="res://scripts/Customer.gd" id="1_e1xt5"]
-[ext_resource type="SpriteFrames" uid="uid://x74vv3setn6" path="res://resources/HipsterFrames.tres" id="2_8xpbo"]
+[ext_resource type="SpriteFrames" uid="uid://cya1gx81tsn2r" path="res://resources/KarenFrames.tres" id="2_snt0s"]
 [ext_resource type="PackedScene" uid="uid://d1qw1scln4uv6" path="res://scenes/OrderDisplay.tscn" id="5_b0d0k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b0tom"]
@@ -27,9 +27,6 @@ fill_to = Vector2(0.128205, 0.824786)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_e1xt5")
-speed = null
-patience = null
-patence_lost_on_wrong_order = null
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -42,7 +39,8 @@ offset = Vector2(-30, 0)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-frames = ExtResource("2_8xpbo")
+render_priority = -1
+frames = ExtResource("2_snt0s")
 animation = &"angry_run"
 playing = true
 
@@ -97,8 +95,8 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_466dc")
 
-[node name="CupPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.477877, 0.907865, -0.446181)
+[node name="CupPosition" type="Marker3D" parent="CupDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.503534, 0.911065, -0.542922)
 
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0)

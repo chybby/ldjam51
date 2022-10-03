@@ -15,8 +15,8 @@ func _ready():
 
     item_name = "Milk Frother"
     description = "Froths milk"
-    #TODO: add frothing icon
-    description_image_path = null
+    description_image_path = "res://assets/frothed.png"
+    flavour = '"Handy for customers frothing over milk"'
 
 func on_interact(character, item, interact_position):
     if item != self:

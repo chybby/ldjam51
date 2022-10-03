@@ -8,6 +8,8 @@ const BlenderJug = preload("res://scripts/BlenderJug.gd")
 
 enum CupSize {SMALL, MEDIUM, LARGE}
 
+@onready var cup_sprite = $Sprite3d
+
 var ingredients = IngredientList.new()
 var size = CupSize.MEDIUM
 
@@ -18,6 +20,11 @@ func _ready():
         shader_material = $Model.mesh.material.next_pass
 
     item_name = "%s Cup" % size_name()
+
+    var sprite_path = get_sprite_path()
+    var image = Image.load_from_file(sprite_path)
+    var texture = ImageTexture.create_from_image(image)
+    cup_sprite.texture = texture
 
 func size_name():
     match size:
@@ -48,23 +55,41 @@ func add_ingredient(ingredient):
     ingredients.add_ingredient(ingredient)
     print('Cup has ingredients: %s' % ingredients)
 
+func get_sprite_path():
+    match size:
+        CupSize.SMALL: return 'res://assets/empty_small_cup.png'
+        CupSize.MEDIUM: return 'res://assets/emptymediumcup.png'
+        CupSize.LARGE: return 'res://assets/empty_large_cup.png'
+
+func get_icon_path():
+    match size:
+        CupSize.SMALL: return 'res://assets/smallcup.png'
+        CupSize.MEDIUM: return 'res://assets/mediumcup.png'
+        CupSize.LARGE: return 'res://assets/largecup.png'
+
 func get_size():
     return size
 
 func set_size(new_size):
     self.size = new_size
 
-    var child_scale
-    match new_size:
-        CupSize.SMALL:
-            child_scale = 0.6
-        CupSize.MEDIUM:
-            child_scale = 1
-        CupSize.LARGE:
-            child_scale = 1.4
-    $Model.scale = Vector3.ONE * child_scale
-    $Model.position *= child_scale
-    $Collision.scale = Vector3.ONE * child_scale
-    $Collision.position *= child_scale
+    # var child_scale
+    # match new_size:
+    #     CupSize.SMALL:
+    #         child_scale = 0.6
+    #     CupSize.MEDIUM:
+    #         child_scale = 1
+    #     CupSize.LARGE:
+    #         child_scale = 1.4
+    # $Model.scale = Vector3.ONE * child_scale
+    # $Model.position *= child_scale
+    # $Collision.scale = Vector3.ONE * child_scale
+    # $Collision.position *= child_scale
 
     item_name = "%s Cup" % size_name()
+
+    if cup_sprite:
+        var sprite_path = get_sprite_path()
+        var image = Image.load_from_file(sprite_path)
+        var texture = ImageTexture.create_from_image(image)
+        cup_sprite.texture = texture

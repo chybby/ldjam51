@@ -14,6 +14,7 @@ func _ready():
     item_name = "Caramel Syrup Pump"
     description = "Dispenses Caramel Syrup"
     description_image_path = ingredient.icon_file_name()
+    flavour = '"It\'ll cara-MELt in your mouth"'
 
 func on_interact(character, item, interact_position):
     if item != self:

@@ -1,9 +1,12 @@
 extends Control
 
+const CupDispenser = preload("res://scripts/CupDispenser.gd")
+
 @onready var machine_position : Marker3D = $MachineImage/SubViewport/MachinePosition
 @onready var machine_name : Label = $MachineName
 @onready var description : Label = $HBoxContainer/MarginContainer/Description
 @onready var description_image : TextureRect = $HBoxContainer/DescriptionImage
+@onready var flavour : Label = $Flavour
 
 signal next_screen
 
@@ -17,7 +20,12 @@ func _input(event):
 func set_machine(machine):
     machine_name.text = machine.get_name()
 
-    machine_position.add_child(machine.packed_scene.instantiate())
+    var clone = machine.packed_scene.instantiate()
+
+    if machine is CupDispenser:
+        clone.cup_size = machine.cup_size
+
+    machine_position.add_child(clone)
 
     description.text = machine.get_description()
 
@@ -28,6 +36,8 @@ func set_machine(machine):
         description_image.texture = texture
     else:
         description_image.visible = false
+
+    flavour.text = machine.flavour
 
 func unset_machine():
     machine_position.remove_child(machine_position.get_children()[0])

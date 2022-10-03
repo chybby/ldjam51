@@ -2,6 +2,7 @@ extends Control
 
 @onready var ingredient_icon : TextureRect = $IngredientIcon
 @onready var ingredient_name : Label = $IngredientName
+@onready var flavour : Label = $Flavour
 
 signal next_screen
 
@@ -19,3 +20,5 @@ func set_ingredient(ingredient):
     var image = Image.load_from_file(ingredient.icon_file_name())
     var texture = ImageTexture.create_from_image(image)
     ingredient_icon.texture = texture
+
+    flavour.text = ingredient.get_flavour()

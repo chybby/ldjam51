@@ -14,6 +14,7 @@ func _ready():
     item_name = "Hot Water Tap"
     description = "Dispenses Hot Water"
     description_image_path = ingredient.icon_file_name()
+    flavour = '"Be careful, it\'s hot"'
 
 func on_interact(character, item, interact_position):
     if item != self:

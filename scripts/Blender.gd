@@ -15,8 +15,8 @@ func _ready():
 
     item_name = "Blender"
     description = "Blends fruit and ice"
-    #TODO: add blending icon
-    description_image_path = null
+    description_image_path = "res://assets/blended.png"
+    flavour = '"Smoother than Frankie Sinatra"'
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

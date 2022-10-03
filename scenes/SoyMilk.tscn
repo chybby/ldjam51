@@ -15,9 +15,6 @@ script = ExtResource("2_8hesc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175, 0)
 shape = SubResource("CylinderShape3D_q5omq")
 
-[node name="Model" parent="." index="1"]
-mesh = null
-
 [node name="Sprite3d" parent="." index="2"]
 offset = Vector2(-20, 0)
 pixel_size = 0.006

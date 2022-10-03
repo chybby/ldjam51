@@ -1,31 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwq13ftiub2xv"]
+[gd_scene load_steps=5 format=3 uid="uid://bwq13ftiub2xv"]
 
 [ext_resource type="PackedScene" uid="uid://7b0lbbst2ejy" path="res://scenes/Fruit.tscn" id="1_7mi7g"]
 [ext_resource type="Script" path="res://scripts/Strawberry.gd" id="2_uj83c"]
-[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_e80qs"]
+[ext_resource type="Texture2D" uid="uid://bt83pbqgyagwm" path="res://assets/strawberry.png" id="3_vedp5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sqbhn"]
 radius = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_agdpq"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_e80qs")
-shader_parameter/color = null
-shader_parameter/enable = null
-shader_parameter/outline_thickness = null
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6i3yd"]
-resource_local_to_scene = true
-next_pass = SubResource("ShaderMaterial_agdpq")
-albedo_color = Color(1, 0.12549, 0.141176, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_k5ut5"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_6i3yd")
-radius = 0.05
-height = 0.1
 
 [node name="Strawberry" instance=ExtResource("1_7mi7g")]
 script = ExtResource("2_uj83c")
@@ -36,4 +16,8 @@ shape = SubResource("SphereShape3D_sqbhn")
 
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
-mesh = SubResource("SphereMesh_k5ut5")
+
+[node name="Sprite3d" parent="." index="2"]
+offset = Vector2(-8, 0)
+pixel_size = 0.006
+texture = ExtResource("3_vedp5")

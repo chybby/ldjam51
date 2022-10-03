@@ -71,6 +71,23 @@ func icon_file_name():
         IngredientType.BANANA: return 'res://assets/banana.png'
         IngredientType.WHIPPED_CREAM: return 'res://assets/whipped_cream.png'
 
+func get_flavour():
+    match ingredient_type:
+        IngredientType.ESPRESSO_SHOT: return ''
+        IngredientType.HOT_WATER: return ''
+        IngredientType.ICE: return ''
+        IngredientType.CARAMEL_SYRUP: return ''
+        IngredientType.HAZELNUT_SYRUP: return ''
+        IngredientType.VANILLA_SYRUP: return ''
+        IngredientType.WHOLE_MILK: return '"The entirety of milk"'
+        IngredientType.SKIMMED_MILK: return '"Just the top of the milk"'
+        IngredientType.OAT_MILK: return '"Milked from free-range oats"'
+        IngredientType.SOY_MILK: return '"From cows that eat only soy beans"'
+        IngredientType.MANGO: return ''
+        IngredientType.STRAWBERRY: return ''
+        IngredientType.BANANA: return '"Not just for monkeys"'
+        IngredientType.WHIPPED_CREAM: return ''
+
 func get_name():
     var ingredient_desc
     match ingredient_type:
