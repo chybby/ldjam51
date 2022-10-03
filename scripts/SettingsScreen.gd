@@ -5,7 +5,7 @@ signal settings_closed
 
 @onready var main_menu_scene = %MainMenu
 
-var fromMainMenu
+var fromMainMenu = false
 
 func _input(event):
     if not visible:
@@ -32,6 +32,8 @@ func _on_mouse_sensitivity_slider_value_changed(value:float):
 func _on_volume_slider_value_changed(value:float):
     AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 
-
 func _on_return_button_pressed():
-    ReturnToMainMenu()
+    if(fromMainMenu) :
+        ReturnToMainMenu()
+    else:
+        settings_closed.emit()
