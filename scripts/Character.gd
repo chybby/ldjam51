@@ -119,6 +119,7 @@ func release_item():
     held_item.set_collision_layer(1)
     held_item.rotation = self.rotation
     var previously_held_item = held_item
+    held_item.sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
     held_item = null
     return previously_held_item
 

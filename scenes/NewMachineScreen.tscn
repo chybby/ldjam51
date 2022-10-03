@@ -87,10 +87,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -129.0
-offset_top = -121.5
-offset_right = 129.0
-offset_bottom = 121.5
+offset_left = -218.0
+offset_top = -253.0
+offset_right = 212.0
+offset_bottom = 177.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -98,17 +98,17 @@ grow_vertical = 2
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(350, 350)
+size = Vector2i(430, 430)
 render_target_update_mode = 4
 
 [node name="Camera3d" type="Camera3D" parent="MachineImage/SubViewport"]
-transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939693, 0.34202, -0.707107, -0.241845, 0.664463, 0.7, 0.7, 0.7)
-fov = 60.6645
+transform = Transform3D(0.707107, -0.0984103, 0.700225, 0, 0.990268, 0.139173, -0.707107, -0.0984103, 0.700225, 0.7, 0.7, 0.7)
+fov = 85.0
+
+[node name="SpotLight3d" type="SpotLight3D" parent="MachineImage/SubViewport/Camera3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 3.57628e-07, 0, -3.27826e-07, 1, 0, 0, 0)
 
 [node name="MachinePosition" type="Marker3D" parent="MachineImage/SubViewport"]
-
-[node name="SpotLight3d" type="SpotLight3D" parent="MachineImage/SubViewport"]
-transform = Transform3D(0.707107, -0.241845, 0.664463, 0, 0.939692, 0.34202, -0.707107, -0.241845, 0.664463, 0.7, 0.7, 0.7)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MachineImage/SubViewport"]
 autoplay = "rotate"
@@ -122,10 +122,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -248.0
-offset_right = 113.0
-offset_bottom = -174.0
+offset_left = -245.0
+offset_top = -327.0
+offset_right = 246.0
+offset_bottom = -253.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

@@ -112,7 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42356, 1.00476, 1.75197)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430739, 1.0055, 0.556475)
 
 [node name="MangoCrate" parent="." instance=ExtResource("24_0muow")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39609, 1.00476, -0.906491)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39609, 1.00476, -0.838336)
 fruit = ExtResource("25_ayk20")
 
 [node name="Blender" parent="." instance=ExtResource("26_73vp0")]
@@ -123,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39215, 1.00476, -1.60759)
 fruit = ExtResource("27_mhydv")
 
 [node name="BananaCrate" parent="." instance=ExtResource("24_0muow")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38644, 1.00476, -2.30077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38644, 1.00476, -2.37517)
 fruit = ExtResource("28_kmixj")
 
 [node name="WhippedCream" parent="." instance=ExtResource("29_ahvpv")]

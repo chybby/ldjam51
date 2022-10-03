@@ -3,6 +3,8 @@ extends "res://scripts/InteractableItem.gd"
 @export var fruit : PackedScene = null
 
 @onready var fruit_sprite = $FruitSprite
+@onready var fruit_sprite2 = $FruitSprite2
+@onready var fruit_sprite3 = $FruitSprite3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +15,8 @@ func _ready():
     var sprite_image = Image.load_from_file(fruit.instantiate().ingredient.icon_file_name())
     var sprite_texture = ImageTexture.create_from_image(sprite_image)
     fruit_sprite.texture = sprite_texture
+    fruit_sprite2.texture = sprite_texture
+    fruit_sprite3.texture = sprite_texture
 
     item_name = "%s Crate" % fruit.instantiate().name
 

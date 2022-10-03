@@ -1,32 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://codlwl36pjbek"]
+[gd_scene load_steps=5 format=3 uid="uid://codlwl36pjbek"]
 
 [ext_resource type="PackedScene" uid="uid://b1uslt04daxhj" path="res://scenes/Machine.tscn" id="1_py768"]
 [ext_resource type="Script" path="res://scripts/HotWaterDispenser.gd" id="2_dopij"]
-[ext_resource type="Shader" path="res://resources/interact.gdshader" id="2_ve68q"]
+[ext_resource type="PackedScene" uid="uid://d2n7cpg5j53ae" path="res://models/hot_water_dispenser.glb" id="3_mlwr7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_amr8r"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4g08c"]
-render_priority = 0
-shader = ExtResource("2_ve68q")
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmpie"]
-next_pass = SubResource("ShaderMaterial_4g08c")
-albedo_color = Color(0, 0.333333, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jcnqb"]
-material = SubResource("StandardMaterial3D_dmpie")
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.0769731, 0.720352, 0.215781)
 
 [node name="HotWaterDispenser" instance=ExtResource("1_py768")]
 script = ExtResource("2_dopij")
 
 [node name="Collision" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0672548, 0.395606, 0.00671078)
 shape = SubResource("BoxShape3D_amr8r")
 
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_jcnqb")
+
+[node name="hot_water_dispenser" parent="." index="2" instance=ExtResource("3_mlwr7")]
+transform = Transform3D(-1.5299e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5299e-08, 0, 0, 0)

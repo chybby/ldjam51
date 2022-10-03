@@ -2,6 +2,8 @@ extends "res://scripts/InteractableItem.gd"
 
 #TODO: animate fridge door
 
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+
 var is_open = false
 
 # Called when the node enters the scene tree for the first time.
@@ -25,9 +27,9 @@ func on_interact(_character, item, _interact_position):
         open()
 
 func close():
-    rotation.y = 0
+    animation_player.play_backwards('door_open')
     is_open = false
 
 func open():
-    rotation.y = deg_to_rad(-135)
+    animation_player.play('door_open')
     is_open = true

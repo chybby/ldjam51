@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bavt107fu0hh1" path="res://assets/mango.png" id="3_05g4c"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_olf60"]
-radius = 0.1
+radius = 0.113064
 
 [node name="Mango" instance=ExtResource("1_sq3ci")]
 script = ExtResource("2_7a7uw")
 
 [node name="Collision" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018773, 0.11297, 0)
 shape = SubResource("SphereShape3D_olf60")
 
 [node name="Model" parent="." index="1"]

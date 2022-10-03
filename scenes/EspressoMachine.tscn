@@ -1,23 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1vbgarh1j3h"]
+[gd_scene load_steps=5 format=3 uid="uid://c1vbgarh1j3h"]
 
 [ext_resource type="PackedScene" uid="uid://b1uslt04daxhj" path="res://scenes/Machine.tscn" id="1_gdwb4"]
-[ext_resource type="Shader" path="res://resources/interact.gdshader" id="2_ole1f"]
 [ext_resource type="Script" path="res://scripts/EspressoMachine.gd" id="2_qgo6i"]
+[ext_resource type="PackedScene" uid="uid://c4m2fvxd8fv3o" path="res://models/espresso_machine.glb" id="4_pw7cx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ytvgf"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4vcr"]
-render_priority = 0
-shader = ExtResource("2_ole1f")
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6sj3"]
-next_pass = SubResource("ShaderMaterial_b4vcr")
-albedo_color = Color(1, 0, 0.196078, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_372lo"]
-material = SubResource("StandardMaterial3D_e6sj3")
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="EspressoMachine" instance=ExtResource("1_gdwb4")]
@@ -29,4 +16,6 @@ shape = SubResource("BoxShape3D_ytvgf")
 
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_372lo")
+
+[node name="espresso_machine" parent="." index="2" instance=ExtResource("4_pw7cx")]
+transform = Transform3D(-1.5299e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5299e-08, 0, 0, -0.0136486)

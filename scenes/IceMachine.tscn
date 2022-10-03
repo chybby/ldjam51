@@ -1,35 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpxby7m167y0f"]
+[gd_scene load_steps=5 format=3 uid="uid://cpxby7m167y0f"]
 
 [ext_resource type="PackedScene" uid="uid://b1uslt04daxhj" path="res://scenes/Machine.tscn" id="1_vljws"]
 [ext_resource type="Script" path="res://scripts/IceMachine.gd" id="2_vt3yh"]
-[ext_resource type="Shader" path="res://resources/interact.gdshader" id="3_1sj7h"]
+[ext_resource type="PackedScene" uid="uid://cl23c17rl5ltn" path="res://models/ice_machine.glb" id="3_dh84k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sylsm"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbsyt"]
-render_priority = 0
-shader = ExtResource("3_1sj7h")
-shader_parameter/color = null
-shader_parameter/enable = null
-shader_parameter/outline_thickness = null
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sdvi"]
-next_pass = SubResource("ShaderMaterial_dbsyt")
-albedo_color = Color(0.376471, 0.909804, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dvkuh"]
-material = SubResource("StandardMaterial3D_8sdvi")
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.5, 1.10822, 0.5)
 
 [node name="IceMachine" instance=ExtResource("1_vljws")]
 script = ExtResource("2_vt3yh")
 
 [node name="Collision" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.580352, 0)
 shape = SubResource("BoxShape3D_sylsm")
 
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_dvkuh")
+
+[node name="ice_machine" parent="." index="2" instance=ExtResource("3_dh84k")]
+transform = Transform3D(-0.35, 0, -3.0598e-08, 0, 0.35, 0, 3.0598e-08, 0, -0.35, 0, 0, 0)

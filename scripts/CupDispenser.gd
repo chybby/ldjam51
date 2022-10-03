@@ -8,6 +8,8 @@ var packed_scene = load("res://scenes/CupDispenser.tscn")
 @export var cup_size : Cup.CupSize = Cup.CupSize.MEDIUM
 
 @onready var cup_sprite = $CupSprite
+@onready var cup_sprite2 = $CupSprite2
+@onready var cup_sprite3 = $CupSprite3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +37,8 @@ func _ready():
     var sprite_image = Image.load_from_file(get_cup_sprite_path(cup_size))
     var sprite_texture = ImageTexture.create_from_image(sprite_image)
     cup_sprite.texture = sprite_texture
+    cup_sprite2.texture = sprite_texture
+    cup_sprite3.texture = sprite_texture
 
 func get_cup_icon_path(order_cup_size):
     match order_cup_size:

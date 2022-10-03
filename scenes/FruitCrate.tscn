@@ -1,75 +1,50 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4oekqkcrc1h1"]
+[gd_scene load_steps=6 format=3 uid="uid://c4oekqkcrc1h1"]
 
 [ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_o2pux"]
 [ext_resource type="Script" path="res://scripts/FruitCrate.gd" id="2_fkcx6"]
 [ext_resource type="Texture2D" uid="uid://dqj20u2b0mj61" path="res://assets/banana.png" id="3_61gc7"]
+[ext_resource type="PackedScene" uid="uid://bish8g674mwk8" path="res://models/crate.glb" id="4_pcx16"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hpecr"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="Shader" id="Shader_d40jh"]
-resource_local_to_scene = true
-code = "shader_type spatial;
-uniform float strength = 0.5;
-
-render_mode unshaded, cull_front;
-
-uniform bool enable = false;
-uniform float outline_thickness = 0.01;
-uniform vec4 color = vec4(0.88, 1.0, 0.0, 0.5);
-
-void vertex() {
-	if (enable) {
-        VERTEX += normalize(VERTEX) * outline_thickness;
-        // Make the outline not clip into the ground...
-        VERTEX.y += outline_thickness;
-	}
-}
-
-void fragment() {
-    if (enable) {
-        ALBEDO = color.rgb;
-        ALPHA = strength;
-	} else {
-        ALPHA = 0.0;
-    }
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mk53t"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_d40jh")
-shader_parameter/color = null
-shader_parameter/enable = null
-shader_parameter/outline_thickness = null
-shader_parameter/strength = null
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dsx8"]
-resource_local_to_scene = true
-next_pass = SubResource("ShaderMaterial_mk53t")
-albedo_color = Color(0.517647, 0.313726, 0.0901961, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qyikv"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_5dsx8")
-size = Vector3(0.5, 0.5, 0.5)
+size = Vector3(0.660444, 0.280639, 0.729542)
 
 [node name="FruitCrate" instance=ExtResource("1_o2pux")]
 script = ExtResource("2_fkcx6")
 fruit = null
 
 [node name="Collision" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14066, 0)
 shape = SubResource("BoxShape3D_hpecr")
 
 [node name="Model" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-mesh = SubResource("BoxMesh_qyikv")
 
 [node name="FruitSprite" type="Sprite3D" parent="." index="2"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.250946, 0.144835, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0474256, 0.144835, -0.121904)
 centered = false
 offset = Vector2(-8, 0)
 pixel_size = 0.014
+billboard = 2
 texture_filter = 0
 texture = ExtResource("3_61gc7")
+
+[node name="FruitSprite2" type="Sprite3D" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0806254, 0.144835, 0.13553)
+centered = false
+offset = Vector2(-8, 0)
+pixel_size = 0.014
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_61gc7")
+
+[node name="FruitSprite3" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.142912, 0.0619255, -0.0338892)
+centered = false
+offset = Vector2(-8, 0)
+pixel_size = 0.014
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_61gc7")
+
+[node name="crate" parent="." index="5" instance=ExtResource("4_pcx16")]
+transform = Transform3D(-1.5299e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5299e-08, -0.238262, 0.0242485, 0)

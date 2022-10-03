@@ -12,6 +12,9 @@ size = Vector3(1, 2, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o37rv"]
 render_priority = 0
 shader = ExtResource("2_mmf4u")
+shader_parameter/color = null
+shader_parameter/enable = null
+shader_parameter/outline_thickness = null
 shader_parameter/strength = null
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve57o"]
@@ -85,4 +88,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33525, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0485696, 0)
 
 [node name="FridgeDoor" parent="." index="5" instance=ExtResource("5_yh6mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0.5)
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, -0.50753, 1, 0.49103)

@@ -40,7 +40,6 @@ offset = Vector2(-30, 0)
 pixel_size = 0.03
 billboard = 2
 texture_filter = 0
-render_priority = -1
 frames = ExtResource("2_snt0s")
 animation = &"angry_run"
 playing = true
@@ -97,7 +96,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_466dc")
 
 [node name="CupPosition" type="Marker3D" parent="CupDetectionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.503534, 0.911065, -0.542922)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522024, 0.911065, -0.618566)
 
 [node name="Shadow" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0)

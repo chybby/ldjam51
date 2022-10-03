@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://n5yrc43vd1b6" path="res://assets/milk_frother.png" id="4_uq1dx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_euptx"]
-height = 0.15
-radius = 0.07
+height = 0.208915
+radius = 0.0804437
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmkoy"]
 atlas = ExtResource("4_uq1dx")
@@ -16,7 +16,7 @@ region = Rect2(0, 0, 40, 64)
 script = ExtResource("2_qvqwn")
 
 [node name="Collision" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0753272, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104463, 0)
 shape = SubResource("CylinderShape3D_euptx")
 
 [node name="Model" parent="." index="1"]
