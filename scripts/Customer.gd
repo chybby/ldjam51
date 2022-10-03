@@ -216,6 +216,7 @@ func _on_area_3d_body_entered(body : Node3D):
 
         if drink_order.is_fulfilled_by(body):
             receive_drink(body)
+            body.pick_up()
         else:
             incorrect_particles.enable()
             if (patience_timer.time_left - patence_lost_on_wrong_order) <= 0:

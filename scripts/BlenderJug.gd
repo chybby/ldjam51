@@ -46,14 +46,20 @@ func on_interact(character, item, _interact_position):
     print('%s blender jug interacted with' % self)
 
 func add_ingredient(ingredient):
-    contents.visible = true
     ingredients.add_ingredient(ingredient)
+    contents.visible = true
+    var color = ingredients.get_unblended_color()
+    contents.modulate = color
+    color = ingredients.get_blended_color()
+    blended_contents.modulate = color
     print('blender jug has: %s' % ingredients)
 
 func blend_contents():
     ingredients.blend()
     blended_contents.visible = true
     contents.visible = false
+    var color = ingredients.get_color()
+    blended_contents.modulate = color
 
     print('blender jug has: %s' % ingredients)
 

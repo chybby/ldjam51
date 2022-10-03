@@ -39,6 +39,9 @@ func add_ingredient(ingredient):
     $SoundPour.play()
     contents.visible = true
     ingredients.add_ingredient(ingredient)
+    var color = ingredients.get_color()
+    contents.modulate = color
+    frothed_contents.modulate = color
     print('milk jug has: %s' % ingredients)
 
 func froth_contents():

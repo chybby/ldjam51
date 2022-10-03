@@ -63,13 +63,58 @@ func equals(other):
 
     return true
 
+func mix_colors(colors):
+    var r = 0
+    var g = 0
+    var b = 0
+    var k = 0
+    var count = 0
+    for color in colors:
+        r += color.r * 255
+        g += color.g * 255
+        b += color.b * 255
+        count += 1
+    if count == 0:
+        return Color8(255, 255, 255)
+
+    return Color8(int(r/count), int(g/count), int(b/count))
+
+func get_color():
+    if ingredient_counts.size() == 0:
+        return Color8(255, 255, 255)
+    var colors = Array()
+    for ingredient_count in ingredient_counts:
+        for i in ingredient_count[1]:
+            colors.append(ingredient_count[0].get_color())
+    return mix_colors(colors)
+
+func get_blended_color():
+    if ingredient_counts.size() == 0:
+        return Color8(255, 255, 255)
+    var colors = Array()
+    for ingredient_count in ingredient_counts:
+        if ingredient_count[0].blended:
+            for i in ingredient_count[1]:
+                colors.append(ingredient_count[0].get_color())
+    return mix_colors(colors)
+
+func get_unblended_color():
+    if ingredient_counts.size() == 0:
+        return Color8(255, 255, 255)
+    var colors = Array()
+    for ingredient_count in ingredient_counts:
+        if not ingredient_count[0].blended:
+            for i in ingredient_count[1]:
+                colors.append(ingredient_count[0].get_color())
+    return mix_colors(colors)
+
 func has_ingredient(ingredient):
     for ingredient_count in ingredient_counts:
         if ingredient_count[0].equals(ingredient):
             return true
 
     return false
-    
+
 func get_ingredient_count(ingredient):
     for ingredient_count in ingredient_counts:
         if ingredient_count[0].equals(ingredient):

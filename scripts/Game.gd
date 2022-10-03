@@ -82,11 +82,11 @@ func _ready():
 
     for interactable in get_tree().get_nodes_in_group('interactable'):
         interactable.set_initial_position()
-        if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is FridgeDoor or interactable is RubbishBin or interactable is Surface or interactable is BlenderJug or interactable is MilkJug or interactable is MilkFrother or interactable is Milk or interactable is WhippedCream or interactable is Blender or interactable is FruitCrate):
-            disable_interactable(interactable)
+        if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is FridgeDoor or interactable is RubbishBin or interactable is Surface or interactable is BlenderJug or interactable is MilkJug):
+            pass#disable_interactable(interactable)
 
         if interactable is CupDispenser and interactable.cup_size != Cup.CupSize.MEDIUM:
-            disable_interactable(interactable)
+            pass#disable_interactable(interactable)
 
         character.connect('focus_changed', interactable.on_focus_changed)
         character.connect('interacted_with', interactable.on_interact)
@@ -181,8 +181,7 @@ func unlock_machine(new_day):
             machine = hot_water_dispenser
             ingredient = hot_water_dispenser.ingredient
         2:
-            machine = ice_machine
-            ingredient = ice_machine.ingredient
+            machine = null
         3:
             machine = milk_frother
         4:
@@ -195,7 +194,8 @@ func unlock_machine(new_day):
         7:
             machine = blender
         8:
-            machine = null
+            machine = ice_machine
+            ingredient = ice_machine.ingredient
         9:
             machine = null
         10:
@@ -229,7 +229,8 @@ func unlock_ingredient(new_day):
         1:
             interactable = null
         2:
-            interactable = null
+            interactable = whipped_cream
+            ingredient = whipped_cream.ingredient
         3:
             interactable = whole_milk
             ingredient = whole_milk.ingredient
@@ -244,8 +245,7 @@ func unlock_ingredient(new_day):
             interactable = banana_crate
             ingredient = banana_crate.fruit.instantiate().ingredient
         8:
-            interactable = whipped_cream
-            ingredient = whipped_cream.ingredient
+            interactable = null
         9:
             interactable = soy_milk
             ingredient = soy_milk.ingredient

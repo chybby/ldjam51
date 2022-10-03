@@ -88,6 +88,23 @@ func get_flavour():
         IngredientType.BANANA: return '"Not just for monkeys"'
         IngredientType.WHIPPED_CREAM: return '"It misbehaved"'
 
+func get_color():
+    match ingredient_type:
+        IngredientType.ESPRESSO_SHOT: return Color8(69, 45, 29)
+        IngredientType.HOT_WATER: return Color8(201,244,255)
+        IngredientType.ICE: return Color8(201,244,255)
+        IngredientType.CARAMEL_SYRUP: return Color8(230, 106, 30)
+        IngredientType.HAZELNUT_SYRUP: return Color8(138, 46, 0)
+        IngredientType.VANILLA_SYRUP: return Color8(242, 190, 121)
+        IngredientType.WHOLE_MILK: return Color8(245, 216, 179)
+        IngredientType.SKIMMED_MILK: return Color8(245, 216, 179)
+        IngredientType.OAT_MILK: return Color8(245, 216, 179)
+        IngredientType.SOY_MILK: return Color8(245, 216, 179)
+        IngredientType.MANGO: return Color8(255, 60, 0)
+        IngredientType.STRAWBERRY: return Color8(255, 61, 61)
+        IngredientType.BANANA: return Color8(255, 210, 46)
+        IngredientType.WHIPPED_CREAM: return Color8(245, 231, 181)
+
 func get_name():
     var ingredient_desc
     match ingredient_type:
