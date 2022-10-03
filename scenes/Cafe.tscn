@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ydcyt5kyriyq" path="res://assets/floorboards.png" id="2_i4ahb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eyu"]
-size = Vector3(20, 1, 10)
+size = Vector3(12.5763, 1, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ohe3g"]
 size = Vector2(20, 10)
@@ -53,14 +53,16 @@ material = SubResource("StandardMaterial3D_p80on")
 size = Vector3(2, 3, 0.5)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_wenm8"]
-vertices = PackedVector3Array(-14.5, 0.02, -4.5, -14.5, 0.02, 4.5, -8, 0.02, 4.5, -8, 0.02, -4.5, -1.5, 0.02, -4.5, -8, 0.02, -4.5, -8, 0.02, 4.5, -1.5, 0.02, 4.5, 0.75, 0.02, -4.5, 0.75, 0.02, 4.5, 3.5, 0.02, 4.5, 3.5, 0.02, -4.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9)]
+vertices = PackedVector3Array(-7.46253, 0.02, -4.9, -7.46253, 0.02, 4.9, -1.16253, 0.02, 4.9, -1.16253, 0.02, -4.9, -0.962533, 1.02, -4.9, -0.962533, 1.02, 4.9, -0.0625334, 1.02, 4.9, -0.0625334, 1.02, -4.9, 0.137467, 0.02, -4.9, 0.137467, 0.02, 4.9, 3.83747, 0.02, 4.9, 3.83747, 0.02, -4.9, 4.03747, 1.02, -4.9, 4.03747, 1.02, 4.9, 4.93747, 1.02, 4.9, 4.93747, 1.02, -4.9, 5.13747, 0.02, -4.9, 5.13747, 0.02, 4.9, 12.3375, 0.02, 4.9, 12.3375, 0.02, -4.9)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17)]
+cell_size = 0.1
 cell_height = 0.01
+agent_radius = 0.1
 agent_max_climb = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pjkd"]
 albedo_texture = ExtResource("2_i4ahb")
-uv1_scale = Vector3(6, 3, 0.75)
+uv1_scale = Vector3(5, 5, 5)
 texture_filter = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wrpy6"]
@@ -81,7 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 5.5, 0)
 shape = SubResource("BoxShape3D_j2eyu")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Ceiling"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -5, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -1.23375, 5, 0)
 mesh = SubResource("PlaneMesh_ohe3g")
 
 [node name="Wall1" type="StaticBody3D" parent="."]
@@ -109,6 +111,7 @@ mesh = SubResource("PlaneMesh_f45oq")
 skeleton = NodePath("")
 
 [node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47617, 0, 0)
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Wall3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5, 2.5, 0)
@@ -134,24 +137,35 @@ skeleton = NodePath("")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.984322, 0.0536373, 0.168027, -0.17638, 0.299332, 0.937705, 0, -0.95264, 0.3041, 0.0860133, 6.80045, 5.44972)
+light_color = Color(1, 0.870588, 0.788235, 1)
+sky_mode = 1
 
 [node name="CeilingLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9992, 4.80693, 0)
-light_color = Color(1, 0.870588, 0.776471, 1)
-omni_range = 7.87653
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9992, 4.80693, 3.06053)
+light_color = Color(1, 0.823529, 0.619608, 1)
+shadow_enabled = true
+omni_range = 12.011
 
 [node name="CeilingLight2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60868, 4.80693, 0)
-light_color = Color(1, 0.870588, 0.776471, 1)
-omni_range = 7.87653
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60868, 4.80693, 3.06053)
+light_color = Color(1, 0.823529, 0.619608, 1)
+shadow_enabled = true
+omni_range = 12.011
 
-[node name="CeilingLight3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3071, 4.80693, 0)
-light_color = Color(1, 0.870588, 0.776471, 1)
-omni_range = 7.87653
+[node name="CeilingLight4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9992, 4.80693, -3.04698)
+light_color = Color(1, 0.823529, 0.619608, 1)
+shadow_enabled = true
+omni_range = 12.011
+
+[node name="CeilingLight5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60868, 4.80693, -3.04698)
+light_color = Color(1, 0.823529, 0.619608, 1)
+shadow_enabled = true
+omni_range = 12.011
 
 [node name="Door" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4681, 0, 4.42494)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90823, 0, 4.42494)
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583713, 1.50726, 0.641593)
@@ -184,11 +198,11 @@ navmesh = SubResource("NavigationMesh_wenm8")
 [node name="Floor" type="StaticBody3D" parent="NavigationRegion3d"]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="NavigationRegion3d/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26485, -0.5, 0)
 shape = SubResource("BoxShape3D_j2eyu")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="NavigationRegion3d/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43747, 0, 0)
 material_overlay = SubResource("StandardMaterial3D_8pjkd")
 mesh = SubResource("PlaneMesh_ohe3g")
 

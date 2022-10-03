@@ -55,6 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.30718, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.81116, 0)
 billboard = 2
 no_depth_test = true
+texture_filter = 0
 texture = SubResource("ViewportTexture_gbc1w")
 region_rect = Rect2(0, 0, 96.6757, 237.002)
 
