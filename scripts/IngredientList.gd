@@ -69,6 +69,12 @@ func has_ingredient(ingredient):
             return true
 
     return false
+    
+func get_ingredient_count(ingredient):
+    for ingredient_count in ingredient_counts:
+        if ingredient_count[0].equals(ingredient):
+            return ingredient_count[0]
+    return -1
 
 func has_ingredient_with_count(ingredient, count):
     for ingredient_count in ingredient_counts:

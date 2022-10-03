@@ -14,27 +14,31 @@ func add_available_cup_size(cup_size):
     available_cup_sizes.append(cup_size)
 
 #generate drink order based off available machines
-func generate_order():
+func generate_order(day, difficulty = 1):
     assert(available_ingredients.size() > 0)
     var order = DrinkOrder.new()
 
     #TODO: more order generation
 
+<<<<<<< Updated upstream
     var min_ingredients = 1
     var max_ingredients = 5
     var min_count = 1
     var max_count = 5
+=======
+    var min_ingredients = day * difficulty + 1
+    var max_ingredients = 2 * day * difficulty + 1
+>>>>>>> Stashed changes
 
     var num_ingredients = rand_range(min_ingredients, max_ingredients)
 
     for i in num_ingredients:
         var ingredient = get_random_ingredient()
-        var count = rand_range(min_count, max_count)
 
         if order.has_ingredient(ingredient):
             continue
 
-        order.add_ingredient(ingredient, count)
+        order.add_ingredient(ingredient, 1)
 
     order.set_cup_size(available_cup_sizes[randi() % available_cup_sizes.size()])
 

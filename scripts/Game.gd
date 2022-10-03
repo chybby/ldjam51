@@ -280,7 +280,7 @@ func spawn_customer():
     var spot = spots.front()
     spots.remove_at(0)
 
-    var order = drink_order_maker.generate_order()
+    var order = drink_order_maker.generate_order(day, difficulty)
     print('customer\'s order is %s' % order)
     add_child(customer)
     $Cafe/Door/SoundDoorbell.play()
