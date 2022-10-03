@@ -22,6 +22,7 @@ func _on_normal_pressed():
 
 func _on_barista_pressed():
     difficulty = 4
+    print('we barista up in this bitch')
 
 func _on_quit_pressed():
     get_tree().quit()

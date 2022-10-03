@@ -68,14 +68,16 @@ var spots = Array()
 var drink_order_maker = DrinkOrderMaker.new()
 
 var game_paused = false
+var game_started = false
 
 var day = 0
 
 var customers_served = 0
+var total_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
     for interactable in get_tree().get_nodes_in_group('interactable'):
         interactable.set_initial_position()
@@ -115,6 +117,8 @@ func _ready():
 func _input(event):
     if game_paused:
         return
+    if !game_started:
+        return
 
     if event.is_action_pressed('game_pause'):
         print('pausing game')
@@ -140,6 +144,9 @@ func _process(_delta):
     if game_paused:
         return
 
+    if !game_started:
+        return
+
     hud.update_time(morning_timer.time_left, morning_timer.wait_time)
 
     if num_customers == 0 and morning_timer.is_stopped():
@@ -161,7 +168,7 @@ func _process(_delta):
                 print('game over!')
                 $HUD.visible = false
                 game_over_screen.visible = true
-                game_over_screen.update(customers_served)
+                game_over_screen.update(total_score, customers_served)
                 Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
             else:
                 new_ingredient_screen.set_ingredient(unlocked_ingredient)
@@ -291,10 +298,11 @@ func spawn_customer():
     num_customers += 1
     customer.initialize(spawnLocation.global_transform.origin, spot, order)
 
-func processCustomerLeaving(was_angry, spot_node):
+func processCustomerLeaving(drink_score, was_angry, spot_node):
     spots.append(spot_node)
     num_customers -= 1
     if not was_angry:
+        total_score += drink_score
         customers_served += 1
 
 func reset_game():
@@ -336,6 +344,15 @@ func reset_game():
                 interactable.close()
 
     call_deferred('unpause_game')
+    
+func start_game(difficulty):
+    game_started = true
+    var spawn_diff = 10
+    if(difficulty > 3):
+        spawn_diff = 5
+    customer_spawn_timer.start(spawn_diff)
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    
 
 func _on_morning_timer_timeout():
     customer_spawn_timer.stop()
