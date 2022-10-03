@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/Blender.gd" id="2_0gd5f"]
 [ext_resource type="PackedScene" uid="uid://dh4e11xkc3peu" path="res://models/blender.glb" id="4_026ye"]
 [ext_resource type="PackedScene" uid="uid://d4gon6yrq6opw" path="res://scenes/BlenderJug.tscn" id="4_qhwlv"]
+[ext_resource type="AudioStream" uid="uid://cw577tg173oea" path="res://assets/audio/SFX/short_blend.wav" id="5_borhu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iunrx"]
 size = Vector3(0.25943, 0.284363, 0.265057)
@@ -26,3 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282444, 0)
 
 [node name="blender" parent="." index="4" instance=ExtResource("4_026ye")]
 transform = Transform3D(-0.25, 0, -2.18557e-08, 0, 0.25, 0, 2.18557e-08, 0, -0.25, 0, 0, 0)
+
+[node name="SoundBlender" type="AudioStreamPlayer3D" parent="." index="4"]
+stream = ExtResource("5_borhu")
+unit_db = -20.0

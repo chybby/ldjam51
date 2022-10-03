@@ -17,6 +17,10 @@ func _ready():
 func on_interact(character, item, interact_position):
     if item != self:
         return
+        
+    var held_item = character.get_held_item()
+    if held_item is Cup:
+        $SoundEspressoMachine.play()
 
     super(character, item, interact_position)
 

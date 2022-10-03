@@ -8,6 +8,11 @@ const HipsterFrames = preload("res://resources/HipsterFrames.tres")
 const KarenFrames = preload("res://resources/KarenFrames.tres")
 const TradieFrames = preload("res://resources/TradieFrames.tres")
 
+const BabyVoice = preload( "res://assets/audio/SFX/kid_oof.wav")
+const HipsterVoice = preload("res://assets/audio/SFX/girl_ouch.wav")
+const KarenVoice = preload( "res://assets/audio/SFX/yelp_girl.wav")
+const TradieVoice = preload("res://assets/audio/SFX/manchild_oof.wav")
+
 const FRAMES = [BabyFrames, HipsterFrames, KarenFrames, TradieFrames]
 
 signal left(wasAngry, spot)
@@ -44,7 +49,9 @@ var drink_order
 var has_drink = false
 
 func initialize(start_position, spot, order):
-    sprite.set_sprite_frames(FRAMES[randi() % FRAMES.size()])
+    var r_sprite = FRAMES[randi() % FRAMES.size()]
+    sprite.set_sprite_frames(r_sprite)
+    set_voice(r_sprite)
 
     transform.origin = start_position
 
@@ -60,7 +67,22 @@ func initialize(start_position, spot, order):
     spotNode = spot
 
     set_nav_target(spotNode)
-
+    
+func set_voice(r_sprite):
+    var soundPlayer = $SoundYelp
+    match r_sprite:
+        BabyFrames:
+            soundPlayer.stream = BabyVoice
+        HipsterFrames:
+            soundPlayer.stream = HipsterVoice
+        KarenFrames:
+            soundPlayer.stream = KarenVoice
+            soundPlayer.unit_db = -12
+        TradieFrames:
+            soundPlayer.stream = TradieVoice
+            soundPlayer.unit_db = -12
+            
+        
 func _on_animation_finished():
     if sprite.animation == 'hit':
         sprite.animation = 'idle'
@@ -169,6 +191,7 @@ func _on_area_3d_body_entered(body : Node3D):
             return
 
         sprite.animation = 'hit'
+        $SoundYelp.play()
 
         if drink_order.is_fulfilled_by(body):
             receive_drink(body)

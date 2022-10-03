@@ -15,6 +15,10 @@ const Fruit = preload("res://scripts/Fruit.gd")
 const WhippedCream = preload("res://scripts/WhippedCream.gd")
 const DrinkOrderMaker = preload("res://scripts/DrinkOrderMaker.gd")
 const HoldableItem = preload("res://scripts/HoldableItem.gd")
+const Blender = preload("res://scripts/Blender.gd")
+const Mango = preload("res://scripts/Mango.gd")
+const FruitCrate = preload("res://scripts/FruitCrate.gd")
+const MilkFrother = preload("res://scripts/MilkFrother.gd")
 
 signal game_was_paused(paused)
 
@@ -72,7 +76,7 @@ var day = 0
 func _ready():
     for interactable in get_tree().get_nodes_in_group('interactable'):
         interactable.set_initial_position()
-        if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is FridgeDoor or interactable is RubbishBin or interactable is Surface or interactable is BlenderJug or interactable is MilkJug):
+        if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is FridgeDoor or interactable is RubbishBin or interactable is Surface or interactable is BlenderJug or interactable is MilkJug or interactable is MilkFrother or interactable is Milk or interactable is WhippedCream or interactable is Blender or interactable is FruitCrate):
             disable_interactable(interactable)
 
         if interactable is CupDispenser and interactable.cup_size != Cup.CupSize.MEDIUM:
@@ -266,6 +270,7 @@ func spawn_customer():
     var order = drink_order_maker.generate_order()
     print('customer\'s order is %s' % order)
     add_child(customer)
+    $Cafe/Door/SoundDoorbell.play()
     num_customers += 1
     customer.initialize(spawnLocation.global_transform.origin, spot, order)
 

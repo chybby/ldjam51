@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/MilkFrother.gd" id="2_15s4l"]
 [ext_resource type="PackedScene" uid="uid://duacw1xbt0112" path="res://models/frother.glb" id="4_3lqgt"]
 [ext_resource type="PackedScene" uid="uid://cpp32el77bcoc" path="res://scenes/MilkJug.tscn" id="4_btxsv"]
+[ext_resource type="AudioStream" uid="uid://c56hrdbper83l" path="res://assets/audio/SFX/milk_frothing.wav" id="5_q4xpr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_167kf"]
 size = Vector3(0.189319, 0.200091, 0.1444)
@@ -26,3 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0312444, 0.00516078, 0)
 
 [node name="frother" parent="." index="4" instance=ExtResource("4_3lqgt")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="SoundFrothing" type="AudioStreamPlayer3D" parent="." index="4"]
+stream = ExtResource("5_q4xpr")
