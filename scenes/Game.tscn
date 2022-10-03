@@ -33,7 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://b54ry6j5wodnl" path="res://scenes/NewMachineScreen.tscn" id="30_xxcrr"]
 [ext_resource type="AudioStream" uid="uid://0eh8q0tnfr5d" path="res://assets/audio/music/FREE JAZZ BACKGROUND MUSIC (PARIS CAFE) [NO COPYRIGHT] [FREE DOWNLOAD].wav" id="31_j8l5y"]
 [ext_resource type="PackedScene" uid="uid://cominubxwmubp" path="res://scenes/GameOverScreen.tscn" id="32_by3gb"]
-[ext_resource type="PackedScene" uid="uid://c8pyg6you27s8" path="res://scenes/main_menu.tscn" id="33_n3nn6"]
+[ext_resource type="PackedScene" path="res://scenes/main_menu.tscn" id="33_n3nn6"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")

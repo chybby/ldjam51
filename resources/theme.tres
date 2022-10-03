@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://k68wfrjmrock" path="res://assets/Roboto-Regular.ttf" id="1_n1k5i"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u6tg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blju8"]
 bg_color = Color(0.6, 0.329412, 0, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -12,4 +12,4 @@ corner_radius_bottom_left = 3
 [resource]
 default_font = ExtResource("1_n1k5i")
 ProgressBar/font_sizes/font_size = 32
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_6u6tg")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_blju8")
