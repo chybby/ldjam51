@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://d7mmlv641ff2"]
+
+[ext_resource type="Texture2D" uid="uid://ctxfxs7lc1nr5" path="res://assets/splash-Sheet.png" id="1_a4r5s"]
+[ext_resource type="Script" path="res://scripts/splash_node.gd" id="1_qlngh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqv3d"]
+atlas = ExtResource("1_a4r5s")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14nk3"]
+atlas = ExtResource("1_a4r5s")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqsnm"]
+atlas = ExtResource("1_a4r5s")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kef2p"]
+atlas = ExtResource("1_a4r5s")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxkby"]
+atlas = ExtResource("1_a4r5s")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3074f"]
+atlas = ExtResource("1_a4r5s")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ednfp"]
+animations = [{
+"frames": [SubResource("AtlasTexture_eqv3d"), SubResource("AtlasTexture_14nk3"), SubResource("AtlasTexture_yqsnm"), SubResource("AtlasTexture_kef2p"), SubResource("AtlasTexture_hxkby"), SubResource("AtlasTexture_3074f"), null],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SplashNode" type="Node3D"]
+script = ExtResource("1_qlngh")
+
+[node name="SplashSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+billboard = 1
+double_sided = false
+frames = SubResource("SpriteFrames_ednfp")
+playing = true
+
+[connection signal="animation_finished" from="SplashSprite" to="." method="_on_splash_sprite_animation_finished"]
