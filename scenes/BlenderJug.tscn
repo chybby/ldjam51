@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://sk0hd52ccxyu" path="res://scenes/HoldableItem.tscn" id="1_2e4i6"]
 [ext_resource type="Script" path="res://scripts/BlenderJug.gd" id="2_ed5ol"]
-[ext_resource type="Texture2D" uid="uid://bc0k560g8mtlo" path="res://assets/blender.png" id="3_pvqrk"]
+[ext_resource type="Texture2D" uid="uid://ct2hjr1hjnig1" path="res://assets/blender.png" id="3_pvqrk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fupfw"]
 height = 0.224415
@@ -24,3 +24,40 @@ pixel_size = 0.006
 texture = ExtResource("3_pvqrk")
 region_enabled = true
 region_rect = Rect2(0, 0, 40, 64)
+
+[node name="BlendedContents" type="Sprite3D" parent="." index="3"]
+visible = false
+centered = false
+offset = Vector2(-20, 0)
+modulate = Color(1, 0.290196, 0.392157, 1)
+pixel_size = 0.006
+billboard = 2
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("3_pvqrk")
+region_enabled = true
+region_rect = Rect2(0, 64, 40, 64)
+
+[node name="Contents" type="Sprite3D" parent="." index="4"]
+visible = false
+centered = false
+offset = Vector2(-20, 0)
+modulate = Color(1, 0.290196, 0.392157, 1)
+pixel_size = 0.006
+billboard = 2
+texture_filter = 0
+render_priority = 2
+texture = ExtResource("3_pvqrk")
+region_enabled = true
+region_rect = Rect2(0, 128, 40, 64)
+
+[node name="Lines" type="Sprite3D" parent="." index="5"]
+centered = false
+offset = Vector2(-20, 0)
+pixel_size = 0.006
+billboard = 2
+texture_filter = 0
+render_priority = 3
+texture = ExtResource("3_pvqrk")
+region_enabled = true
+region_rect = Rect2(0, 192, 40, 64)

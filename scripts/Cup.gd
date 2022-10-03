@@ -1,6 +1,7 @@
 extends "res://scripts/HoldableItem.gd"
 
 const IngredientList = preload("res://scripts/IngredientList.gd")
+const Ingredient = preload("res://scripts/Ingredient.gd")
 const Milk = preload("res://scripts/Milk.gd")
 const WhippedCream = preload("res://scripts/WhippedCream.gd")
 const MilkJug = preload("res://scripts/MilkJug.gd")
@@ -9,6 +10,8 @@ const BlenderJug = preload("res://scripts/BlenderJug.gd")
 enum CupSize {SMALL, MEDIUM, LARGE}
 
 @onready var cup_sprite = $Sprite3d
+@onready var contents = $Contents
+@onready var whipped_cream = $WhippedCream
 
 var ingredients = IngredientList.new()
 var size = CupSize.MEDIUM
@@ -47,14 +50,20 @@ func on_interact(character, item, _interact_position):
              held_item.play_sound()
         self.add_ingredient(held_item.ingredient.clone())
     elif (held_item is MilkJug or held_item is BlenderJug) and held_item.has_contents():
-        # TODO: don't let unblended ingredients go into the cup - tooltip or something
+        # Don't let unblended ingredients go into the cup
+        if held_item is BlenderJug and held_item.has_unblended_contents():
+            return
         ingredients.combine(held_item.take_contents())
+        contents.visible = true
         $SoundCupPour.play()
         print('Cup has ingredients: %s' % ingredients)
     else:
         hold_or_swap(character)
 
 func add_ingredient(ingredient):
+    contents.visible = true
+    if ingredient.ingredient_type == Ingredient.IngredientType.WHIPPED_CREAM:
+        whipped_cream.visible = true
     ingredients.add_ingredient(ingredient)
     $SoundCupPour.play()
     print('Cup has ingredients: %s' % ingredients)
@@ -97,3 +106,14 @@ func set_size(new_size):
         var image = Image.load_from_file(sprite_path)
         var texture = ImageTexture.create_from_image(image)
         cup_sprite.texture = texture
+
+
+func put_down():
+    super()
+    contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+    whipped_cream.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+
+func pick_up():
+    super()
+    contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    whipped_cream.billboard = BaseMaterial3D.BILLBOARD_ENABLED

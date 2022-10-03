@@ -27,7 +27,6 @@ var initial_transform = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
     initial_transform = transform
 
 func reset():
@@ -144,3 +143,7 @@ func throw_item():
 
 func _on_game_game_was_paused(paused):
     game_paused = paused
+
+
+func _on_settings_screen_mouse_sensitivity_changed(sense):
+    mouse_sensitivity = sense

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cpxm6mf175g4x"]
+[gd_scene load_steps=33 format=3 uid="uid://bgqe4kfxaudqi"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -28,7 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://bwq13ftiub2xv" path="res://scenes/Strawberry.tscn" id="27_mhydv"]
 [ext_resource type="PackedScene" uid="uid://bm3yqpstj5ab1" path="res://scenes/Banana.tscn" id="28_kmixj"]
 [ext_resource type="PackedScene" uid="uid://c1aruknlcnsfn" path="res://scenes/WhippedCream.tscn" id="29_ahvpv"]
-[ext_resource type="PackedScene" uid="uid://vx6qonq27o76" path="res://scenes/NewIngredientScreen.tscn" id="29_vmhwf"]
+[ext_resource type="PackedScene" uid="uid://ke0ngo8qpceh" path="res://scenes/NewIngredientScreen.tscn" id="29_d06q3"]
+[ext_resource type="PackedScene" uid="uid://vx6qonq27o76" path="res://scenes/SettingsScreen.tscn" id="29_vmhwf"]
 [ext_resource type="PackedScene" uid="uid://b54ry6j5wodnl" path="res://scenes/NewMachineScreen.tscn" id="30_xxcrr"]
 [ext_resource type="AudioStream" uid="uid://0eh8q0tnfr5d" path="res://assets/audio/music/FREE JAZZ BACKGROUND MUSIC (PARIS CAFE) [NO COPYRIGHT] [FREE DOWNLOAD].wav" id="31_j8l5y"]
 
@@ -132,14 +133,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72964, 0.678664, -4.18254)
 lock_rotation = false
 
 [node name="MorningTimer" type="Timer" parent="."]
-wait_time = 247.088
+wait_time = 200.0
 one_shot = true
 autostart = true
 
-[node name="NewIngredientScreen" parent="." instance=ExtResource("29_vmhwf")]
+[node name="NewIngredientScreen" parent="." instance=ExtResource("29_d06q3")]
 visible = false
 
 [node name="NewMachineScreen" parent="." instance=ExtResource("30_xxcrr")]
+visible = false
+
+[node name="SettingsScreen" parent="." instance=ExtResource("29_vmhwf")]
 visible = false
 
 [node name="SoundBackgroundMusic" type="AudioStreamPlayer" parent="."]
@@ -152,3 +156,5 @@ autoplay = true
 [connection signal="timeout" from="MorningTimer" to="." method="_on_morning_timer_timeout"]
 [connection signal="next_screen" from="NewIngredientScreen" to="." method="_on_new_ingredient_screen_next_screen"]
 [connection signal="next_screen" from="NewMachineScreen" to="." method="_on_new_machine_screen_next_screen"]
+[connection signal="mouse_sensitivity_changed" from="SettingsScreen" to="Character" method="_on_settings_screen_mouse_sensitivity_changed"]
+[connection signal="settings_closed" from="SettingsScreen" to="." method="_on_settings_screen_settings_closed"]

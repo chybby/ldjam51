@@ -23,7 +23,7 @@ func generate_order():
     var min_ingredients = 1
     var max_ingredients = 5
     var min_count = 1
-    var max_count = 10
+    var max_count = 5
 
     var num_ingredients = rand_range(min_ingredients, max_ingredients)
 

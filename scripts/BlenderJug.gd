@@ -5,6 +5,10 @@ const Fruit = preload("res://scripts/Fruit.gd")
 const Milk = preload("res://scripts/Milk.gd")
 const Blender = preload("res://scripts/Blender.gd")
 
+@onready var contents = $Contents
+@onready var blended_contents = $BlendedContents
+@onready var lines = $Lines
+
 var ingredients = IngredientList.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -42,15 +46,28 @@ func on_interact(character, item, _interact_position):
     print('%s blender jug interacted with' % self)
 
 func add_ingredient(ingredient):
+    contents.visible = true
     ingredients.add_ingredient(ingredient)
     print('blender jug has: %s' % ingredients)
 
 func blend_contents():
     ingredients.blend()
+    blended_contents.visible = true
+    contents.visible = false
 
     print('blender jug has: %s' % ingredients)
 
+func has_unblended_contents():
+    for ingredient_count in ingredients.get_ingredients():
+        var ingredient = ingredient_count[0]
+        if ingredient.is_blendable and not ingredient.blended:
+            return true
+
+    return false
+
 func take_contents():
+    contents.visible = false
+    blended_contents.visible = false
     var previous_ingredients = ingredients
     ingredients = IngredientList.new()
     print('blender jug has: %s' % ingredients)
@@ -61,3 +78,15 @@ func has_contents():
 
 func put_back(blender):
     blender.place_blender_jug(self)
+
+func put_down():
+    super()
+    contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+    blended_contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+    lines.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+
+func pick_up():
+    super()
+    contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    blended_contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    lines.billboard = BaseMaterial3D.BILLBOARD_ENABLED

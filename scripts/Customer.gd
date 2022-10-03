@@ -31,6 +31,8 @@ var targetNode
 var spotNode
 var drink_order
 
+var game_paused = false
+
 @export var speed = 5.0
 @export var patience = 20
 @export var patence_lost_on_wrong_order = 5
@@ -67,7 +69,7 @@ func initialize(start_position, spot, order):
     spotNode = spot
 
     set_nav_target(spotNode)
-    
+
 func set_voice(r_sprite):
     var soundPlayer = $SoundYelp
     match r_sprite:
@@ -81,8 +83,8 @@ func set_voice(r_sprite):
         TradieFrames:
             soundPlayer.stream = TradieVoice
             soundPlayer.unit_db = -12
-            
-        
+
+
 func _on_animation_finished():
     if sprite.animation == 'hit':
         sprite.animation = 'idle'
@@ -98,6 +100,9 @@ func _on_order_display_draw():
     order_display_3d.position.y += order_display_height/100/2
 
 func _process(_delta):
+    if game_paused:
+        return
+
     order_display.set_patience(patience_timer.time_left, patience_timer.wait_time)
     if not patience_timer.is_stopped() and patience_timer.time_left < 5 and state != IMPATIENT:
         get_impatient()
@@ -163,6 +168,9 @@ func set_nav_target(node):
     nav_agent.set_target_location(targetNode.position)
 
 func _physics_process(_delta):
+    if game_paused:
+        return
+
     if(nav_agent.distance_to_target() < .7):
         if(state == LINE_UP):
             start_waiting()
@@ -201,3 +209,10 @@ func _on_area_3d_body_entered(body : Node3D):
             else:
                 patience_timer.start(patience_timer.time_left - patence_lost_on_wrong_order)
             patience_timer.wait_time = patience
+
+func on_game_paused(paused):
+    game_paused = paused
+    if paused:
+        patience_timer.paused = true
+    else:
+        patience_timer.paused = false

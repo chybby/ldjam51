@@ -33,6 +33,7 @@ signal game_was_paused(paused)
 
 @onready var new_ingredient_screen = $NewIngredientScreen
 @onready var new_machine_screen = $NewMachineScreen
+@onready var settings_screen = $SettingsScreen
 
 @onready var hot_water_dispenser = $HotWaterDispenser
 @onready var ice_machine = $IceMachine
@@ -74,6 +75,8 @@ var day = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
     for interactable in get_tree().get_nodes_in_group('interactable'):
         interactable.set_initial_position()
         if not (interactable is EspressoMachine or interactable is CupDispenser or interactable is Fridge or interactable is FridgeDoor or interactable is RubbishBin or interactable is Surface or interactable is BlenderJug or interactable is MilkJug or interactable is MilkFrother or interactable is Milk or interactable is WhippedCream or interactable is Blender or interactable is FruitCrate):
@@ -107,7 +110,17 @@ func _ready():
     print(spots)
 
     # TODO: remove, only for debugging
-    spawn_customer()
+    #spawn_customer()
+
+func _input(event):
+    if game_paused:
+        return
+
+    if event.is_action_pressed('game_pause'):
+        $HUD/Crosshair.visible = false
+        settings_screen.visible = true
+        Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+        pause_game()
 
 func trash_item(item):
     add_child(item)
@@ -132,8 +145,7 @@ func _process(_delta):
         # End of the morning
         print("Morning rush over!")
 
-        game_paused = true
-        game_was_paused.emit(true)
+        pause_game()
 
         day += 1
         print("Moving on to day %s" % day)
@@ -263,6 +275,7 @@ func _on_customer_spawn_timer_timeout():
 func spawn_customer():
     var customer = customer_scene.instantiate()
     customer.connect('left', processCustomerLeaving)
+    connect('game_was_paused', customer.on_game_paused)
 
     var spot = spots.front()
     spots.remove_at(0)
@@ -288,6 +301,9 @@ func reset_game():
 
     var held_item = character.release_item()
     add_child(held_item)
+
+    milk_jug.take_contents()
+    blender_jug.take_contents()
 
     for item in trashed_items:
         enable_interactable(item)
@@ -322,7 +338,15 @@ func _on_new_ingredient_screen_next_screen():
     new_ingredient_screen.visible = false
     reset_game()
 
+func pause_game():
+    game_paused = true
+    customer_spawn_timer.paused = true
+    morning_timer.paused = true
+    game_was_paused.emit(true)
+
 func unpause_game():
+    customer_spawn_timer.paused = false
+    morning_timer.paused = false
     game_paused = false
     game_was_paused.emit(false)
 
@@ -335,3 +359,10 @@ func _on_new_machine_screen_next_screen():
     else:
         new_ingredient_screen.set_ingredient(unlocked_ingredient)
         new_ingredient_screen.set_deferred('visible', true)
+
+func _on_settings_screen_settings_closed():
+    $HUD/Crosshair.visible = true
+    settings_screen.visible = false
+    print(settings_screen.visible)
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    call_deferred('unpause_game')

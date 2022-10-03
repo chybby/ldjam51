@@ -47,4 +47,5 @@ func place_milk_jug(jug):
 
     self.add_child(jug)
     jug.position = milk_jug_position.position
+    jug.put_down()
     milk_jug = jug

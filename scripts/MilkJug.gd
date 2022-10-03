@@ -4,6 +4,9 @@ const IngredientList = preload("res://scripts/IngredientList.gd")
 const Milk = preload("res://scripts/Milk.gd")
 const MilkFrother = preload("res://scripts/MilkFrother.gd")
 
+@onready var contents = $Contents
+@onready var frothed_contents = $FrothedContents
+
 var ingredients = IngredientList.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +22,7 @@ func on_interact(character, item, _interact_position):
         return
 
     var held_item = character.get_held_item()
-    if held_item is Milk and ingredients.is_empty():
+    if held_item is Milk:
         add_ingredient(held_item.ingredient.clone())
     elif get_parent() is MilkFrother:
         # Only take from milk frother if hand is empty - do not replace.
@@ -34,15 +37,20 @@ func on_interact(character, item, _interact_position):
 
 func add_ingredient(ingredient):
     $SoundPour.play()
+    contents.visible = true
     ingredients.add_ingredient(ingredient)
     print('milk jug has: %s' % ingredients)
 
 func froth_contents():
     ingredients.froth()
+    frothed_contents.visible = true
+    contents.visible = false
 
     print('milk jug has: %s' % ingredients)
 
 func take_contents():
+    contents.visible = false
+    frothed_contents.visible = false
     var previous_ingredients = ingredients
     ingredients = IngredientList.new()
     print('milk jug has: %s' % ingredients)
@@ -53,3 +61,13 @@ func has_contents():
 
 func put_back(frother):
     frother.place_milk_jug(self)
+
+func put_down():
+    super()
+    contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+    frothed_contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+
+func pick_up():
+    super()
+    contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    frothed_contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED

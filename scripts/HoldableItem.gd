@@ -27,6 +27,9 @@ func on_interact(character, item, interact_position):
 func put_down():
     sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 
+func pick_up():
+    sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+
 func hold_or_swap(character):
     if character.is_holding_item():
         var held_item = character.release_item()
@@ -36,4 +39,4 @@ func hold_or_swap(character):
 
     get_parent().remove_child(self)
     character.hold_item(self)
-    sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    pick_up()

@@ -75,3 +75,4 @@ func on_interact(character, item, _interact_position):
     character.connect('focus_changed', new_cup.on_focus_changed)
     character.connect('interacted_with', new_cup.on_interact)
     character.hold_item(new_cup)
+    new_cup.pick_up()

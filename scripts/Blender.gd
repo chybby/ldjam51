@@ -52,4 +52,5 @@ func place_blender_jug(jug):
 
     self.add_child(jug)
     jug.position = blender_jug_position.position
+    jug.put_down()
     blender_jug = jug

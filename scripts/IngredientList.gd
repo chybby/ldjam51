@@ -18,6 +18,8 @@ func add_ingredient(ingredient: Ingredient, count = 1):
     # Add ingredient not already present.
     var ingredient_count = Array()
     ingredient_count.append(ingredient.clone())
+    if ingredient.is_unique:
+        count = 1
     ingredient_count.append(count)
     ingredient_counts.append(ingredient_count)
 

@@ -7,7 +7,7 @@ const IngredientList = preload("res://scripts/IngredientList.gd")
 var cup_size = Cup.CupSize.MEDIUM
 var ingredients = IngredientList.new()
 
-func add_ingredient(ingredient : Ingredient, count = 0):
+func add_ingredient(ingredient : Ingredient, count = 1):
     ingredients.add_ingredient(ingredient, count)
 
 func get_ingredients():

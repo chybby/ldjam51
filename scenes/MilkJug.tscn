@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpp32el77bcoc"]
+[gd_scene load_steps=9 format=3 uid="uid://cpp32el77bcoc"]
 
 [ext_resource type="PackedScene" uid="uid://sk0hd52ccxyu" path="res://scenes/HoldableItem.tscn" id="1_nlfqa"]
 [ext_resource type="Script" path="res://scripts/MilkJug.gd" id="2_qvqwn"]
@@ -12,6 +12,14 @@ radius = 0.0804437
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmkoy"]
 atlas = ExtResource("4_uq1dx")
 region = Rect2(0, 0, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh1in"]
+atlas = ExtResource("4_uq1dx")
+region = Rect2(0, 64, 40, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqfas"]
+atlas = ExtResource("4_uq1dx")
+region = Rect2(0, 128, 40, 64)
 
 [node name="MilkJug" instance=ExtResource("1_nlfqa")]
 script = ExtResource("2_qvqwn")
@@ -28,5 +36,25 @@ offset = Vector2(-20, 0)
 pixel_size = 0.006
 texture = SubResource("AtlasTexture_nmkoy")
 
-[node name="SoundPour" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="Contents" type="Sprite3D" parent="." index="3"]
+visible = false
+centered = false
+offset = Vector2(-20, 0)
+pixel_size = 0.006
+billboard = 2
+texture_filter = 0
+render_priority = 1
+texture = SubResource("AtlasTexture_qh1in")
+
+[node name="FrothedContents" type="Sprite3D" parent="." index="4"]
+visible = false
+centered = false
+offset = Vector2(-20, 0)
+pixel_size = 0.006
+billboard = 2
+texture_filter = 0
+render_priority = 2
+texture = SubResource("AtlasTexture_rqfas")
+
+[node name="SoundPour" type="AudioStreamPlayer3D" parent="." index="5"]
 stream = ExtResource("4_udanv")

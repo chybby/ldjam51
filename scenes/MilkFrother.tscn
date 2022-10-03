@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf2dxj7cmbhu1"]
+[gd_scene load_steps=8 format=3 uid="uid://cf2dxj7cmbhu1"]
 
 [ext_resource type="PackedScene" uid="uid://bnvo7g5wu8i4p" path="res://scenes/InteractableItem.tscn" id="1_dxmx8"]
 [ext_resource type="Script" path="res://scripts/MilkFrother.gd" id="2_15s4l"]
@@ -9,6 +9,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_167kf"]
 size = Vector3(0.189319, 0.200091, 0.1444)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0p24"]
+size = Vector3(0.228559, 0.0484346, 0.210577)
+
 [node name="MilkFrother" instance=ExtResource("1_dxmx8")]
 script = ExtResource("2_15s4l")
 
@@ -16,17 +19,21 @@ script = ExtResource("2_15s4l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00678018, 0.454691, 0)
 shape = SubResource("BoxShape3D_167kf")
 
-[node name="Model" parent="." index="1"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0209948, 0.0196133, 0)
+shape = SubResource("BoxShape3D_s0p24")
+
+[node name="Model" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 
-[node name="MilkJugPosition" type="Marker3D" parent="." index="2"]
+[node name="MilkJugPosition" type="Marker3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00387824, 0)
 
-[node name="MilkJug" parent="." index="3" instance=ExtResource("4_btxsv")]
+[node name="MilkJug" parent="." index="4" instance=ExtResource("4_btxsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0312444, 0.00516078, 0)
 
-[node name="SoundFrothing" type="AudioStreamPlayer3D" parent="." index="4"]
+[node name="SoundFrothing" type="AudioStreamPlayer3D" parent="." index="5"]
 stream = ExtResource("5_q4xpr")
 
-[node name="frother" parent="." index="5" instance=ExtResource("4_3lqgt")]
+[node name="frother" parent="." index="6" instance=ExtResource("4_3lqgt")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
