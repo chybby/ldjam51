@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bgqe4kfxaudqi"]
+[gd_scene load_steps=34 format=3 uid="uid://bgqe4kfxaudqi"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://vx6qonq27o76" path="res://scenes/SettingsScreen.tscn" id="29_vmhwf"]
 [ext_resource type="PackedScene" uid="uid://b54ry6j5wodnl" path="res://scenes/NewMachineScreen.tscn" id="30_xxcrr"]
 [ext_resource type="AudioStream" uid="uid://0eh8q0tnfr5d" path="res://assets/audio/music/FREE JAZZ BACKGROUND MUSIC (PARIS CAFE) [NO COPYRIGHT] [FREE DOWNLOAD].wav" id="31_j8l5y"]
+[ext_resource type="PackedScene" uid="uid://cominubxwmubp" path="res://scenes/GameOverScreen.tscn" id="32_by3gb"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -133,7 +134,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72964, 0.678664, -4.18254)
 lock_rotation = false
 
 [node name="MorningTimer" type="Timer" parent="."]
-wait_time = 200.0
 one_shot = true
 autostart = true
 
@@ -144,6 +144,9 @@ visible = false
 visible = false
 
 [node name="SettingsScreen" parent="." instance=ExtResource("29_vmhwf")]
+visible = false
+
+[node name="GameOverScreen" parent="." instance=ExtResource("32_by3gb")]
 visible = false
 
 [node name="SoundBackgroundMusic" type="AudioStreamPlayer" parent="."]

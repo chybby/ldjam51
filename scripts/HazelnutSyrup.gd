@@ -14,6 +14,7 @@ func _ready():
     item_name = "Hazelnut Syrup Pump"
     description = "Dispenses Hazelnut Syrup"
     description_image_path = ingredient.icon_file_name()
+    flavour = '"Warning. Contains nuts."'
 
 func on_interact(character, item, interact_position):
     if item != self:

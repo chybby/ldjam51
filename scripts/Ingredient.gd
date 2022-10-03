@@ -83,10 +83,10 @@ func get_flavour():
         IngredientType.SKIMMED_MILK: return '"Just the top of the milk"'
         IngredientType.OAT_MILK: return '"Milked from free-range oats"'
         IngredientType.SOY_MILK: return '"From cows that eat only soy beans"'
-        IngredientType.MANGO: return ''
-        IngredientType.STRAWBERRY: return ''
+        IngredientType.MANGO: return '"S tier fruit"'
+        IngredientType.STRAWBERRY: return '"Straws not included"'
         IngredientType.BANANA: return '"Not just for monkeys"'
-        IngredientType.WHIPPED_CREAM: return ''
+        IngredientType.WHIPPED_CREAM: return '"It misbehaved"'
 
 func get_name():
     var ingredient_desc

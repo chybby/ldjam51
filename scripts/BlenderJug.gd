@@ -84,9 +84,15 @@ func put_down():
     contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
     blended_contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
     lines.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+    contents.render_priority -= 10
+    blended_contents.render_priority -= 10
+    lines.render_priority -= 10
 
 func pick_up():
     super()
     contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
     blended_contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
     lines.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    contents.render_priority += 10
+    blended_contents.render_priority += 10
+    lines.render_priority += 10

@@ -26,9 +26,11 @@ func on_interact(character, item, interact_position):
 
 func put_down():
     sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+    sprite.render_priority -= 10
 
 func pick_up():
     sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    sprite.render_priority += 10
 
 func hold_or_swap(character):
     if character.is_holding_item():

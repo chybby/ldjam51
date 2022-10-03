@@ -1,8 +1,10 @@
 extends Control
 
 const CupDispenser = preload("res://scripts/CupDispenser.gd")
+const IceMachine = preload("res://scripts/IceMachine.gd")
 
 @onready var machine_position : Marker3D = $MachineImage/SubViewport/MachinePosition
+@onready var machine_camera = $MachineImage/SubViewport/Camera3d
 @onready var machine_name : Label = $MachineName
 @onready var description : Label = $HBoxContainer/MarginContainer/Description
 @onready var description_image : TextureRect = $HBoxContainer/DescriptionImage
@@ -24,6 +26,13 @@ func set_machine(machine):
 
     if machine is CupDispenser:
         clone.cup_size = machine.cup_size
+
+    if machine is IceMachine:
+        machine_camera.fov = 85
+        machine_camera.rotation.x = deg_to_rad(-8)
+    else:
+        machine_camera.fov = 60
+        machine_camera.rotation.x = deg_to_rad(-20)
 
     machine_position.add_child(clone)
 

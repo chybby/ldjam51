@@ -33,3 +33,4 @@ func on_interact(character, item, _interact_position):
     character.connect('focus_changed', new_fruit.on_focus_changed)
     character.connect('interacted_with', new_fruit.on_interact)
     character.hold_item(new_fruit)
+    new_fruit.pick_up()

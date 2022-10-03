@@ -16,6 +16,7 @@ func _ready():
     item_name = "Ice Machine"
     description = "Dispenses Ice"
     description_image_path = ingredient.icon_file_name()
+    flavour = '"feat. Ice, formerly known as Water"'
 
 func on_interact(character, item, interact_position):
     if item != self:

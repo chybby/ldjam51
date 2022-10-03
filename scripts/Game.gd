@@ -34,6 +34,7 @@ signal game_was_paused(paused)
 @onready var new_ingredient_screen = $NewIngredientScreen
 @onready var new_machine_screen = $NewMachineScreen
 @onready var settings_screen = $SettingsScreen
+@onready var game_over_screen = $GameOverScreen
 
 @onready var hot_water_dispenser = $HotWaterDispenser
 @onready var ice_machine = $IceMachine
@@ -69,6 +70,8 @@ var drink_order_maker = DrinkOrderMaker.new()
 var game_paused = false
 
 var day = 0
+
+var customers_served = 0
 
 # TODO: make orders a little more complicated each day (more ingredients per order, higher counts per ingredient).
 # TODO: title screen + options (volume, mouse sensitivity, fullscreen?)
@@ -117,6 +120,7 @@ func _input(event):
         return
 
     if event.is_action_pressed('game_pause'):
+        print('pausing game')
         $HUD/Crosshair.visible = false
         settings_screen.visible = true
         Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -157,8 +161,11 @@ func _process(_delta):
         if unlocked_machine == null:
             var unlocked_ingredient = unlock_ingredient(day)
             if unlocked_ingredient == null:
-                #TODO: end the game
                 print('game over!')
+                $HUD.visible = false
+                game_over_screen.visible = true
+                game_over_screen.update(customers_served)
+                Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
             else:
                 new_ingredient_screen.set_ingredient(unlocked_ingredient)
                 new_ingredient_screen.visible = true
@@ -287,9 +294,11 @@ func spawn_customer():
     num_customers += 1
     customer.initialize(spawnLocation.global_transform.origin, spot, order)
 
-func processCustomerLeaving(_was_angry, spot_node):
+func processCustomerLeaving(was_angry, spot_node):
     spots.append(spot_node)
     num_customers -= 1
+    if not was_angry:
+        customers_served += 1
 
 func reset_game():
     morning_timer.start()

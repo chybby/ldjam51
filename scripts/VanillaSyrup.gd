@@ -14,6 +14,7 @@ func _ready():
     item_name = "Vanilla Syrup Pump"
     description = "Dispenses Vanilla Syrup"
     description_image_path = ingredient.icon_file_name()
+    flavour = '"Criminally underrated"'
 
 func on_interact(character, item, interact_position):
     if item != self:

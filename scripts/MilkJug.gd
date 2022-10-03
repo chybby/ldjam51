@@ -66,8 +66,12 @@ func put_down():
     super()
     contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
     frothed_contents.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+    contents.render_priority -= 10
+    frothed_contents.render_priority -= 10
 
 func pick_up():
     super()
     contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
     frothed_contents.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+    contents.render_priority += 10
+    frothed_contents.render_priority += 10

@@ -36,6 +36,7 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_r24hv")
 
 [node name="FpsCounter" type="Label" parent="."]
+visible = false
 offset_left = 7.0
 offset_top = 7.0
 offset_right = 68.0
