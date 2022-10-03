@@ -33,6 +33,7 @@ func on_interact(character, item, _interact_position):
     print('%s milk jug interacted with' % self)
 
 func add_ingredient(ingredient):
+    $SoundPour.play()
     ingredients.add_ingredient(ingredient)
     print('milk jug has: %s' % ingredients)
 

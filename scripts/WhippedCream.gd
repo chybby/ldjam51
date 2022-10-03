@@ -11,6 +11,9 @@ func _ready():
         shader_material = $Model.mesh.material.next_pass
 
     item_name = "Whipped Cream"
+    
+func play_sound():
+    $SoundWhippedCream.play()
 
 func on_interact(character, item, interact_position):
     if item != self:

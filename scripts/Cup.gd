@@ -43,16 +43,20 @@ func on_interact(character, item, _interact_position):
 
     var held_item = character.get_held_item()
     if held_item is Milk or held_item is WhippedCream:
+        if(held_item is WhippedCream):
+             held_item.play_sound()
         self.add_ingredient(held_item.ingredient.clone())
     elif (held_item is MilkJug or held_item is BlenderJug) and held_item.has_contents():
         # TODO: don't let unblended ingredients go into the cup - tooltip or something
         ingredients.combine(held_item.take_contents())
+        $SoundCupPour.play()
         print('Cup has ingredients: %s' % ingredients)
     else:
         hold_or_swap(character)
 
 func add_ingredient(ingredient):
     ingredients.add_ingredient(ingredient)
+    $SoundCupPour.play()
     print('Cup has ingredients: %s' % ingredients)
 
 func get_sprite_path():

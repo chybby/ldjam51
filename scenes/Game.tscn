@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3klpupg0qf67"]
+[gd_scene load_steps=32 format=3 uid="uid://cpxm6mf175g4x"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://c1aruknlcnsfn" path="res://scenes/WhippedCream.tscn" id="29_ahvpv"]
 [ext_resource type="PackedScene" uid="uid://vx6qonq27o76" path="res://scenes/NewIngredientScreen.tscn" id="29_vmhwf"]
 [ext_resource type="PackedScene" uid="uid://b54ry6j5wodnl" path="res://scenes/NewMachineScreen.tscn" id="30_xxcrr"]
+[ext_resource type="AudioStream" uid="uid://0eh8q0tnfr5d" path="res://assets/audio/music/FREE JAZZ BACKGROUND MUSIC (PARIS CAFE) [NO COPYRIGHT] [FREE DOWNLOAD].wav" id="31_j8l5y"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -131,7 +132,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72964, 0.678664, -4.18254)
 lock_rotation = false
 
 [node name="MorningTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 247.088
 one_shot = true
 autostart = true
 
@@ -140,6 +141,11 @@ visible = false
 
 [node name="NewMachineScreen" parent="." instance=ExtResource("30_xxcrr")]
 visible = false
+
+[node name="SoundBackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_j8l5y")
+volume_db = -23.327
+autoplay = true
 
 [connection signal="game_was_paused" from="." to="Character" method="_on_game_game_was_paused"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

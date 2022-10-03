@@ -39,6 +39,7 @@ func on_interact(character, item, interact_position):
         # Blend the blender jug
         print('blending the blender jug in the blender')
         blender_jug.blend_contents()
+        $SoundBlender.play()
 
     super(character, item, interact_position)
 

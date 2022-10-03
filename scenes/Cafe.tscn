@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://r4ni5b7ycshx"]
+[gd_scene load_steps=24 format=3 uid="uid://r4ni5b7ycshx"]
 
-[ext_resource type="Material" path="res://assets/Cafe.tres" id="1_x2d2y"]
+[ext_resource type="AudioStream" uid="uid://bn2vduxu0o1ut" path="res://assets/audio/SFX/doorbell.wav" id="1_an86o"]
 [ext_resource type="Texture2D" uid="uid://ydcyt5kyriyq" path="res://assets/floorboards.png" id="2_i4ahb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2eyu"]
@@ -39,7 +39,10 @@ size = Vector2(10, 5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nsbc8"]
 size = Vector3(10, 5, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_7ha3h"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5isv"]
+albedo_color = Color(0, 0.384314, 0.254902, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_thm7l"]
 size = Vector2(10, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p80on"]
@@ -124,8 +127,8 @@ shape = SubResource("BoxShape3D_nsbc8")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Wall2"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 5, 2.5, 0)
-material_overlay = ExtResource("1_x2d2y")
-mesh = SubResource("PlaneMesh_7ha3h")
+material_overlay = SubResource("StandardMaterial3D_m5isv")
+mesh = SubResource("PlaneMesh_thm7l")
 skeleton = NodePath("")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
@@ -152,6 +155,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4681, 0, 4.42494)
 [node name="MeshInstance3d" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583713, 1.50726, 0.641593)
 mesh = SubResource("BoxMesh_jne27")
+
+[node name="SoundDoorbell" type="AudioStreamPlayer3D" parent="Door"]
+stream = ExtResource("1_an86o")
 
 [node name="Spots" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.894673, 0, 0)

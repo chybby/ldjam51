@@ -33,6 +33,7 @@ func on_interact(character, item, interact_position):
     elif held_item == null and milk_jug != null:
         # Froth the milk jug
         print('frothing the milk jug in the milk frother')
+        $SoundFrothing.play()
         milk_jug.froth_contents()
 
     super(character, item, interact_position)
