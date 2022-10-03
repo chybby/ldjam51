@@ -145,12 +145,14 @@ visible = false
 visible = false
 
 [node name="SettingsScreen" parent="." instance=ExtResource("29_vmhwf")]
+unique_name_in_owner = true
 visible = false
 
 [node name="GameOverScreen" parent="." instance=ExtResource("32_by3gb")]
 visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource("33_n3nn6")]
+unique_name_in_owner = true
 
 [node name="SoundBackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_j8l5y")
