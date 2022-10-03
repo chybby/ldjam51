@@ -11,4 +11,5 @@ corner_radius_bottom_left = 3
 
 [resource]
 default_font = ExtResource("1_n1k5i")
+ProgressBar/font_sizes/font_size = 32
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_6u6tg")

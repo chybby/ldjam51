@@ -18,19 +18,13 @@ func generate_order(day, difficulty = 1):
     assert(available_ingredients.size() > 0)
     var order = DrinkOrder.new()
 
-    var min_ingredients = difficulty + day / 5
-    var max_ingredients = min_ingredients + difficulty * (day / 3) + 1
-
-    print("min_ingredients: %d" % min_ingredients)
-    print("max_ingredients: %d" % max_ingredients)
+    var min_ingredients = day * difficulty + 1
+    var max_ingredients = 2 * day * difficulty + 1
 
     var num_ingredients = rand_range(min_ingredients, max_ingredients)
 
-    print("num_ingredients: %d" % num_ingredients)
-
     for i in num_ingredients:
         var ingredient = get_random_ingredient()
-        print('adding %s' % ingredient)
 
         order.add_ingredient(ingredient, 1)
 

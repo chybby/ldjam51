@@ -1,14 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://vx6qonq27o76"]
+[gd_scene load_steps=4 format=3 uid="uid://vx6qonq27o76"]
 
 [ext_resource type="Theme" uid="uid://dpvydela4folv" path="res://resources/theme.tres" id="1_4ckg1"]
 [ext_resource type="Script" path="res://scripts/SettingsScreen.gd" id="2_aordy"]
-
-[sub_resource type="Gradient" id="Gradient_kwajs"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.687402, 0.992539, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jmwke"]
-gradient = SubResource("Gradient_kwajs")
+[ext_resource type="Texture2D" uid="uid://cjqak4scr7fao" path="res://assets/blackboard.jpg" id="3_86v2q"]
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -26,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_jmwke")
+texture = ExtResource("3_86v2q")
 
 [node name="Title" type="Label" parent="."]
 anchors_preset = 5
@@ -37,7 +31,6 @@ offset_top = 40.0
 offset_right = 347.0
 offset_bottom = 161.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "Settings"
 horizontal_alignment = 1
@@ -51,7 +44,6 @@ offset_top = 285.0
 offset_right = -233.0
 offset_bottom = 359.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Volume: "
 horizontal_alignment = 2
@@ -65,7 +57,6 @@ offset_top = 404.0
 offset_right = -234.0
 offset_bottom = 478.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Mouse Sensitivity: "
 horizontal_alignment = 2
@@ -86,5 +77,21 @@ max_value = 0.01
 step = 0.0
 value = 0.003
 
+[node name="ReturnButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -201.0
+offset_right = 157.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Return"
+
 [connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="MouseSensitivitySlider" to="." method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

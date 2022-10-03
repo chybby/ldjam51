@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var fps_counter : Label = $FpsCounter
 @onready var clock : Label = $Clock
 @onready var clock_blink_timer : Timer = $ClockBlink
+@onready var score : Label = $Score
+@onready var game_scene = get_parent()
 
 
 func update_time(time_left, max_time):
@@ -30,6 +32,8 @@ func update_time(time_left, max_time):
 func _process(delta):
     var fps = 1/delta
     fps_counter.text = "%.0f" % fps
+    var score_number = game_scene.total_score
+    score.text = "Score: %d" % score_number
 
 
 func _on_clock_blink_timeout():

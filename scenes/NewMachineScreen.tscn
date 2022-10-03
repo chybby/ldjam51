@@ -1,15 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b54ry6j5wodnl"]
+[gd_scene load_steps=8 format=3 uid="uid://b54ry6j5wodnl"]
 
 [ext_resource type="Theme" uid="uid://dpvydela4folv" path="res://resources/theme.tres" id="1_4ckg1"]
 [ext_resource type="Script" path="res://scripts/NewMachineScreen.gd" id="2_eihi0"]
 [ext_resource type="Texture2D" uid="uid://bagin3avprh1a" path="res://assets/coffee.png" id="3_c65ku"]
-
-[sub_resource type="Gradient" id="Gradient_kwajs"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.687402, 0.992539, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jmwke"]
-gradient = SubResource("Gradient_kwajs")
+[ext_resource type="Texture2D" uid="uid://cjqak4scr7fao" path="res://assets/blackboard.jpg" id="3_y24ow"]
 
 [sub_resource type="Animation" id="Animation_xbl7k"]
 length = 4.0
@@ -65,7 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_jmwke")
+texture = ExtResource("3_y24ow")
 
 [node name="Title" type="Label" parent="."]
 anchors_preset = 5
@@ -76,7 +70,6 @@ offset_top = 40.0
 offset_right = 347.0
 offset_bottom = 161.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 100
 text = "New Machine:"
 horizontal_alignment = 1
@@ -128,7 +121,6 @@ offset_right = 246.0
 offset_bottom = -253.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Espresso Machine"
 horizontal_alignment = 1
@@ -145,7 +137,6 @@ offset_right = 246.0
 offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "\"It's so bad\""
 horizontal_alignment = 1
@@ -173,7 +164,6 @@ theme_override_constants/margin_right = 20
 offset_top = 13.0
 offset_right = 253.0
 offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Produces"
 

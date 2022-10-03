@@ -17,7 +17,7 @@ var splashEffect = preload("res://scenes/splash_node.tscn")
 
 const FRAMES = [BabyFrames, HipsterFrames, KarenFrames, TradieFrames]
 
-signal left(wasAngry, spot)
+signal left(order_score,isAngry, spot)
 
 enum {
     LINE_UP,
@@ -172,7 +172,7 @@ func exit_cafe():
     if (state == LEAVE_ANGRY):
         isAngry = true
     print("later bitch")
-    left.emit(isAngry, spotNode)
+    left.emit(drink_order.score, isAngry, spotNode)
     queue_free()
 
 func set_nav_target(node):
