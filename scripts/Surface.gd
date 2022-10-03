@@ -4,6 +4,10 @@ extends "res://scripts/InteractableItem.gd"
 
 @onready var game = $/root/Game
 
+func _ready():
+    super()
+    item_name = "Surface"
+
 func on_interact(character, item, interact_position):
     if item != self:
         return

@@ -2,11 +2,14 @@ extends "res://scripts/InteractableItem.gd"
 
 const Cup = preload("res://scripts/Cup.gd")
 
+var packed_scene = load("res://scenes/CupDispenser.tscn")
+
 @export var cup : PackedScene = null
-@export var cup_size : Cup.CupSize
+@export var cup_size : Cup.CupSize = Cup.CupSize.MEDIUM
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
@@ -22,6 +25,20 @@ func _ready():
     $Model.position *= child_scale
     $Collision.scale = Vector3.ONE * child_scale
     $Collision.position *= child_scale
+
+    item_name = "%s Cup Dispenser" % size_name()
+    description = "A stack of %s cups" % size_name().to_lower()
+    #TODO: add cup icon
+    description_image_path = null
+
+func size_name():
+    match cup_size:
+        Cup.CupSize.SMALL:
+            return "Small"
+        Cup.CupSize.MEDIUM:
+            return "Medium"
+        Cup.CupSize.LARGE:
+            return "Large"
 
 
 func on_interact(character, item, _interact_position):

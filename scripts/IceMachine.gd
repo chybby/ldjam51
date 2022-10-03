@@ -4,12 +4,18 @@ const Ingredient = preload("res://scripts/Ingredient.gd")
 
 const BlenderJug = preload("res://scripts/BlenderJug.gd")
 
+var packed_scene = load("res://scenes/IceMachine.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 
     ingredient = Ingredient.new(Ingredient.IngredientType.ICE, true, false, false)
+    item_name = "Ice Machine"
+    description = "Dispenses Ice"
+    description_image_path = ingredient.icon_file_name()
 
 func on_interact(character, item, interact_position):
     if item != self:

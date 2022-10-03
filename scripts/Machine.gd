@@ -6,11 +6,6 @@ const Cup = preload("res://scripts/Cup.gd")
 
 var ingredient = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-    pass # Replace with function body.
-
-
 func on_interact(character, item, _interact_position):
     if item != self:
         return

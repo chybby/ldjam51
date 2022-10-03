@@ -8,6 +8,7 @@ var ingredient = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
 

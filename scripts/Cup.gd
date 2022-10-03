@@ -13,8 +13,20 @@ var size = CupSize.MEDIUM
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
+
+    item_name = "%s Cup" % size_name()
+
+func size_name():
+    match size:
+        CupSize.SMALL:
+            return "Small"
+        CupSize.MEDIUM:
+            return "Medium"
+        CupSize.LARGE:
+            return "Large"
 
 func on_interact(character, item, _interact_position):
     if item != self:
@@ -54,3 +66,5 @@ func set_size(new_size):
     $Model.position *= child_scale
     $Collision.scale = Vector3.ONE * child_scale
     $Collision.position *= child_scale
+
+    item_name = "%s Cup" % size_name()

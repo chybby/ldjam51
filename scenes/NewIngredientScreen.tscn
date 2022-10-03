@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://vx6qonq27o76"]
+
+[ext_resource type="Theme" uid="uid://dpvydela4folv" path="res://resources/theme.tres" id="1_4ckg1"]
+[ext_resource type="Texture2D" uid="uid://700jojt5sy12" path="res://assets/soy_milk.png" id="2_d52vt"]
+[ext_resource type="Script" path="res://scripts/NewIngredientScreen.gd" id="2_m4ji3"]
+
+[sub_resource type="Gradient" id="Gradient_kwajs"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.687402, 0.992539, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jmwke"]
+gradient = SubResource("Gradient_kwajs")
+
+[node name="NewIngredientScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ckg1")
+script = ExtResource("2_m4ji3")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jmwke")
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -346.0
+offset_top = 40.0
+offset_right = 347.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "New Ingredient:"
+horizontal_alignment = 1
+
+[node name="IngredientIcon" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -121.5
+offset_right = 129.0
+offset_bottom = 121.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d52vt")
+stretch_mode = 5
+
+[node name="IngredientName" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -248.0
+offset_right = 113.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Soy Milk"
+horizontal_alignment = 1

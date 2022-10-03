@@ -27,6 +27,9 @@ fill_to = Vector2(0.128205, 0.824786)
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_e1xt5")
+speed = null
+patience = null
+patence_lost_on_wrong_order = null
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

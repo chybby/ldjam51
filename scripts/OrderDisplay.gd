@@ -8,10 +8,6 @@ const OrderDisplayLine = preload("res://scenes/OrderDisplayLine.tscn")
 @onready var lines = $Panel/MarginContainer/MarginContainer/VBoxContainer/Lines
 @onready var cup_size = $Panel/Panel/MarginContainer/MarginContainer/VBoxContainer/CupSize
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-    pass # Replace with function body.
-
 func display_order(order: DrinkOrder):
     #var order_cup_size = order.get_cup_size()
     var ingredient_counts = order.get_ingredients()

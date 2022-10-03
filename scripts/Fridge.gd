@@ -5,8 +5,11 @@ extends "res://scripts/InteractableItem.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
+
+    item_name = "Fridge"
 
 func on_interact(_character, item, _interact_position):
     if item != self:

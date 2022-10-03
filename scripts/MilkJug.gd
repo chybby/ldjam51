@@ -8,8 +8,11 @@ var ingredients = IngredientList.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
+
+    item_name = "Milk Jug"
 
 func on_interact(character, item, _interact_position):
     if item != self:
@@ -46,3 +49,6 @@ func take_contents():
 
 func has_contents():
     return not ingredients.is_empty()
+
+func put_back(frother):
+    frother.place_milk_jug(self)

@@ -71,28 +71,28 @@ func icon_file_name():
         IngredientType.BANANA: return 'res://assets/banana.png'
         IngredientType.WHIPPED_CREAM: return 'res://assets/whipped_cream.png'
 
-func debug_string():
+func get_name():
     var ingredient_desc
     match ingredient_type:
-        IngredientType.ESPRESSO_SHOT: ingredient_desc = 'espresso'
-        IngredientType.HOT_WATER: ingredient_desc = 'hot water'
-        IngredientType.ICE: ingredient_desc = 'ice'
-        IngredientType.CARAMEL_SYRUP: ingredient_desc = 'caramel syrup'
-        IngredientType.HAZELNUT_SYRUP: ingredient_desc = 'hazelnut syrup'
-        IngredientType.VANILLA_SYRUP: ingredient_desc = 'vanilla syrup'
-        IngredientType.WHOLE_MILK: ingredient_desc = 'whole milk'
-        IngredientType.SKIMMED_MILK: ingredient_desc = 'skimmed milk'
-        IngredientType.OAT_MILK: ingredient_desc = 'oat milk'
-        IngredientType.SOY_MILK: ingredient_desc = 'soy milk'
-        IngredientType.MANGO: ingredient_desc = 'mango'
-        IngredientType.STRAWBERRY: ingredient_desc = 'strawberry'
-        IngredientType.BANANA: ingredient_desc = 'banana'
-        IngredientType.WHIPPED_CREAM: ingredient_desc = 'whipped cream'
+        IngredientType.ESPRESSO_SHOT: ingredient_desc = 'Espresso Shot'
+        IngredientType.HOT_WATER: ingredient_desc = 'Hot Water'
+        IngredientType.ICE: ingredient_desc = 'Ice'
+        IngredientType.CARAMEL_SYRUP: ingredient_desc = 'Caramel Syrup'
+        IngredientType.HAZELNUT_SYRUP: ingredient_desc = 'Hazelnut Syrup'
+        IngredientType.VANILLA_SYRUP: ingredient_desc = 'Vanilla Syrup'
+        IngredientType.WHOLE_MILK: ingredient_desc = 'Whole Milk'
+        IngredientType.SKIMMED_MILK: ingredient_desc = 'Skimmed Milk'
+        IngredientType.OAT_MILK: ingredient_desc = 'Oat Milk'
+        IngredientType.SOY_MILK: ingredient_desc = 'Soy Milk'
+        IngredientType.MANGO: ingredient_desc = 'Mango'
+        IngredientType.STRAWBERRY: ingredient_desc = 'Strawberry'
+        IngredientType.BANANA: ingredient_desc = 'Banana'
+        IngredientType.WHIPPED_CREAM: ingredient_desc = 'Whipped Cream'
 
-    return "[%s b=%s f=%s]" % [ingredient_desc, blended, frothed]
+    return ingredient_desc
 
 func _to_string():
-    return debug_string()
+    return "[%s b=%s f=%s]" % [get_name(), blended, frothed]
 
 func clone():
     var cloned = get_script().new(ingredient_type, is_blendable, is_frothable, is_unique)

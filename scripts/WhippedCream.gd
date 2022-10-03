@@ -6,8 +6,11 @@ var ingredient = Ingredient.new(Ingredient.IngredientType.WHIPPED_CREAM, false, 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
+
+    item_name = "Whipped Cream"
 
 func on_interact(character, item, interact_position):
     if item != self:

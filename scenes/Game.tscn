@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b3klpupg0qf67"]
+[gd_scene load_steps=31 format=3 uid="uid://b3klpupg0qf67"]
 
 [ext_resource type="PackedScene" uid="uid://r4ni5b7ycshx" path="res://scenes/Cafe.tscn" id="1_ku7od"]
 [ext_resource type="Script" path="res://scripts/Game.gd" id="1_mjfad"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://bwq13ftiub2xv" path="res://scenes/Strawberry.tscn" id="27_mhydv"]
 [ext_resource type="PackedScene" uid="uid://bm3yqpstj5ab1" path="res://scenes/Banana.tscn" id="28_kmixj"]
 [ext_resource type="PackedScene" uid="uid://c1aruknlcnsfn" path="res://scenes/WhippedCream.tscn" id="29_ahvpv"]
+[ext_resource type="PackedScene" uid="uid://vx6qonq27o76" path="res://scenes/NewIngredientScreen.tscn" id="29_vmhwf"]
+[ext_resource type="PackedScene" uid="uid://b54ry6j5wodnl" path="res://scenes/NewMachineScreen.tscn" id="30_xxcrr"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_mjfad")
@@ -36,7 +38,7 @@ customer_scene = ExtResource("3_c1p0b")
 [node name="Cafe" parent="." instance=ExtResource("1_ku7od")]
 
 [node name="Character" parent="." instance=ExtResource("2_sh1jv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58499, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.32827, 0, 0)
 
 [node name="HUD" parent="." instance=ExtResource("6_q364h")]
 
@@ -130,8 +132,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72964, 0.678664, -4.18254)
 lock_rotation = false
 
 [node name="MorningTimer" type="Timer" parent="."]
-wait_time = 55.0
+wait_time = 3.0
 one_shot = true
 autostart = true
 
+[node name="NewIngredientScreen" parent="." instance=ExtResource("29_vmhwf")]
+visible = false
+
+[node name="NewMachineScreen" parent="." instance=ExtResource("30_xxcrr")]
+visible = false
+
+[connection signal="game_was_paused" from="." to="Character" method="_on_game_game_was_paused"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
+[connection signal="timeout" from="MorningTimer" to="." method="_on_morning_timer_timeout"]
+[connection signal="next_screen" from="NewIngredientScreen" to="." method="_on_new_ingredient_screen_next_screen"]
+[connection signal="next_screen" from="NewMachineScreen" to="." method="_on_new_machine_screen_next_screen"]

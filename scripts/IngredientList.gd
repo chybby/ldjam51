@@ -53,12 +53,10 @@ func _to_string():
 
 func equals(other):
     if other.ingredient_counts.size() != ingredient_counts.size():
-        print('wrong number of types of ingredients')
         return false
 
     for ingredient_count in other.ingredient_counts:
         if not has_ingredient_with_count(ingredient_count[0], ingredient_count[1]):
-            print('incorrect number of ingredient %s' % ingredient_count[0])
             return false
 
     return true

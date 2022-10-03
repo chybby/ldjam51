@@ -9,8 +9,11 @@ var ingredients = IngredientList.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
+
+    item_name = "Blender Jug"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -55,3 +58,6 @@ func take_contents():
 
 func has_contents():
     return not ingredients.is_empty()
+
+func put_back(blender):
+    blender.place_blender_jug(self)

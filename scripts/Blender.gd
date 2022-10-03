@@ -5,10 +5,18 @@ var BlenderJug = load("res://scripts/BlenderJug.gd")
 @onready var blender_jug_position : Marker3D = $BlenderJugPosition
 @onready var blender_jug = $BlenderJug
 
+var packed_scene = load("res://scenes/Blender.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
+
+    item_name = "Blender"
+    description = "Blends fruit and ice"
+    #TODO: add blending icon
+    description_image_path = null
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,12 +34,21 @@ func on_interact(character, item, interact_position):
         # Put the blender jug into the blender
         print('putting the held blender jug in the blender')
         character.release_item()
-        self.add_child(held_item)
-        held_item.position = blender_jug_position.position
-        blender_jug = held_item
+        place_blender_jug(held_item)
     elif held_item == null and blender_jug != null:
         # Blend the blender jug
         print('blending the blender jug in the blender')
         blender_jug.blend_contents()
 
     super(character, item, interact_position)
+
+func place_blender_jug(jug):
+    if jug.get_parent() == self:
+        return
+
+    if jug.get_parent() != null:
+        jug.get_parent().remove_child(jug)
+
+    self.add_child(jug)
+    jug.position = blender_jug_position.position
+    blender_jug = jug

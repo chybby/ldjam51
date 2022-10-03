@@ -20,14 +20,24 @@ var focused_item = null
 var focused_item_position = null
 var held_item = null
 
+var game_paused = false
+
+var initial_transform = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    initial_transform = transform
 
+func reset():
+    transform = initial_transform
+    camera.rotation = Vector3.ZERO
 
 # Called every physics frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
+    if game_paused:
+        return
     # Character movement
 
     velocity = Vector3.ZERO
@@ -61,15 +71,14 @@ func _physics_process(_delta):
     focused_item_position = result.get('position')
 
     if focused_item != result.get('collider'):
-        if focused_item != null:
-            pass#print("%s losing focus" % focused_item)
         focused_item = result.get('collider')
-        if focused_item != null:
-            pass#print("%s gaining focus" % focused_item)
         focus_changed.emit(focused_item)
 
 
 func _input(event):
+    if game_paused:
+        return
+
     if event is InputEventMouseMotion:
         var movement = event.relative
         camera.rotation.x -= movement.y * mouse_sensitivity
@@ -105,7 +114,7 @@ func release_item():
     if held_item == null:
         return null
     camera.remove_child(held_item)
-    # Put down items only on layer 1.
+    # Put down items are only on layer 1.
     held_item.set_collision_layer(1)
     held_item.rotation = self.rotation
     var previously_held_item = held_item
@@ -129,3 +138,7 @@ func throw_item():
     var previously_held_item = held_item
     held_item = null
     return previously_held_item
+
+
+func _on_game_game_was_paused(paused):
+    game_paused = paused

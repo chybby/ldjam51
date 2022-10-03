@@ -23,19 +23,15 @@ func generate_order():
     var min_ingredients = 1
     var max_ingredients = 5
     var min_count = 1
-    var max_count = 15
+    var max_count = 10
 
     var num_ingredients = rand_range(min_ingredients, max_ingredients)
-    print(num_ingredients)
 
     for i in num_ingredients:
         var ingredient = get_random_ingredient()
         var count = rand_range(min_count, max_count)
 
-        print("%s of %s" % [count, ingredient])
-
         if order.has_ingredient(ingredient):
-            print("already has ingredient, skipping")
             continue
 
         order.add_ingredient(ingredient, count)

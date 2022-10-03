@@ -6,8 +6,11 @@ var is_open = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    super()
     if $Model.mesh != null:
         shader_material = $Model.mesh.material.next_pass
+
+    item_name = "Fridge Door"
 
 
 func on_interact(_character, item, _interact_position):
@@ -17,8 +20,14 @@ func on_interact(_character, item, _interact_position):
     print('%s fridge interacted with' % self)
 
     if is_open:
-        rotation.y = 0
-        is_open = false
+        close()
     else:
-        rotation.y = deg_to_rad(-135)
-        is_open = true
+        open()
+
+func close():
+    rotation.y = 0
+    is_open = false
+
+func open():
+    rotation.y = deg_to_rad(-135)
+    is_open = true

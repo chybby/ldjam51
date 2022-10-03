@@ -6,18 +6,25 @@ var focused = false
 
 var shader_material : ShaderMaterial = null
 
+var item_name = null
+var description = null
+var description_image_path = null
+
+var initial_position
+
+func _ready():
+    pass
+
+func set_initial_position():
+    initial_position = position
 
 func on_focus_changed(item):
     if not focused and item == self:
-        #print('%s recognized it received focus' % self)
-        #print('%s ' % shader_material)
         if shader_material != null:
-            #print('setting shader param to 0.5 ')
             shader_material.set_shader_parameter("enable", true)
         focused = true
     elif focused and item != self:
         if shader_material != null:
-            #print('setting shader param to 0 ')
             shader_material.set_shader_parameter("enable", false)
         focused = false
 
@@ -26,3 +33,15 @@ func on_interact(_character, item, _interact_position):
         return
 
     #print('%s interacted with' % self)
+
+func get_name():
+    return item_name
+
+func get_description():
+    return description
+
+func get_description_image_path():
+    return description_image_path
+
+func reset_position():
+    position = initial_position

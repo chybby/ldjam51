@@ -111,6 +111,7 @@ func leave_angry():
     print("times up im out this bitch")
     state = LEAVE_ANGRY
     set_nav_target(get_node("../Cafe/Door"))
+    order_display.visible = false
 
 func receive_drink(cup):
     cup_detection_area.set_deferred("monitoring", false)
