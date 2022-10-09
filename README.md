@@ -4,6 +4,7 @@ It is 8AM and the morning coffee rush is beginning. Can you keep up with custome
 
 Controls:
   - Mouse to look around.
+  - WASD to move.
   - Left click to pick up, interact and drop.
   - Right click to throw *ahem* gently pass an order to a customer.
   - Esc to pause and change settings.
