@@ -12,7 +12,7 @@ Controls:
 Try to survive all 15 morning rushes and give the customers their morning coffee hit!
 
 
-Make sure you download windows.zip. The web version of the game doesn't work :(
+Made for [Ludum Dare 51](https://ldjam.com/events/ludum-dare/51/morning-coffee-hit).
 
 
 A few of the textures (the customers and the floor) are based on this texture pack: https://pixelfrog-assets.itch.io/pirate-bomb
