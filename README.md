@@ -11,10 +11,8 @@ Controls:
 
 Try to survive all 15 morning rushes and give the customers their morning coffee hit!
 
-
-Made for [Ludum Dare 51](https://ldjam.com/events/ludum-dare/51/morning-coffee-hit).
-
-
 A few of the textures (the customers and the floor) are based on this texture pack: https://pixelfrog-assets.itch.io/pirate-bomb
 
 Every other sprite and model was made during the jam.
+
+Made for [Ludum Dare 51](https://ldjam.com/events/ludum-dare/51/morning-coffee-hit) by Dome and Braiizen.
